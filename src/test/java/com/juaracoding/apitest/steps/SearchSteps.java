@@ -1,5 +1,7 @@
 package com.juaracoding.apitest.steps;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -25,19 +27,21 @@ public class SearchSteps {
         unitPage = UnitPage.init(driver);
 
         loginPage.login("admin@hadir.com", "MagangSQA_JC@123");
-        Thread.sleep(1000);
+
     }
 
     @When("Klik menu Management")
     public void userKlikMenuManagement() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage.bukaMenuManagement();
-        Thread.sleep(1000);
+        // Thread.sleep(1000);
     }
 
     @When("Klik submenu Unit")
     public void userKlikSubmenuUnit() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage.bukaSubmenuUnit();
-        Thread.sleep(1000);
+
     }
 
     @When("Masukkan nama unit pada kotak Search dengan input {string}")
@@ -53,9 +57,9 @@ public class SearchSteps {
     }
 
     @Then("Data unit yang sesuai dengan pencarian ditampilkan untuk {string}")
-    public void hasilPencarianMenampilkanUnitDenganNama(String expectedText) throws InterruptedException {
-        boolean isDisplayed = unitPage.isSearchResultDisplayed(expectedText);
-        Assert.assertTrue(isDisplayed, "Hasil pencarian tidak ditemukan");
+    public void hasilPencarianMenampilkanUnitDenganNama(String keyword) throws InterruptedException {
+        boolean isExsist = unitPage.isSearchResultDisplayed(keyword);
+        Assert.assertTrue(isExsist, "Hasil pencarian tidak ditemukan");
         Thread.sleep(1000);
     }
 }

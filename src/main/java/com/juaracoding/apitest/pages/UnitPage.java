@@ -27,11 +27,11 @@ public class UnitPage {
     }
 
     // Menu Manajemen
-    @FindBy(xpath = "//*[@id=\"__next\"]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[4]")
+    @FindBy(xpath = "(//div[contains(@class, 'sidebar__item')])[4]")
     WebElement menuManagement;
 
     // Submenu Unit
-    @FindBy(xpath = "//*[@id=\"__next\"]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[4]/div/div[2]/div/div/div/div[5]")
+    @FindBy(xpath = "(//p[contains(., 'Unit')])[1]")
     WebElement subMenuUnit;
 
     // Input search
@@ -43,6 +43,10 @@ public class UnitPage {
 
     public void bukaMenuManagement() {
         wait.until(ExpectedConditions.elementToBeClickable(menuManagement)).click();
+    }
+
+    public WebElement getMenuManagement() {
+        return menuManagement;
     }
 
     public void bukaSubmenuUnit() {
@@ -59,21 +63,9 @@ public class UnitPage {
         buttonSearch.click();
     }
 
-    public boolean isSearchResultDisplayed(String expectedText) {
-        // try {
-        // By resultLocator = By.xpath("//td[contains(text(),'" + expectedText + "')]");
-        // wait.until(ExpectedConditions.presenceOfElementLocated(resultLocator));
-        // return driver.findElement(resultLocator).isDisplayed();
-        // } catch (TimeoutException | NoSuchElementException e) {
-        // return false;
-        // }
-
-        List<WebElement> resultRows = driver.findElements(By.xpath("//table//tbody//tr"));
-        for (WebElement row : resultRows) {
-            if (row.getText().toLowerCase().contains(expectedText.toLowerCase())) {
-                return true;
-            }
-        }
-        return false;
+    public boolean isSearchResultDisplayed(String keyword) {
+        List<WebElement> result = driver.findElements(By.xpath("//tr[position() = 1 or position() = 2]/td[1][contains(.,"+ keyword +")]"));
+        return !result.isEmpty();
     }
 }
+
