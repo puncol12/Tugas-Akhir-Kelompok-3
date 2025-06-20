@@ -41,6 +41,18 @@ public class UnitPage {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement buttonSearch;
 
+    @FindBy(xpath = "//*[contains(@class,'reset')]")
+    WebElement buttonReset;
+
+    @FindBy(xpath = "//div[@role='combobox']")
+    private WebElement showPageDropdown;
+
+    @FindBy(xpath = "//button[contains(@aria-label, 'next')]")
+    WebElement btnNextPage;
+
+    @FindBy(xpath = "//button[contains(@aria-label, 'previous')]")
+    WebElement btnPreviousPage;
+
     public void bukaMenuManagement() {
         wait.until(ExpectedConditions.elementToBeClickable(menuManagement)).click();
     }
@@ -63,9 +75,41 @@ public class UnitPage {
         buttonSearch.click();
     }
 
+    public void resetButton() {
+        buttonReset.click();
+    }
+
+    public void clickNextPage() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnNextPage)).click();
+    }
+
+    public void clickPreviousPage() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnPreviousPage)).click();
+    }
+
+    public void selectShowPage(int jumlah) {
+        wait.until(ExpectedConditions.elementToBeClickable(showPageDropdown)).click();
+        WebElement option = wait.until(ExpectedConditions
+                .elementToBeClickable(By.xpath("//li[normalize-space(text())='" + jumlah + "']")));
+        option.click();
+        wait.until((WebDriver d) -> getJumlahData() <= jumlah);
+    }
+
+    public int getJumlahData() {
+        List<WebElement> rowsData = driver.findElements(By.xpath("//table/tbody/tr[td]"));
+        return rowsData.size();
+    }
+
     public boolean isSearchResultDisplayed(String keyword) {
-        List<WebElement> result = driver.findElements(By.xpath("//tr[position() = 1 or position() = 2]/td[1][contains(.,"+ keyword +")]"));
+        List<WebElement> result = driver.findElements(By.xpath(
+                "//tr[position() = 1 or position() = 2]/td[1][contains(.," + keyword + ")]"));
         return !result.isEmpty();
+    }
+
+    public boolean isDataRestored() {
+        List<WebElement> rows =
+                driver.findElements(By.xpath("//tr[position() >= 1 or position() <= 10]/td[1]"));
+        return !rows.isEmpty();
     }
 }
 

@@ -27,21 +27,18 @@ public class SearchSteps {
         unitPage = UnitPage.init(driver);
 
         loginPage.login("admin@hadir.com", "MagangSQA_JC@123");
-
     }
 
     @When("Klik menu Management")
     public void userKlikMenuManagement() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage.bukaMenuManagement();
-        // Thread.sleep(1000);
     }
 
     @When("Klik submenu Unit")
     public void userKlikSubmenuUnit() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage.bukaSubmenuUnit();
-
     }
 
     @When("Masukkan nama unit pada kotak Search dengan input {string}")
