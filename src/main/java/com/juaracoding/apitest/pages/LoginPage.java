@@ -19,12 +19,15 @@ public class LoginPage {
         return loginPage;
     }
 
+    // email field
     @FindBy(id = "email")
     WebElement emailField;
 
+    // password field
     @FindBy(id = "password")
     WebElement passwordField;
 
+    //button login
     @FindBy(xpath = "//button[@type='submit']")
     WebElement buttonLogin;
 

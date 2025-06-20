@@ -7,6 +7,7 @@ import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPage;
+import com.juaracoding.apitest.pages.UnitPagePages;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,14 +16,16 @@ public class NextPageSteps {
 
     WebDriver driver;
     UnitPage unitPage;
+    UnitPagePages unitPagePages;
 
     @Given("Klik go to next page di bagian bawah halaman tambah unit")
     public void clickNextStep() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage = UnitPage.init(driver);
+        unitPagePages = UnitPagePages.init(driver);
 
-        unitPage.clickNextPage();
+        unitPagePages.clickNextPage();
         Thread.sleep(2000);
     }
 
