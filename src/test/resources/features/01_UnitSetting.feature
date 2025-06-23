@@ -8,4 +8,5 @@ Feature: Unit Setting
     And Klik Tombol Drop Down
     And User memilih test unit 33
     And Klik Tombol Tambah
-  
+    And Muncul notifikasi berhasil menambahkan departemens
+    Then Muncul nama departemens yang telah
