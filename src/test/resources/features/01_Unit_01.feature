@@ -1,4 +1,4 @@
-Feature: Unit
+Feature: Unit 01 searching, reset searching, next page, previous page, last page, first pag
 
   Scenario: Melakukan search dengan menginput 'Nama Unit'
     Given Login dengan user valid
@@ -19,6 +19,14 @@ Feature: Unit
   Scenario: Mengubah tampilan data perhalaman menggunakan Go to previous page
     Given Klik go to previous page di bagian bawah halaman tambah unit
     Then Menampilkan data unit halaman sebelumnya
+
+  Scenario: Mengubah tampilan data perhalaman menggunakan Go to last page
+    Given Klik go to last page di bagian bawah halaman tambah unit
+    Then Menampilkan data unit halaman terakhir
+
+  Scenario: Mengubah tampilan data perhalaman menggunakan Go to first page
+    Given Klik go to first page di bagian bawah halaman tambah unit
+    Then Menampilkan data unit halaman pertama
 
   Scenario Outline: Tampilan data per halaman menggunakan Show Page
     Given Pilih jumlah data <jumlah> yang ingin ditampilkan per halaman di field Show Page
