@@ -12,8 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UnitPage {
-    private final WebDriver driver;
-    private final WebDriverWait wait;
+    public final WebDriver driver;
+    public final WebDriverWait wait;
 
     public UnitPage(WebDriver driver) {
         this.driver = driver;
@@ -34,24 +34,9 @@ public class UnitPage {
     @FindBy(xpath = "(//p[contains(., 'Unit')])[1]")
     WebElement subMenuUnit;
 
-    // Input search
-    @FindBy(xpath = "//input[@id='search']")
-    WebElement searchField;
-
-    @FindBy(xpath = "//button[@type='submit']")
-    WebElement buttonSearch;
-
-    @FindBy(xpath = "//*[contains(@class,'reset')]")
-    WebElement buttonReset;
-
+    // Show Page combobox
     @FindBy(xpath = "//div[@role='combobox']")
     private WebElement showPageDropdown;
-
-    @FindBy(xpath = "//button[contains(@aria-label, 'next')]")
-    WebElement btnNextPage;
-
-    @FindBy(xpath = "//button[contains(@aria-label, 'previous')]")
-    WebElement btnPreviousPage;
 
     public void bukaMenuManagement() {
         wait.until(ExpectedConditions.elementToBeClickable(menuManagement)).click();
@@ -63,28 +48,6 @@ public class UnitPage {
 
     public void bukaSubmenuUnit() {
         wait.until(ExpectedConditions.elementToBeClickable(subMenuUnit)).click();
-    }
-
-    public void searchUnit(String keyword) {
-        wait.until(ExpectedConditions.visibilityOf(searchField));
-        searchField.clear();
-        searchField.sendKeys(keyword);
-    }
-
-    public void searchButton() {
-        buttonSearch.click();
-    }
-
-    public void resetButton() {
-        buttonReset.click();
-    }
-
-    public void clickNextPage() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnNextPage)).click();
-    }
-
-    public void clickPreviousPage() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnPreviousPage)).click();
     }
 
     public void selectShowPage(int jumlah) {

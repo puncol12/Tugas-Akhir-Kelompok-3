@@ -31,5 +31,6 @@ public class ShowPageSteps {
     public void dataUnitSesuaiJumlah(int jumlah) {
         int jumlahTampil = unitPage.getJumlahData();
         Assert.assertTrue(jumlahTampil <= jumlahDipilih, "Data yang ditampilkan (" + jumlahTampil + ") melebihi jumlah yang dipilih (" + jumlahDipilih + ")");
+        driver.quit();
     }
 }
