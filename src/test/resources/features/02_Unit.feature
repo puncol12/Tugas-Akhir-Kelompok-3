@@ -4,10 +4,10 @@ Feature: Unit 02 Tambah Unit
     Given Login dengan user valid
     When Klik menu Management
     And Klik tombol Tambahkan
-    And Isi Nama Unit "123qwe456"
+    And Isi Nama Unit "12"
     And Centang checkbox Lokasi Absen Tetap
     And Pilih Unit Kalender "jangan dihapus punya kelompok 3"
-    And Pilih Aturan Cuti "Cuti punya kelompok 3"
+    And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3"
     And Cari Overtime Reason "Lembur Kelompok 3"
     And Isi Maksimal hari pengajuan "3"
     And Pilih bukti lembur "Ya"
@@ -19,6 +19,15 @@ Feature: Unit 02 Tambah Unit
     And Isi Nama Unit "1" untuk batal
     And Centang checkbox Lokasi Absen Tetap untuk batal
     And Pilih Unit Kalender "jangan dihapus punya kelompok 3" untuk batal
-    And Pilih Aturan Cuti "Cuti punya kelompok 3" untuk batal
+    And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3" untuk batal
     And Klik tombol Batal
     Then Unit baru batal ditambahkan
+
+  Scenario: Menambahkan unit baru dengan mengosongkan data 'nama unit'
+    Given Klik tombol Tambahkan
+    When Kosongkan Nama Unit ""
+    And Centang checkbox Lokasi Absen Tetap
+    And Pilih Unit Kalender "jangan dihapus punya kelompok 3"
+    And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3"
+    And Klik tombol Tambah
+    Then Notifikasi error muncul menampilkan pesan "Nama unit tidak boleh kosong!."

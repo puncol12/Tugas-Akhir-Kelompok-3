@@ -11,7 +11,6 @@ import com.juaracoding.apitest.pages.UnitPageAddUnit;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 
 public class AddNewUnitSteps {
 
@@ -24,24 +23,6 @@ public class AddNewUnitSteps {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPageAddUnit = new UnitPageAddUnit(driver);
         unitPageAddUnit.inputNamaUnit(nama);
-        Thread.sleep(1000);
-    }
-
-    @When("Centang checkbox Lokasi Absen Tetap")
-    public void checkTheCheckbok() throws InterruptedException {
-        unitPageAddUnit.centangLokasiAbsen();
-        Thread.sleep(1000);
-    }
-
-    @And("Pilih Unit Kalender {string}")
-    public void selectUnitCalender(String Kalender) throws InterruptedException {
-        unitPageAddUnit.pilihUnitKalender(Kalender);
-        Thread.sleep(1000);
-    }
-
-    @And("Pilih Aturan Cuti {string}")
-    public void selectLeaveRules(String Aturan) throws InterruptedException {
-        unitPageAddUnit.pilihAturanCuti(Aturan);
         Thread.sleep(1000);
     }
 
@@ -61,12 +42,6 @@ public class AddNewUnitSteps {
     public void selectButkiLembur(String lembur) throws InterruptedException {
         unitPageAddUnit.pilihBuktiLembur(lembur);
         Thread.sleep(1000);
-    }
-
-    @And("Klik tombol Tambah")
-    public void clickButtonTambah() throws InterruptedException {
-        unitPageAddUnit.clickButtonTambah();
-        Thread.sleep(500);
     }
 
     @Then("Unit baru berhasil ditambahkan")

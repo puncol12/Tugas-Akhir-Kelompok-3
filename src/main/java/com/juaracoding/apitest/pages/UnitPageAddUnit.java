@@ -54,6 +54,9 @@ public class UnitPageAddUnit {
     @FindBy(xpath = "//div[normalize-space(text())='Berhasil Menambahkan Unit']")
     WebElement notifBerhasil;
 
+    @FindBy(xpath = "//p[@id='name-helper-text']")
+    WebElement notifRequiredName;
+
     public void clickButtonTambahkan() {
         wait.until(ExpectedConditions.elementToBeClickable(btnTambahkan)).click();
     }
@@ -110,5 +113,9 @@ public class UnitPageAddUnit {
 
     public boolean isUnitSuccesAdded() {
         return wait.until(ExpectedConditions.visibilityOf(notifBerhasil)).isDisplayed();
+    }
+
+    public String isRequiredName() {
+        return wait.until(ExpectedConditions.visibilityOf(notifRequiredName)).getText();
     }
 }
