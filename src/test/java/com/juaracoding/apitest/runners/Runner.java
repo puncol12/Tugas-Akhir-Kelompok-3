@@ -5,9 +5,10 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
     features = {
-        // "src/test/resources/features/01.feature"
+        // "src/test/resources/features/01_Unit_01.feature"
+        //"src/test/resources/features/01_Unit.feature"
         "src/test/resources/features/02_UnitSetting.feature"
-    }, 
+    },
     plugin = {
         "pretty:target/pretty.txt", "html:target/cucumber-reports/index.html",
         "json:target/cucumber-reports/index.json",

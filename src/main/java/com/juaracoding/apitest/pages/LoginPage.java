@@ -11,12 +11,7 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public static LoginPage init(WebDriver driver) {
-        LoginPage loginPage = new LoginPage(driver);
-        PageFactory.initElements(driver, loginPage);
-        return loginPage;
+        PageFactory.initElements(driver, this);
     }
 
     // email field

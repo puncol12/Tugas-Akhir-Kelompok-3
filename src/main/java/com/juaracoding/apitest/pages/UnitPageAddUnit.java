@@ -18,12 +18,7 @@ public class UnitPageAddUnit {
     public UnitPageAddUnit(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
-    public static UnitPageAddUnit init(WebDriver driver) {
-        UnitPageAddUnit unitPageAddUnit = new UnitPageAddUnit(driver);
-        PageFactory.initElements(driver, unitPageAddUnit);
-        return unitPageAddUnit;
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//button[normalize-space(text())='Tambahkan']")

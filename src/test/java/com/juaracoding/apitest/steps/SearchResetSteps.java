@@ -22,8 +22,8 @@ public class SearchResetSteps {
     public void klikTombolReset() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPage = UnitPage.init(driver);
-        unitPageSearch = UnitPageSearch.init(driver);
+        unitPage = new UnitPage(driver);
+        unitPageSearch = new UnitPageSearch(driver);
         unitPageSearch.resetButton();
     }
 

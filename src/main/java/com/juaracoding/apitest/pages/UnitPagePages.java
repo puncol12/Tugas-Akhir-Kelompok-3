@@ -17,12 +17,7 @@ public class UnitPagePages {
     public UnitPagePages(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
-    public static UnitPagePages init(WebDriver driver) {
-        UnitPagePages unitPagePages = new UnitPagePages(driver);
-        PageFactory.initElements(driver, unitPagePages);
-        return unitPagePages;
+        PageFactory.initElements(driver, this);
     }
 
     // button next page
