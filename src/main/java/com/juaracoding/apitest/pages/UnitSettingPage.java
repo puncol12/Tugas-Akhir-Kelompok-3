@@ -13,18 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UnitSettingPage {
 
-    private final WebDriver driver;
-    private final WebDriverWait wait;
+    public final WebDriver driver;
+    WebDriverWait wait;
 
     public UnitSettingPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
-    public static UnitSettingPage init(WebDriver driver) {
-        UnitSettingPage unitSettingPage = new UnitSettingPage(driver);
-        PageFactory.initElements(driver, unitSettingPage);
-        return unitSettingPage;
+        PageFactory.initElements(driver, this);
     }
 
     // Menu Manajemen

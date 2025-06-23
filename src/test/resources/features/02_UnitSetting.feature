@@ -1,8 +1,8 @@
 Feature: Unit Setting
 
-  Scenario: Melakukan search dengan menginput 'Nama Unit'
-    Given Login dengan User valid
-    When Klik menu management
+  Scenario: Menambahkan Departements Unit Setting
+    Given Login dengan user valid
+    When Klik menu Management
     And Klik submenu Unit Setting
     And Klik Tombol Tambahkan
     And Klik Tombol Drop Down
