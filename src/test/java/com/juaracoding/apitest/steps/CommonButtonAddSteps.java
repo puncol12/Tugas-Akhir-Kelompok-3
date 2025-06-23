@@ -1,6 +1,7 @@
 package com.juaracoding.apitest.steps;
 
 import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 
 import com.juaracoding.apitest.DriverSingleton;
@@ -19,8 +20,8 @@ public class CommonButtonAddSteps {
     public void clickButtonTambahkan() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPage = UnitPage.init(driver);
-        unitPageAddUnit = UnitPageAddUnit.init(driver);
+        unitPage = new UnitPage(driver);
+        unitPageAddUnit = new UnitPageAddUnit(driver);
         unitPage.bukaSubmenuUnit();
         Thread.sleep(1000);
         unitPageAddUnit.clickButtonTambahkan();

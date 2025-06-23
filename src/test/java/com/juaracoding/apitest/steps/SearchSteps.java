@@ -24,8 +24,8 @@ public class SearchSteps {
     public void userKlikSubmenuUnit() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPage = UnitPage.init(driver);
-        unitPageSearch = UnitPageSearch.init(driver);
+        unitPage = new UnitPage(driver);
+        unitPageSearch = new UnitPageSearch(driver);
         unitPage.bukaSubmenuUnit();
     }
 
