@@ -17,12 +17,7 @@ public class UnitPageSearch {
     public UnitPageSearch(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
-    public static UnitPageSearch init(WebDriver driver) {
-        UnitPageSearch unitPageSearch = new UnitPageSearch(driver);
-        PageFactory.initElements(driver, unitPageSearch);
-        return unitPageSearch;
+        PageFactory.initElements(driver, this);
     }
 
     // Input search

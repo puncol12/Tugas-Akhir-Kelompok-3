@@ -22,7 +22,7 @@ public class AddNewUnitSteps {
     public void inputNameUnit(String nama) throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPageAddUnit = UnitPageAddUnit.init(driver);
+        unitPageAddUnit = new UnitPageAddUnit(driver);
         unitPageAddUnit.inputNamaUnit(nama);
         Thread.sleep(1000);
     }

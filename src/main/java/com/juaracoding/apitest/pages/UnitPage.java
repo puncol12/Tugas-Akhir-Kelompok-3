@@ -18,12 +18,7 @@ public class UnitPage {
     public UnitPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
-    public static UnitPage init(WebDriver driver) {
-        UnitPage unitPage = new UnitPage(driver);
-        PageFactory.initElements(driver, unitPage);
-        return unitPage;
+        PageFactory.initElements(driver, this);
     }
 
     // Menu Manajemen

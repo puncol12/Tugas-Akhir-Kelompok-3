@@ -21,8 +21,8 @@ public class CommonSteps {
     public void userLoginDenganKredensialValid() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.get("https://magang.dikahadir.com/authentication/login");
-        loginPage = LoginPage.init(driver);
-        unitPage = UnitPage.init(driver);
+        loginPage = new LoginPage(driver);
+        unitPage = new UnitPage(driver);
 
         loginPage.login("admin@hadir.com", "MagangSQA_JC@123");
     }

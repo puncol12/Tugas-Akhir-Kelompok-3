@@ -22,8 +22,8 @@ public class LastPageSteps {
     public void lastPageSteps() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPage = UnitPage.init(driver);
-        unitPagePages = UnitPagePages.init(driver);
+        unitPage = new UnitPage(driver);
+        unitPagePages = new UnitPagePages(driver);
 
         unitPagePages.clickLastPage();
         Thread.sleep(1000);
