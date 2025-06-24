@@ -3,6 +3,7 @@ package com.juaracoding.apitest.steps;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPage;
@@ -10,6 +11,7 @@ import com.juaracoding.apitest.pages.UnitPageAddUnit;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class CommonButtonAddSteps {
@@ -28,8 +30,15 @@ public class CommonButtonAddSteps {
         Thread.sleep(1000);
         unitPageAddUnit.clickButtonTambahkan();
     }
+
+    @When("Isi Nama Unit {string}")
+    public void inputNameUnit(String nama) throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        unitPageAddUnit.inputNamaUnit(nama);
+        Thread.sleep(1000);
+    }
     
-    @When("Centang checkbox Lokasi Absen Tetap")
+    @And("Centang checkbox Lokasi Absen Tetap")
     public void checkTheCheckbok() throws InterruptedException {
         unitPageAddUnit.centangLokasiAbsen();
         Thread.sleep(1000);
@@ -52,5 +61,13 @@ public class CommonButtonAddSteps {
     public void clickButtonTambah() throws InterruptedException {
         unitPageAddUnit.clickButtonTambah();
         Thread.sleep(500);
+    }
+ 
+    @Then("Unit baru berhasil ditambahkan")
+    public void unitNewSuccesAdd() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Thread.sleep(1000);
+        boolean isExsist = unitPageAddUnit.isUnitSuccesAdded();
+        Assert.assertTrue(isExsist, "Unit baru tidak berhasil ditambahkan");
     }
 }

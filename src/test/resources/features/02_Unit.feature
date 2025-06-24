@@ -3,6 +3,7 @@ Feature: Unit 02 Tambah Unit
   Scenario: Verifikasi fungsi tombol 'Tambahkan' untuk menambah unit baru
     Given Login dengan user valid
     When Klik menu Management
+    And Klik submenu Unit
     And Klik tombol Tambahkan
     And Isi Nama Unit "12"
     And Centang checkbox Lokasi Absen Tetap
@@ -31,3 +32,29 @@ Feature: Unit 02 Tambah Unit
     And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3"
     And Klik tombol Tambah
     Then Notifikasi error muncul menampilkan pesan "Nama unit tidak boleh kosong!."
+
+  Scenario: Menambahkan unit baru dengan mengosongkan checkbox 'Lokasi Absen Tetap'
+    Given Klik tombol Tambahkan
+    And Isi Nama Unit "11"
+    And Kosongkan checkbox Lokasi Absen Tetap
+    And Pilih Unit Kalender "jangan dihapus punya kelompok 3"
+    And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3"
+    And Klik tombol Tambah
+    Then Unit baru berhasil ditambahkan
+
+  Scenario: Menambahkan unit baru dengan mengosongkan data 'Unit Kalender'
+    Given Klik tombol Tambahkan
+    And Isi Nama Unit "11"
+    And Centang checkbox Lokasi Absen Tetap
+    And Kosongkan Unit Kalender
+    And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3"
+    And Klik tombol Tambah
+    Then Unit baru berhasil ditambahkan
+
+  Scenario: Menambahkan unit baru dengan mengosongkan data 'Aturan Cuti'
+    Given Klik tombol Tambahkan
+    And Isi Nama Unit "12"
+    And Centang checkbox Lokasi Absen Tetap
+    And Pilih Unit Kalender "jangan dihapus punya kelompok 3"
+    And Kosongkan Aturan Cuti
+    And Klik tombol Tambah

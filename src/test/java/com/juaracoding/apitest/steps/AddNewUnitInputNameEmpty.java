@@ -25,8 +25,10 @@ public class AddNewUnitInputNameEmpty {
     }
 
     @Then("Notifikasi error muncul menampilkan pesan {string}")
-    public void notifRequiredInputName(String notif) {
+    public void notifRequiredInputName(String notif) throws InterruptedException {
         String actualError = unitPageAddUnit.isRequiredName();
         Assert.assertEquals(actualError, notif);
+        Thread.sleep(1000);
+        unitPageAddUnit.clickButtonBatalTambah();
     }
 }
