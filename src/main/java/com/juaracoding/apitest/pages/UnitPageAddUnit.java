@@ -25,7 +25,7 @@ public class UnitPageAddUnit {
     WebElement btnTambahkan;
 
     @FindBy(xpath = "//input[@id='name']")
-    WebElement inputNameUnit;
+    WebElement inputName;
 
     @FindBy(xpath = "//input[@type='checkbox']")
     WebElement checkboxLokasiAbsen;
@@ -61,9 +61,9 @@ public class UnitPageAddUnit {
         wait.until(ExpectedConditions.elementToBeClickable(btnTambahkan)).click();
     }
 
-    public void inputNamaUnit(String nama) {
-        wait.until(ExpectedConditions.visibilityOf(inputNameUnit)).clear();
-        inputNameUnit.sendKeys(nama);
+    public void inputNama(String nama) {
+        wait.until(ExpectedConditions.visibilityOf(inputName)).clear();
+        inputName.sendKeys(nama);
     }
 
     public void centangLokasiAbsen() {

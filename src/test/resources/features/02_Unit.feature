@@ -5,7 +5,7 @@ Feature: Unit 02 Tambah Unit
     When Klik menu Management
     And Klik submenu Unit
     And Klik tombol Tambahkan
-    And Isi Nama Unit "12"
+    And Isi Nama Unit "1 Tambah Unit"
     And Centang checkbox Lokasi Absen Tetap
     And Pilih Unit Kalender "jangan dihapus punya kelompok 3"
     And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3"
@@ -17,7 +17,7 @@ Feature: Unit 02 Tambah Unit
 
   Scenario: Verifikasi fungsi tombol 'batal' untuk batal menambahkan unit baru
     Given Klik tombol Tambahkan
-    And Isi Nama Unit "1" untuk batal
+    And Isi Nama Unit "1 Batal Tambah Unit" untuk batal
     And Centang checkbox Lokasi Absen Tetap untuk batal
     And Pilih Unit Kalender "jangan dihapus punya kelompok 3" untuk batal
     And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3" untuk batal
@@ -35,7 +35,7 @@ Feature: Unit 02 Tambah Unit
 
   Scenario: Menambahkan unit baru dengan mengosongkan checkbox 'Lokasi Absen Tetap'
     Given Klik tombol Tambahkan
-    And Isi Nama Unit "11"
+    And Isi Nama Unit "1 Tambah Unit checkbox kosong"
     And Kosongkan checkbox Lokasi Absen Tetap
     And Pilih Unit Kalender "jangan dihapus punya kelompok 3"
     And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3"
@@ -44,7 +44,7 @@ Feature: Unit 02 Tambah Unit
 
   Scenario: Menambahkan unit baru dengan mengosongkan data 'Unit Kalender'
     Given Klik tombol Tambahkan
-    And Isi Nama Unit "11"
+    And Isi Nama Unit "1 Tambah Unit Kalender kosong"
     And Centang checkbox Lokasi Absen Tetap
     And Kosongkan Unit Kalender
     And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3"
@@ -53,8 +53,10 @@ Feature: Unit 02 Tambah Unit
 
   Scenario: Menambahkan unit baru dengan mengosongkan data 'Aturan Cuti'
     Given Klik tombol Tambahkan
-    And Isi Nama Unit "12"
+    And Isi Nama Unit "1 Tambah Unit Aturan Cuti kosong"
     And Centang checkbox Lokasi Absen Tetap
     And Pilih Unit Kalender "jangan dihapus punya kelompok 3"
     And Kosongkan Aturan Cuti
     And Klik tombol Tambah
+    Then Unit Baru berhasil ditambahkan
+

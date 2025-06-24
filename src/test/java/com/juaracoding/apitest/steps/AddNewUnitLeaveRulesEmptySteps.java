@@ -11,24 +11,24 @@ import com.juaracoding.apitest.pages.UnitPageAddUnit;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
-public class AddNewUnitInputNameEmpty {
+public class AddNewUnitLeaveRulesEmptySteps {
 
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
 
-    @Given("Kosongkan Nama Unit {string}")
-    public void inputNameEmpty(String nama) {
+    @Given("Kosongkan Aturan Cuti")
+    public void leaveRulesEmpty() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPageAddUnit = new UnitPageAddUnit(driver);
-        unitPageAddUnit.inputNamaUnit(nama);
     }
 
-    @Then("Notifikasi error muncul menampilkan pesan {string}")
-    public void notifRequiredInputName(String notif) throws InterruptedException {
-        String actualError = unitPageAddUnit.isRequiredName();
-        Assert.assertEquals(actualError, notif);
+    @Then("Unit Baru berhasil ditambahkan")
+    public void unitNewSuccesAdd() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);
-        unitPageAddUnit.clickButtonBatalTambah();
+        boolean isExsist = unitPageAddUnit.isUnitSuccesAdded();
+        Assert.assertTrue(isExsist, "Unit baru tidak berhasil ditambahkan");
+        driver.quit();
     }
 }
