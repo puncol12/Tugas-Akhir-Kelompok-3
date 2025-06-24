@@ -12,25 +12,19 @@ import com.juaracoding.apitest.pages.UnitPageSearch;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 
 public class SearchSteps {
 
     WebDriver driver;
     UnitPage unitPage;
     UnitPageSearch unitPageSearch;
-
-    @Given("Klik submenu Unit")
-    public void userKlikSubmenuUnit() throws InterruptedException {
+    
+    @Given("Masukkan nama unit pada kotak Search dengan input {string}")
+    public void userMasukkanNamaUnit(String keyword) throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage = new UnitPage(driver);
         unitPageSearch = new UnitPageSearch(driver);
-        unitPage.bukaSubmenuUnit();
-    }
-
-    @When("Masukkan nama unit pada kotak Search dengan input {string}")
-    public void userMasukkanNamaUnit(String keyword) throws InterruptedException {
         unitPageSearch.searchUnit(keyword);
         Thread.sleep(1000);
     }

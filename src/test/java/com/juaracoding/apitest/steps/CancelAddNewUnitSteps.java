@@ -26,7 +26,7 @@ public class CancelAddNewUnitSteps {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage = new UnitPage(driver);
         unitPageAddUnit = new UnitPageAddUnit(driver);
-        unitPageAddUnit.inputNamaUnit(nama);
+        unitPageAddUnit.inputNama(nama);
         Thread.sleep(1000);
     }
 
@@ -48,14 +48,8 @@ public class CancelAddNewUnitSteps {
         Thread.sleep(1000);
     }
 
-    @And("Klik tombol Batal")
-    public void clickButtonTambah() throws InterruptedException {
-        unitPageAddUnit.clickButtonBatalTambah();
-        Thread.sleep(500);
-    }
-
     @Then("Unit baru batal ditambahkan")
-    public void unitNewSuccesAdd() throws InterruptedException {
+    public void unitNewCancelAdd() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);
         boolean isExsist = unitPage.isDataRestored();

@@ -8,6 +8,7 @@ import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.LoginPage;
 import com.juaracoding.apitest.pages.UnitPage;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
@@ -31,6 +32,12 @@ public class CommonSteps {
     public void userKlikMenuManagement() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage.bukaMenuManagement();
+    }
+
+    @And("Klik submenu Unit")
+    public void userKlikSubmenuUnit() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        unitPage.bukaSubmenuUnit();
     }
 
 }

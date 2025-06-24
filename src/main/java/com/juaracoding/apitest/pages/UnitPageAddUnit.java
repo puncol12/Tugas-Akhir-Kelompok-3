@@ -25,7 +25,7 @@ public class UnitPageAddUnit {
     WebElement btnTambahkan;
 
     @FindBy(xpath = "//input[@id='name']")
-    WebElement inputNameUnit;
+    WebElement inputName;
 
     @FindBy(xpath = "//input[@type='checkbox']")
     WebElement checkboxLokasiAbsen;
@@ -54,13 +54,16 @@ public class UnitPageAddUnit {
     @FindBy(xpath = "//div[normalize-space(text())='Berhasil Menambahkan Unit']")
     WebElement notifBerhasil;
 
+    @FindBy(xpath = "//p[@id='name-helper-text']")
+    WebElement notifRequiredName;
+
     public void clickButtonTambahkan() {
         wait.until(ExpectedConditions.elementToBeClickable(btnTambahkan)).click();
     }
 
-    public void inputNamaUnit(String nama) {
-        wait.until(ExpectedConditions.visibilityOf(inputNameUnit)).clear();
-        inputNameUnit.sendKeys(nama);
+    public void inputNama(String nama) {
+        wait.until(ExpectedConditions.visibilityOf(inputName)).clear();
+        inputName.sendKeys(nama);
     }
 
     public void centangLokasiAbsen() {
@@ -110,5 +113,9 @@ public class UnitPageAddUnit {
 
     public boolean isUnitSuccesAdded() {
         return wait.until(ExpectedConditions.visibilityOf(notifBerhasil)).isDisplayed();
+    }
+
+    public String isRequiredName() {
+        return wait.until(ExpectedConditions.visibilityOf(notifRequiredName)).getText();
     }
 }
