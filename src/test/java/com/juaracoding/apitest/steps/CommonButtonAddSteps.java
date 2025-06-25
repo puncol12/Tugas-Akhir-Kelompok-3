@@ -7,6 +7,7 @@ import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPageAddUnit;
+import com.juaracoding.apitest.pages.UnitSettingPage;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -17,12 +18,14 @@ public class CommonButtonAddSteps {
 
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
+    UnitSettingPage unitSettingPage;
 
     @Given("Klik tombol Tambahkan")
     public void clickButtonTambahkan() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPageAddUnit = new UnitPageAddUnit(driver);
+        unitSettingPage = new UnitSettingPage(driver);
         unitPageAddUnit.clickButtonTambahkan();
     }
 
@@ -61,6 +64,12 @@ public class CommonButtonAddSteps {
     @And("Klik tombol Batal")
     public void clickButtonBatal() throws InterruptedException {
         unitPageAddUnit.clickButtonBatalTambah();
+        Thread.sleep(500);
+    }
+    
+    @And("Klik Tombol Drop Down")
+    public void userKlikTombolDropDown() throws InterruptedException {
+        unitSettingPage.klikTombolDropDown();
         Thread.sleep(500);
     }
 

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.LoginPage;
 import com.juaracoding.apitest.pages.UnitPage;
+import com.juaracoding.apitest.pages.UnitSettingPage;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -17,6 +18,7 @@ public class CommonSteps {
     WebDriver driver;
     LoginPage loginPage;
     UnitPage unitPage;
+    UnitSettingPage unitSettingPage;
 
     @Given("Login dengan user valid")
     public void userLoginDenganKredensialValid() throws InterruptedException {
@@ -24,6 +26,7 @@ public class CommonSteps {
         driver.get("https://magang.dikahadir.com/authentication/login");
         loginPage = new LoginPage(driver);
         unitPage = new UnitPage(driver);
+        unitSettingPage = new UnitSettingPage(driver);
 
         loginPage.login("admin@hadir.com", "MagangSQA_JC@123");
     }
@@ -38,6 +41,12 @@ public class CommonSteps {
     public void userKlikSubmenuUnit() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage.bukaSubmenuUnit();
+    }
+
+    @And("Klik submenu Unit Setting")
+    public void userKlikSubmenuUnitSetting() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        unitSettingPage.bukaSubmenuUnitSetting();
     }
 
 }
