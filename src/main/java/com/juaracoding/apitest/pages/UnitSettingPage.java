@@ -35,19 +35,44 @@ public class UnitSettingPage {
     WebElement klikTombolTambahkan;
 
      //Klik Drop Down
-    @FindBy(xpath = "//div[contains(@class, 'MuiOutlinedInput-root')]")
+    @FindBy(xpath = "//*[@id='alert-slide-description']//div[contains(@class, 'MuiSelect-select')]")
     WebElement klikTombolDropDown;
     
     //Klik departmens sesuai text
     @FindBy(xpath = "//li[@role='option']")
     List<WebElement> allOptions;
 
-    //Klik Tambahkan
+    //Klik Tambah
     @FindBy (xpath= "//button[normalize-space()='Tambah']")
     WebElement klikTombolTambah;
-    
-  
-    
+
+    //Klik Batal
+    @FindBy (xpath= "//button[normalize-space()='Batal']")
+    WebElement klikTombolBatal;
+
+    //Klik Delete pada halaman Unit Setting 
+    // public String getDynamicDeleteXPath(String departmentName) {
+    // return "//tr[td[1][normalize-space(text())='" + departmentName + "']]/td[last()]//button";
+    // }
+    // public String getDynamicDeleteXPath(String departmentName) {
+    // return "//tr[td[1][normalize-space(text())='" + departmentName + "']]//button[contains(@class, 'MuiIconButton-root')]";
+    // }
+    //(//button[contains(@class, 'MuiIconButton-root') and contains(@class, 'MuiButtonBase-root') and @type='button'])[1]
+    //Klik Ya
+     @FindBy (xpath= "(//button[contains(@class, 'MuiIconButton-root') and contains(@class, 'MuiButtonBase-root') and @type='button'])[1]")
+    WebElement klikTombolDelete;
+
+    @FindBy (xpath= "//button[normalize-space()='Ya']")
+    WebElement klikTombolYa;
+
+     //Klik Tidak
+    @FindBy (xpath= "//button[normalize-space()='Tidak']")
+    WebElement klikTombolTidak;
+
+    //Notifikasi Berhasil Menambahkan Departemens
+    @FindBy(xpath = "//div[contains(@class, 'MuiSnackbarContent-message')]")
+    WebElement notifikasiBerhasil;
+
     public void bukaMenuManagement() {
         wait.until(ExpectedConditions.elementToBeClickable(menuManagement)).click();
     }
@@ -68,29 +93,102 @@ public class UnitSettingPage {
         wait.until(ExpectedConditions.elementToBeClickable(klikTombolDropDown)).click();
     }
 
-    public boolean cekAdaTestUnit33() {
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[@role='option']")));
-    
-    for (WebElement option : allOptions) {
-        String text = option.getText().trim();
-        System.out.println("Checking: '" + text + "'");
+    public boolean pilihDepartment(String departmentName) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[@role='option']")));
         
-        if (text.equals("test unit 33")) {
-            wait.until(ExpectedConditions.elementToBeClickable(option)).click();
-            System.out.println("BERHASIL DIKLIK!");
-            return true;
+        for (WebElement option : allOptions) {
+            String text = option.getText().trim();
+            
+            if (text.equals(departmentName)) {
+                wait.until(ExpectedConditions.elementToBeClickable(option)).click();
+                return true;
+            }
         }
+        
+        return false;
     }
-    return false;
-}
 
     public void klikTombolTambah() {
         wait.until(ExpectedConditions.elementToBeClickable(klikTombolTambah)).click();
     }
 
+    public void klikTombolBatal() {
+        wait.until(ExpectedConditions.elementToBeClickable(klikTombolBatal)).click();
+    }
 
+    // NEW METHOD untuk validasi kembali ke halaman utama
+    public boolean isBackToUnitSettingMainPage() {
+        try {
+            WebElement tambahkanButton = wait.until(ExpectedConditions.visibilityOf(klikTombolTambahkan));
+            return tambahkanButton.isDisplayed();
+            
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean succesAddDepartemens() {
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOf(notifikasiBerhasil));
+            String notificationText = element.getText();
+            
+            if (notificationText.equals("Berhasil Menambahkan Departemens")) {
+                return true;
+            }
+            
+            return false;
+            
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean failAddDuplicateDepartemens() {
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOf(notifikasiBerhasil));
+            String notificationText = element.getText();
+            
+            if (notificationText.equals("Gagal Menambahkan Departemens")) {
+                return true;
+            }
+            
+            return false;
+            
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void successDeleteDepartemens() {
+
+    wait.until(ExpectedConditions.elementToBeClickable(klikTombolDelete)).click();
+    // try {
+    //     WebElement element = wait.until(ExpectedConditions.visibilityOf(notifikasiBerhasil));
+    //     String notificationText = element.getText();
+        
+    //     if (notificationText.equals("Berhasil Delete Departemens")) { 
+    //         return true;
+    //     }
+        
+    //     return false;
+        
+    // } catch (Exception e) {
+    //     return false;
+    // }
 }
 
+    // public void clickDeleteButton(String departmentName) {
+    // String xpath = getDynamicDeleteXPath(departmentName);
+    // WebElement deleteButton = driver.findElement(By.xpath(xpath));
+    // deleteButton.click();
+    // }
 
+    public void klikTombolYa() {
+    wait.until(ExpectedConditions.elementToBeClickable(klikTombolYa)).click();
+    }
 
+    public void klikTombolTidak() {
+    wait.until(ExpectedConditions.elementToBeClickable(klikTombolTidak)).click();
+    }
 
+}
