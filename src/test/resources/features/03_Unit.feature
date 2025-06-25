@@ -25,3 +25,22 @@ Feature: 03 Unit Shift
     When Kosongkan nama shift ""
     And Klik tombol Tambah
     Then Notifikasi error muncul dan menampilkan pesan "Nama Shift tidak boleh kosong!."
+
+  Scenario: Verifikasi tombol 'edit' pada salah satu shift
+    Given Klik tombol titik 3 pada salah satu shift
+    When Klik tombol Edit
+    And Masukkan nama shift "yusuf nur rizqi"
+    And Klik Simpan
+    Then Berhasil mengedit nama shift
+
+  Scenario: Verifikasi tombol 'delete' pada salah satu shift
+    Given Klik tombol titik 3 pada salah satu shift
+    When Klik tombol Delete
+    And Klik Ya
+    Then Shift berhasil dihapus
+
+  Scenario: Verifikasi tombol 'batal delete' pada salah satu shift
+    Given Klik tombol titik 3 pada salah satu shift
+    When Klik tombol Delete
+    And Klik Tidak
+    Then Shift batal dihapus

@@ -3,36 +3,33 @@ package com.juaracoding.apitest.steps;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPage;
-import com.juaracoding.apitest.pages.UnitPageUnitShift;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-public class UnitShihtSteps {
+public class CommonButtonActionSteps {
 
     WebDriver driver;
     UnitPage unitPage;
-    UnitPageUnitShift unitPageUnitShift;
-    
-    @Given("Klik tombol Shift")
-    public void clickShiftStep() throws InterruptedException {
+
+    @Given("Klik tombol titik 3 pada salah satu unit")
+    public void unitActionStep() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage = new UnitPage(driver);
-        unitPageUnitShift = new UnitPageUnitShift(driver);
-        unitPage.action01();
+        unitPage.bukaAction();
         Thread.sleep(1000);
     }
 
-    @When("Masuk ke menu shift")
-    public void validasiDataShift() throws InterruptedException {
+    @When("Klik tombol titik 3 pada salah satu shift")
+    public void shiftActionStep() throws InterruptedException {
+        driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        unitPage = new UnitPage(driver);
+        unitPage.bukaAction();
         Thread.sleep(1000);
-        boolean isExsist = unitPageUnitShift.isDataShiftRestored();
-        Assert.assertTrue(isExsist, "Data halaman tidak ditemukan");
     }
 }

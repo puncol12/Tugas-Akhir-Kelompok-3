@@ -6,30 +6,27 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
-import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UnitPageUnitShift;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
 
-public class UnitShihtSteps {
+public class CancelDeleteSteps {
 
     WebDriver driver;
-    UnitPage unitPage;
     UnitPageUnitShift unitPageUnitShift;
-    
-    @Given("Klik tombol Shift")
-    public void clickShiftStep() throws InterruptedException {
+
+    @Given("Klik Tidak")
+    public void deleteKlikTidak() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPage = new UnitPage(driver);
         unitPageUnitShift = new UnitPageUnitShift(driver);
-        unitPage.action01();
+        unitPageUnitShift.isCancelDeleteShift();
         Thread.sleep(1000);
     }
 
-    @When("Masuk ke menu shift")
-    public void validasiDataShift() throws InterruptedException {
+    @Then("Shift batal dihapus")
+    public void validasiBatalHapus() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);
         boolean isExsist = unitPageUnitShift.isDataShiftRestored();

@@ -71,4 +71,13 @@ public class CommonButtonAddSteps {
         boolean isExsist = unitPageAddUnit.isUnitSuccesAdded();
         Assert.assertTrue(isExsist, "Unit baru tidak berhasil ditambahkan");
     }
+
+    @Then("Notifikasi error muncul")
+    public void unitNewFailAdd() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Thread.sleep(1000);
+        boolean isExsist = unitPageAddUnit.isUnitSuccesAdded();
+        Assert.assertFalse(isExsist,
+                "Unit baru justru berhasil ditambahkan, padahal seharusnya gagal.");
+    }
 }

@@ -6,8 +6,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
     features = {
         // "src/test/resources/features/01_Unit.feature"
-        // "src/test/resources/features/02_Unit.feature"
-        "src/test/resources/features/03_Unit.feature"
+        "src/test/resources/features/02_Unit.feature"
+        // "src/test/resources/features/03_Unit.feature"
     }, 
     plugin = {
         "pretty:target/pretty.txt", "html:target/cucumber-reports/index.html",
