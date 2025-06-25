@@ -33,6 +33,12 @@ public class UnitPage {
     @FindBy(xpath = "//div[@role='combobox']")
     private WebElement showPageDropdown;
 
+    @FindBy(xpath = "(//button[@aria-label='action'])[1]")
+    WebElement btnAction;
+
+    @FindBy(xpath = "(//li[@role='menuitem'])[1]")
+    WebElement btnAction01;
+
     public void bukaMenuManagement() {
         wait.until(ExpectedConditions.elementToBeClickable(menuManagement)).click();
     }
@@ -43,6 +49,14 @@ public class UnitPage {
 
     public void bukaSubmenuUnit() {
         wait.until(ExpectedConditions.elementToBeClickable(subMenuUnit)).click();
+    }
+
+    public void bukaAction() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnAction)).click();
+    }
+
+    public void action01() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnAction01)).click();
     }
 
     public void selectShowPage(int jumlah) {
