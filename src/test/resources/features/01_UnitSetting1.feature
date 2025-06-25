@@ -31,13 +31,8 @@ Feature: Unit Setting Management
     And Klik Tombol Tidak
     Then Data tetap ada di dalam tabel
 
-   
-#   Scenario: Test Menghapus Departemens yang ada dengan sukses
-#     When Klik submenu Unit Setting
-#     And Klik Tombol Delete untuk "<department_name>"
-#     And Klik Tombol Ya
-#     Then Muncul notifikasi "<expected_notification>"
-
-#     Examples:
-#       | department_name  | expected_notification        |
-#       | test unit 33     | Berhasil Delete Departemens  |
+    Scenario: Test Menghapus Departemens yang ada dengan sukses
+    Given Klik ikon Hapus Data pada baris
+    When Muncul pop-up apakah anda ingin menghapus departments yang ingin di hapus
+    And Klik Tombol Ya
+    Then muncul notifikasi "Berhasil Delete Departemens"

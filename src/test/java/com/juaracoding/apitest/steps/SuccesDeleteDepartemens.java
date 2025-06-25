@@ -14,13 +14,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class CancelDeleteDepartemensSteps {
+public class SuccesDeleteDepartemens {
 
-    WebDriver driver;
+     WebDriver driver;
     UnitSettingPage unitSettingPage;
     UnitPage unitPage;
 
-    @Given("Klik ikon Hapus Data pada baris mana pun")
+    @Given("Klik ikon Hapus Data pada baris")
     public void userKlikTombolDelete() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -30,23 +30,23 @@ public class CancelDeleteDepartemensSteps {
         Thread.sleep(1000);
     }
 
-    @When("Muncul pop-up Apakah anda ingin menghapus departments yang ingin di hapus")
+    @When("Muncul pop-up apakah anda ingin menghapus departments yang ingin di hapus")
     public void munculPopupDelete() throws InterruptedException {
         unitSettingPage.isDialogDeleteDisplay();
         Thread.sleep(1000);
     }    
     
-    @And("Klik Tombol Tidak")
-    public void userKlikTombolTidak() throws InterruptedException {
-    unitSettingPage.klikTombolTidak();
+    @And("Klik Tombol Ya")
+    public void userKlikTombolYa() throws InterruptedException {
+    unitSettingPage.klikTombolYa();
     Thread.sleep(1000);
     }
 
-    @Then("Data tetap ada di dalam tabel")
-    public void dataTetapSepertiAwal() throws InterruptedException {
+    @Then("muncul notifikasi {string}")
+    public void dataTetapSepertiAwal(String notifikasiDelete) throws InterruptedException {
         Thread.sleep(1000);
         boolean isDataRestored = unitPage.isDataRestored();
-        Assert.assertTrue(isDataRestored, "Data tidak kembali seperti awal setelah cancel delete");
+        Assert.assertTrue(isDataRestored, "Data tidak terhapus");
     }
 
 }

@@ -24,57 +24,54 @@ public class UnitSettingPage {
         PageFactory.initElements(driver, this);
     }
 
-    // Menu Manajemen
+    
     @FindBy(xpath = "(//div[contains(@class, 'sidebar__item')])[4]")
     WebElement menuManagement;
 
-    // Submenu Unit Setting
     @FindBy(xpath = "(//p[contains(., 'Unit Setting')])[1]")
     WebElement bukaSubmenuUnitSetting;
 
-    //Klik Tambahkan
     @FindBy (xpath= "//button[normalize-space()='Tambahkan']")
     WebElement klikTombolTambahkan;
 
-     //Klik Drop Down
+
     @FindBy(xpath = "//*[@id='alert-slide-description']//div[contains(@class, 'MuiSelect-select')]")
     WebElement klikTombolDropDown;
     
-    //Klik departmens sesuai text
+
     @FindBy(xpath = "//li[@role='option']")
     List<WebElement> allOptions;
 
-    //Klik Tambah
+ 
     @FindBy (xpath= "//button[normalize-space()='Tambah']")
     WebElement klikTombolTambah;
 
-    //Klik Batal
+
     @FindBy (xpath= "//button[normalize-space()='Batal']")
     WebElement klikTombolBatal;
 
  
     @FindBy (xpath= "(//button[contains(@class, 'MuiIconButton-root') and contains(@class, 'MuiButtonBase-root') and @type='button'])[3]")
     WebElement klikTombolDelete;
-    // //h2[@id='alert-dialog-slide-title']
 
     @FindBy (xpath= "//h2[@id='alert-dialog-slide-title']")
     WebElement dialogDelete;
 
-    // Klik ya 
+
     @FindBy (xpath= "//button[normalize-space()='Ya']")
     WebElement klikTombolYa;
 
-     //Klik Tidak
     @FindBy (xpath= "//button[normalize-space()='Tidak']")
     WebElement klikTombolTidak;
 
-    //Notifikasi Berhasil Menambahkan Departemens
     @FindBy(xpath = "//div[normalize-space(text())='Berhasil Menambahkan Departemens']")
     WebElement notifikasiBerhasil;
 
-     //Notifikasi Gagal Menambahkan Departemens
     @FindBy(xpath = "//div[normalize-space(text())='Gagal Menambahkan Departemens']")
     WebElement notifikasiGagal;
+
+    @FindBy(xpath = "//div[normalize-space(text())='Berhasil Delete Departemens']")
+    WebElement notifikasiDelete;
     
 
     public void bukaMenuManagement() {
@@ -120,24 +117,16 @@ public class UnitSettingPage {
         wait.until(ExpectedConditions.elementToBeClickable(klikTombolBatal)).click();
     }
 
-    // NEW METHOD untuk validasi kembali ke halaman utama
-    public boolean isBackToUnitSettingMainPage() {
-        try {
-            WebElement tambahkanButton = wait.until(ExpectedConditions.visibilityOf(klikTombolTambahkan));
-            return tambahkanButton.isDisplayed();
-            
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
- 
     public boolean succesAddDepartemens() {
         try {
             return wait.until(ExpectedConditions.visibilityOf(notifikasiBerhasil)).isDisplayed();
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public boolean succesDeleteDepartemens() {
+            return wait.until(ExpectedConditions.visibilityOf(notifikasiDelete)).isDisplayed();
     }
 
     public boolean failAddDuplicateDepartemens() {
