@@ -4,8 +4,10 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -50,18 +52,15 @@ public class UnitSettingPage {
     @FindBy (xpath= "//button[normalize-space()='Batal']")
     WebElement klikTombolBatal;
 
-    //Klik Delete pada halaman Unit Setting 
-    // public String getDynamicDeleteXPath(String departmentName) {
-    // return "//tr[td[1][normalize-space(text())='" + departmentName + "']]/td[last()]//button";
-    // }
-    // public String getDynamicDeleteXPath(String departmentName) {
-    // return "//tr[td[1][normalize-space(text())='" + departmentName + "']]//button[contains(@class, 'MuiIconButton-root')]";
-    // }
-    //(//button[contains(@class, 'MuiIconButton-root') and contains(@class, 'MuiButtonBase-root') and @type='button'])[1]
-    //Klik Ya
-     @FindBy (xpath= "(//button[contains(@class, 'MuiIconButton-root') and contains(@class, 'MuiButtonBase-root') and @type='button'])[1]")
+ 
+    @FindBy (xpath= "(//button[contains(@class, 'MuiIconButton-root') and contains(@class, 'MuiButtonBase-root') and @type='button'])[3]")
     WebElement klikTombolDelete;
+    // //h2[@id='alert-dialog-slide-title']
 
+    @FindBy (xpath= "//h2[@id='alert-dialog-slide-title']")
+    WebElement dialogDelete;
+
+    // Klik ya 
     @FindBy (xpath= "//button[normalize-space()='Ya']")
     WebElement klikTombolYa;
 
@@ -70,8 +69,13 @@ public class UnitSettingPage {
     WebElement klikTombolTidak;
 
     //Notifikasi Berhasil Menambahkan Departemens
-    @FindBy(xpath = "//div[contains(@class, 'MuiSnackbarContent-message')]")
+    @FindBy(xpath = "//div[normalize-space(text())='Berhasil Menambahkan Departemens']")
     WebElement notifikasiBerhasil;
+
+     //Notifikasi Gagal Menambahkan Departemens
+    @FindBy(xpath = "//div[normalize-space(text())='Gagal Menambahkan Departemens']")
+    WebElement notifikasiGagal;
+    
 
     public void bukaMenuManagement() {
         wait.until(ExpectedConditions.elementToBeClickable(menuManagement)).click();
@@ -127,61 +131,34 @@ public class UnitSettingPage {
         }
     }
 
+ 
     public boolean succesAddDepartemens() {
         try {
-            WebElement element = wait.until(ExpectedConditions.visibilityOf(notifikasiBerhasil));
-            String notificationText = element.getText();
-            
-            if (notificationText.equals("Berhasil Menambahkan Departemens")) {
-                return true;
-            }
-            
-            return false;
-            
+            return wait.until(ExpectedConditions.visibilityOf(notifikasiBerhasil)).isDisplayed();
         } catch (Exception e) {
             return false;
         }
     }
 
     public boolean failAddDuplicateDepartemens() {
-        try {
-            WebElement element = wait.until(ExpectedConditions.visibilityOf(notifikasiBerhasil));
-            String notificationText = element.getText();
-            
-            if (notificationText.equals("Gagal Menambahkan Departemens")) {
-                return true;
-            }
-            
-            return false;
-            
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public void successDeleteDepartemens() {
-
-    wait.until(ExpectedConditions.elementToBeClickable(klikTombolDelete)).click();
-    // try {
-    //     WebElement element = wait.until(ExpectedConditions.visibilityOf(notifikasiBerhasil));
-    //     String notificationText = element.getText();
         
-    //     if (notificationText.equals("Berhasil Delete Departemens")) { 
-    //         return true;
-    //     }
-        
-    //     return false;
-        
-    // } catch (Exception e) {
-    //     return false;
-    // }
+        boolean isNotificationVisible = wait.until(ExpectedConditions.visibilityOf(notifikasiGagal)).isDisplayed();
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.ESCAPE).perform();
+        return isNotificationVisible;
 }
 
-    // public void clickDeleteButton(String departmentName) {
-    // String xpath = getDynamicDeleteXPath(departmentName);
-    // WebElement deleteButton = driver.findElement(By.xpath(xpath));
-    // deleteButton.click();
-    // }
+    public void iconDeleteDepartemens() {
+    wait.until(ExpectedConditions.elementToBeClickable(klikTombolDelete)).click();
+
+}
+
+    public void isDialogDeleteDisplay() {
+    wait.until(ExpectedConditions.visibilityOf(dialogDelete)).isDisplayed();
+
+}
+ 
+
 
     public void klikTombolYa() {
     wait.until(ExpectedConditions.elementToBeClickable(klikTombolYa)).click();

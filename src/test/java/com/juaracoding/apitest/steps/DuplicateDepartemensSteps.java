@@ -5,35 +5,31 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import com.juaracoding.apitest.pages.UnitPage;
-import com.juaracoding.apitest.pages.UnitSettingPage;
-
 import com.juaracoding.apitest.DriverSingleton;
+import com.juaracoding.apitest.pages.UnitSettingPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
-public class AddNewDepartemensSteps {
+public class DuplicateDepartemensSteps {
 
     WebDriver driver;
     UnitSettingPage unitSettingPage;
-    UnitPage unitPage;
 
-    @Given("User memilih {string}")
+    @Given("User Memilih {string}")
     public void userMemilihDepartment(String departmentName) throws InterruptedException {
     driver = DriverSingleton.createOrGetDriver();
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-    unitPage = new UnitPage(driver);
     unitSettingPage = new UnitSettingPage(driver);
     unitSettingPage.pilihDepartment(departmentName);
-    Thread.sleep(1000);
     }
 
-    @Then("Muncul notifikasi {string}")
-    public void unitNewSuccesAdd(String notifSucces) throws InterruptedException {
+    @Then("Muncul Notifikasi {string}")
+    public void unitNewSuccesAdd(String pesanNotifikasi) throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);
-        boolean isExsist = unitPage.isDataRestored();
-        Assert.assertTrue(isExsist, "Data Departemens tidak muncul");
+        boolean isExsist = unitSettingPage.failAddDuplicateDepartemens();
+        Assert.assertTrue(isExsist, "Unit baru tidak berhasil ditambahkan");
     }
+
 }

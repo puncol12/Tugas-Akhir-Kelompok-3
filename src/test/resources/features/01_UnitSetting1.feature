@@ -7,39 +7,32 @@ Feature: Unit Setting Management
     And Klik tombol Tambahkan
     And Klik Tombol Drop Down
     And User memilih "test unit 33"
-    And Klik Tombol Tambah
+    And Klik tombol Tambah
     Then Muncul notifikasi "Berhasil Menambahkan Departemens"
     
     Scenario: Test Menambahkan Departemens yang sama
     Given Klik tombol Tambahkan
     When Klik Tombol Drop Down
-    And User memilih "test unit 33"
-    And Klik Tombol Tambah
-    Then Muncul notifikasi "Gagal Menambahkan Departemens"
+    And User Memilih "test unit 33"
+    And Klik tombol Tambah
+    Then Muncul Notifikasi "Gagal Menambahkan Departemens"
 
-#   Scenario Outline: Test Membatalkan Proses Penambahan Departemens
-#     When Klik submenu Unit Setting
-#     And Klik tombol Tambahkan
-#     And Klik Tombol Drop Down
-#     And User memilih "<department_name>"
-#     And Klik Tombol Batal
-#     Then Data tetap seperti awal
+    Scenario: Test Membatalkan Proses Penambahan Departemens
+    Given Klik tombol Tambahkan
+    When Klik Tombol Drop Down
+    And user memilih "test unit 33"
+    And Klik tombol Batal
+    Then Data tetap seperti awal "test unit 33"
 
-#     Examples:
-#       | department_name  |
-#       | test unit 33     |
 
-#   Scenario Outline: Test Membatalkan Proses Penghapusan Departemens
-#     When Klik submenu Unit Setting
-#     And Klik Tombol Delete untuk "<department_name>"
-#     And Klik Tombol Tidak
-#     Then Data tetap seperti awal
+    Scenario: Test Membatalkan Proses Penghapusan Departemens
+    Given Klik ikon Hapus Data pada baris mana pun
+    When Muncul pop-up Apakah anda ingin menghapus departments yang ingin di hapus
+    And Klik Tombol Tidak
+    Then Data tetap ada di dalam tabel
 
-#     Examples:
-#       | department_name  |
-#       | test unit 33     |
-
-#   Scenario Outline: Test Menghapus Departemens yang ada dengan sukses
+   
+#   Scenario: Test Menghapus Departemens yang ada dengan sukses
 #     When Klik submenu Unit Setting
 #     And Klik Tombol Delete untuk "<department_name>"
 #     And Klik Tombol Ya

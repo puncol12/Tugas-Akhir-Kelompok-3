@@ -13,13 +13,12 @@ import com.juaracoding.apitest.DriverSingleton;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
-public class AddNewDepartemensSteps {
-
+public class CancelAddNewDepartemensSteps {
     WebDriver driver;
     UnitSettingPage unitSettingPage;
     UnitPage unitPage;
 
-    @Given("User memilih {string}")
+    @Given("user memilih {string}")
     public void userMemilihDepartment(String departmentName) throws InterruptedException {
     driver = DriverSingleton.createOrGetDriver();
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -29,7 +28,7 @@ public class AddNewDepartemensSteps {
     Thread.sleep(1000);
     }
 
-    @Then("Muncul notifikasi {string}")
+    @Then("Data tetap seperti awal {string}")
     public void unitNewSuccesAdd(String notifSucces) throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);
