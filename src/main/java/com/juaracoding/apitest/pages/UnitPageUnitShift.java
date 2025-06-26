@@ -24,6 +24,9 @@ public class UnitPageUnitShift {
 
     @FindBy(xpath = "//div[normalize-space(text())='Berhasil Menambahkan Shift Type']")
     WebElement notifBerhasil;
+
+    @FindBy(xpath = "(//button[@aria-label='action'])[1]")
+    WebElement btnShiftAction;
     
     @FindBy(xpath = "(//li[@role='menuitem'])[3]")
     WebElement btnActionDeleteShift;
@@ -42,6 +45,10 @@ public class UnitPageUnitShift {
 
     public boolean isShiftSuccesAdded() {
         return wait.until(ExpectedConditions.visibilityOf(notifBerhasil)).isDisplayed();
+    }
+
+    public void buttonShiftAction() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnShiftAction)).click();
     }
 
     public void isDeletedShift() {

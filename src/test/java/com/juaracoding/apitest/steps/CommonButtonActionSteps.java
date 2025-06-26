@@ -8,7 +8,6 @@ import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPage;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 
 public class CommonButtonActionSteps {
 
@@ -17,15 +16,6 @@ public class CommonButtonActionSteps {
 
     @Given("Klik tombol titik 3 pada salah satu unit")
     public void unitActionStep() throws InterruptedException {
-        driver = DriverSingleton.createOrGetDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPage = new UnitPage(driver);
-        unitPage.bukaAction();
-        Thread.sleep(1000);
-    }
-
-    @When("Klik tombol titik 3 pada salah satu shift")
-    public void shiftActionStep() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage = new UnitPage(driver);
