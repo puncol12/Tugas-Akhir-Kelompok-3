@@ -27,19 +27,25 @@ public class UnitPageUnitShift {
 
     @FindBy(xpath = "(//button[@aria-label='action'])[1]")
     WebElement btnShiftAction;
-    
-    @FindBy(xpath = "(//li[@role='menuitem'])[3]")
+
+    @FindBy(xpath = "//div[contains(@style, 'opacity: 1')]/ul/li[text()='Delete']")
     WebElement btnActionDeleteShift;
-   
-    @FindBy(xpath = "(//li[@role='menuitem'])[2]")
+
+    @FindBy(xpath = "//div[contains(@style, 'opacity: 1')]/ul/li[text()='Edit']")
     WebElement btnActionEditShift;
-    
+
+    @FindBy(xpath = "//button[@type='submit' and contains(.,'Simpan')]")
+    WebElement btnSimpan;
+
+    @FindBy(xpath = "//button[@type='button' and contains(.,'Batal')]")
+    WebElement btnBatal;
+
     @FindBy(xpath = "//button[@type='submit' and contains(.,'Ya')]")
     WebElement btnDeleteYa;
-    
+
     @FindBy(xpath = "//button[@type='button' and contains(.,'Tidak')]")
     WebElement btnDeleteTidak;
-    
+
     @FindBy(xpath = "//div[normalize-space(text())='Berhasil Delete Type Shift']")
     WebElement notifDeleteBerhasil;
 
@@ -47,12 +53,22 @@ public class UnitPageUnitShift {
         return wait.until(ExpectedConditions.visibilityOf(notifBerhasil)).isDisplayed();
     }
 
+    public void isButtonSave() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnSimpan)).click();
+    }
+
+    public void isButtonCancel() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnBatal)).click();
+    }
+
     public void buttonShiftAction() {
         wait.until(ExpectedConditions.elementToBeClickable(btnShiftAction)).click();
     }
 
     public void isDeletedShift() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnActionDeleteShift)).click();
+        WebElement element =
+                wait.until(ExpectedConditions.elementToBeClickable(btnActionDeleteShift));
+        element.click();
     }
 
     public void isAccDeleteShift() {

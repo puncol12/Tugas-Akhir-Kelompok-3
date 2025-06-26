@@ -8,14 +8,14 @@ import org.testng.Assert;
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPageUnitShift;
 
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 
 public class AddNewUnitShiftSteps {
 
     WebDriver driver;
     UnitPageUnitShift unitPageUnitShift;
     
-    @Given("Berhasil menambahkan shift")
+    @Then("Berhasil menambahkan shift")
     public void isShiftSuccesAdded() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

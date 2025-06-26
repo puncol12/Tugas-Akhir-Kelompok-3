@@ -44,7 +44,7 @@ Feature: Unit 02 Tambah Unit
 
   Scenario: Menambahkan unit baru dengan mengosongkan data 'Unit Kalender'
     Given Klik tombol Tambahkan
-    And Isi Nama Unit "1 Tambah Unit Kalender kosong"
+    When Isi Nama Unit "1 Tambah Unit Kalender kosong"
     And Centang checkbox Lokasi Absen Tetap
     And Kosongkan Unit Kalender
     And Pilih Aturan Cuti "Jangan dihapus sama edit YA!! Cuti punya kelompok 3"

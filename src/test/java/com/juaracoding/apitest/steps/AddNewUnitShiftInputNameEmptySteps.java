@@ -4,10 +4,11 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPageAddUnit;
 
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
 public class AddNewUnitShiftInputNameEmptySteps {
@@ -15,7 +16,7 @@ public class AddNewUnitShiftInputNameEmptySteps {
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
 
-    @Given("Kosongkan nama shift {string}")
+    @And("Kosongkan nama shift {string}")
     public void inputShiftNameEmpty(String nama) {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -27,9 +28,9 @@ public class AddNewUnitShiftInputNameEmptySteps {
     public void notifRequiredInputShiftName(String notif) throws InterruptedException {
         String actualError = unitPageAddUnit.isRequiredName();
         Assert.assertEquals(actualError, notif);
-        Thread.sleep(1000);
         unitPageAddUnit.clickButtonBatalTambah();
-        driver.quit();
+        Thread.sleep(1000);
+        // driver.quit();
     }
 
 }

@@ -9,8 +9,8 @@ import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UnitPageUnitShift;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 
 public class UnitShihtSteps {
 
@@ -18,7 +18,7 @@ public class UnitShihtSteps {
     UnitPage unitPage;
     UnitPageUnitShift unitPageUnitShift;
     
-    @Given("Klik tombol Shift")
+    @And("Klik tombol Shift")
     public void clickShiftStep() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -28,7 +28,7 @@ public class UnitShihtSteps {
         Thread.sleep(1000);
     }
 
-    @When("Masuk ke menu shift")
+    @Then("Masuk ke menu shift")
     public void validasiDataShift() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);

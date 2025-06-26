@@ -8,15 +8,25 @@ import org.testng.Assert;
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPageUnitShift;
 
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class CancelDeleteSteps {
 
     WebDriver driver;
     UnitPageUnitShift unitPageUnitShift;
 
-    @Given("Klik Tidak")
+    @When("Klik tombol Delete1")
+    public void klikTombolDelete() throws InterruptedException {
+        driver = DriverSingleton.createOrGetDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        unitPageUnitShift = new UnitPageUnitShift(driver);
+        unitPageUnitShift.isDeletedShift();
+        Thread.sleep(1000);
+    }
+
+    @And("Klik Tidak")
     public void deleteKlikTidak() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

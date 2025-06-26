@@ -8,15 +8,15 @@ import org.testng.Assert;
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPageAddUnit;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class AddNewUnitInputNameEmptySteps {
 
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
 
-    @Given("Kosongkan Nama Unit {string}")
+    @When("Kosongkan Nama Unit {string}")
     public void inputNameEmpty(String nama) {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

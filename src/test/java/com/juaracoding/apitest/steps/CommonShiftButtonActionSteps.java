@@ -17,8 +17,11 @@ public class CommonShiftButtonActionSteps {
     public void shiftActionStep() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        Thread.sleep(1000);
+        driver.navigate().refresh();
         unitPageUnitShift = new UnitPageUnitShift(driver);
         unitPageUnitShift.buttonShiftAction();
-        Thread.sleep(1000);
+
     }
 }

@@ -10,7 +10,6 @@ import com.juaracoding.apitest.pages.UnitPageAddUnit;
 import com.juaracoding.apitest.pages.UnitSettingPage;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -20,7 +19,7 @@ public class CommonButtonAddSteps {
     UnitPageAddUnit unitPageAddUnit;
     UnitSettingPage unitSettingPage;
 
-    @Given("Klik tombol Tambahkan")
+    @When("Klik tombol Tambahkan")
     public void clickButtonTambahkan() throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

@@ -8,7 +8,7 @@ import org.testng.Assert;
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPageAddUnit;
 
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
 public class AddNewUnitLeaveRulesEmptySteps {
@@ -16,7 +16,7 @@ public class AddNewUnitLeaveRulesEmptySteps {
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
 
-    @Given("Kosongkan Aturan Cuti")
+    @And("Kosongkan Aturan Cuti")
     public void leaveRulesEmpty() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
