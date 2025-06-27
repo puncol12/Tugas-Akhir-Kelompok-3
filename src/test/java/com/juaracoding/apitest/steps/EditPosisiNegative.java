@@ -13,25 +13,18 @@
 //    WebDriver driver = DriverSingleton.createOrGetDriver();
 //    PagePosisi posisiPage = PagePosisi.init(driver);
 //
-////    @Given("Klik tombol titik 3 pada salah satu data posisi")
-////    public void klik_tombol_titik_3() throws InterruptedException{
-////        posisiPage.klikTombolTitik3();
-////        Thread.sleep(1000);
-////    }
-//
-//    @Given("Klik tombol Edit")
-//    public void klik_tombol_edit() {
-//        posisiPage.klikEditPosisi();
-//    }
 //    @And("Mengosongkan field Nama Posisi pada menu edit")
 //    public void blank_field_posisi_edit() {
 //        posisiPage.kosongkanNamaPosisiSaatEdit();
 //        System.out.println("Mengosongkan field Nama Posisi");
-//    }
-//    @And("Klik tombol Simpan Edit")
-//    public void klik_tombol_simpan_edit() {
-//        posisiPage.klikSimpan();
-//    }
+
+//@Then("Tampil pesan error Nama Posisi wajib diisi pada menu tambah")
+//public void tampil_pesan_error_menu_tambah() {
+//    //Assert.assertTrue(posisiPage.getErrorMessageTambah().contains(expectedMsg));
+//    String actualMsg = posisiPage.getErrorMessageTambah();
+//    Assert.assertEquals(actualMsg, "Please fill out this field.");
+//    driver.navigate().refresh();
+//}
 //
 //    @Then("Tampil pesan error {string} edit")
 //    public void tampil_pesan_error(String expectedMsg) {
