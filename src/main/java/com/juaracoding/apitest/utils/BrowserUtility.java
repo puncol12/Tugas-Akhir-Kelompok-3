@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static com.juaracoding.apitest.DriverSingleton.driver;
+
 public class BrowserUtility {
 
   public static final String ZOOM_70 = "70%";
@@ -133,6 +135,10 @@ public class BrowserUtility {
 
     input.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
     return wait.until(ExpectedConditions.attributeToBe(input, "value", ""));
+  }
+  public static String getValidationMessage(WebDriver driver, WebElement element) {
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    return (String) js.executeScript("return arguments[0].validationMessage;", element);
   }
 
 }

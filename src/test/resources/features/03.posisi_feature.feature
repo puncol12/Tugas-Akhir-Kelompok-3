@@ -13,41 +13,41 @@ Feature: Posisi
     And Klik submenu Posisi
     Then Daftar Posisi ditampilkan
 
-#    #Menu tambah
-#  Scenario: Menambahkan posisi baru dengan nama dan department
-#    Given Klik tombol Tambahkan
-#    #When Form tambah posisi ditampilkan
-#    When Mengisi field Nama Posisi dengan "Staff Admin"
-#    And Mengisi field Department dengan "Juara Coding"
-#    And Klik tombol Simpan
-#    Then Data posisi baru berhasil ditambahkan
+    #Menu tambah - done
+  Scenario: Menambahkan posisi baru dengan nama dan department
+    Given Klik tombol Tambahkan
+    #When Form tambah posisi ditampilkan
+    When Mengisi field Nama Posisi dengan "Staff Admin"
+    And Mengisi field Department dengan "Juara Coding"
+    And Klik tombol Simpan
+    Then Data posisi baru berhasil ditambahkan
 
-  # Negatif Case
+  # Negatif Case - done
   Scenario: Melakukan simpan tanpa isi nama posisi dan mengisi department
     Given Klik tombol Tambahkan
     When Mengosongkan field Nama Posisi
     And Mengisi Field Department dengan "Juara Coding"
     And Klik tombol Simpan
-    Then Tampil pesan error "Nama Posisi wajib diisi" pada menu tambah
+    Then Tampil pesan error Nama Posisi wajib diisi pada menu tambah
 
+# done
+  Scenario: Melakukan simpan posisi mengisi nama posisi tanpa mengisi department (opsional)
+    Given Klik tombol Tambahkan
+    #Then Form tambah posisi ditampilkan
+    When Mengisi field Nama Posisi dengan "Staff Admin"
+    And Mengosongkan field Department
+    And Klik tombol Simpan
+    Then Data posisi baru berhasil ditambahkan
+#done
+  Scenario: Melakukan simpan posisi tanpa isi nama dan department
+     Given Klik tombol Tambahkan
+    #Then Form tambah posisi ditampilkan
+    When Mengosongkan field Nama Posisi
+    And Mengosongkan field Department
+    And Klik tombol Simpan
+    Then Tampil pesan error Nama Posisi wajib diisi pada menu tambah
 
-#  Scenario: Melakukan simpan posisi mengisi nama posisi tanpa mengisi department (opsional)
-#    Given Klik tombol Tambahkan
-#    #Then Form tambah posisi ditampilkan
-#    When Mengisi field Nama Posisi dengan "Staff Admin"
-#    And Mengosongkan field Department
-#    And Klik tombol Simpan
-#    Then Data posisi baru berhasil ditambahkan
-#
-#  Scenario: Melakukan simpan posisi tanpa isi nama dan department
-#     Given Klik tombol Tambahkan
-#    #Then Form tambah posisi ditampilkan
-#    When Mengosongkan field Nama Posisi
-#    And Mengosongkan field Department
-#    And Klik tombol Simpan
-#    Then Tampil pesan error "Nama Posisi wajib diisi" pada menu tambah
-#
-##    #Menu edit
+    #Menu edit
 #   #Positif case
 #  Scenario: Mengedit nama posisi
 #    Given Klik tombol titik 3 pada salah satu data posisi

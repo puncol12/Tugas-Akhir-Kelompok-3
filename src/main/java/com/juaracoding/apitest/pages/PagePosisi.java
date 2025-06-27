@@ -1,6 +1,8 @@
 package com.juaracoding.apitest.pages;
 
+import com.juaracoding.apitest.utils.BrowserUtility;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -85,6 +87,7 @@ public class PagePosisi {
 
     @FindBy (xpath= "//h2[@id='alert-dialog-slide-title']")
     WebElement halamanHapus;
+
 
     public void bukaMenuManagement() {
         wait.until(ExpectedConditions.elementToBeClickable(menuManagement)).click();
@@ -258,12 +261,8 @@ public class PagePosisi {
     }
 
     public String getErrorMessageTambah() {
-        List<WebElement> errorElements = driver.findElements(By.className("error-message"));
-        if (!errorElements.isEmpty() && errorElements.get(0).isDisplayed()) {
-            return errorElements.get(0).getText();
-        } else {
-            return "";
-        }
+        WebElement namaField = driver.findElement(By.id("name"));
+        return BrowserUtility.getValidationMessage(driver, namaField);
     }
 //    public String getErrorMessageTambah() {
 //        WebElement error = driver.findElement(By.className("error-message"));

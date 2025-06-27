@@ -27,10 +27,11 @@ public class TambahPosisiStepNegative {
 //        posisiPage.kosongkanDepartment();
 //    }
 
-    @Then("Tampil pesan error {string} pada menu tambah")
-    public void tampil_pesan_error_menu_tambah(String expectedMsg) {
+    @Then("Tampil pesan error Nama Posisi wajib diisi pada menu tambah")
+    public void tampil_pesan_error_menu_tambah() {
         //Assert.assertTrue(posisiPage.getErrorMessageTambah().contains(expectedMsg));
         String actualMsg = posisiPage.getErrorMessageTambah();
-        Assert.assertFalse(actualMsg.contains(expectedMsg), "Nama Posisi  Tetap terisikan!");
+        Assert.assertEquals(actualMsg, "Please fill out this field.");
+        driver.navigate().refresh();
     }
 }

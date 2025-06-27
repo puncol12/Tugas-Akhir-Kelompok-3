@@ -23,7 +23,7 @@ public class TambahPosisiStep {
 //        Assert.assertTrue(PagePosisi.isFormTambahPosisiMuncul());
 //    }
 
-    @Given("Mengisi field Nama Posisi dengan {string}")
+    @When("Mengisi field Nama Posisi dengan {string}")
     public void input_field_posisi(String nama) throws InterruptedException {
         posisiPage.inputNamaPosisi(nama);
         Thread.sleep(1000);
@@ -32,6 +32,11 @@ public class TambahPosisiStep {
     @And("Mengisi field Department dengan {string}")
     public void input_field_department(String dept) {
         posisiPage.inputDepartment(dept);
+    }
+
+    @And("Mengosongkan field Department")
+    public void mengosongkan_department() {
+
     }
 
     @And("Klik tombol Simpan")
