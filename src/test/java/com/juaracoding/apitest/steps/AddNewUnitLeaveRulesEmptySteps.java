@@ -8,7 +8,7 @@ import org.testng.Assert;
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPageAddUnit;
 
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
 public class AddNewUnitLeaveRulesEmptySteps {
@@ -16,19 +16,19 @@ public class AddNewUnitLeaveRulesEmptySteps {
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
 
-    @Given("Kosongkan Aturan Cuti")
+    @And("Kosongkan Aturan Cuti")
     public void leaveRulesEmpty() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPageAddUnit = new UnitPageAddUnit(driver);
     }
 
-    @Then("Unit Baru berhasil ditambahkan")
+    @Then("Notifikasi Error muncul")
     public void unitNewSuccesAdd() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);
         boolean isExsist = unitPageAddUnit.isUnitSuccesAdded();
-        Assert.assertTrue(isExsist, "Unit baru tidak berhasil ditambahkan");
+        Assert.assertFalse(isExsist, "Unit baru justru berhasil ditambahkan, padahal seharusnya gagal.");
         driver.quit();
     }
 }

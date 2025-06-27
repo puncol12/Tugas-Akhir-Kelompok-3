@@ -10,8 +10,8 @@ import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UnitPageSearch;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class SearchSteps {
 
@@ -19,7 +19,7 @@ public class SearchSteps {
     UnitPage unitPage;
     UnitPageSearch unitPageSearch;
     
-    @Given("Masukkan nama unit pada kotak Search dengan input {string}")
+    @When("Masukkan nama unit pada kotak Search dengan input {string}")
     public void userMasukkanNamaUnit(String keyword) throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

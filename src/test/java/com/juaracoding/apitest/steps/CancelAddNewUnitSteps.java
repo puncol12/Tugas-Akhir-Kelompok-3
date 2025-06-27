@@ -10,7 +10,6 @@ import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UnitPageAddUnit;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -20,7 +19,7 @@ public class CancelAddNewUnitSteps {
     UnitPage unitPage;
     UnitPageAddUnit unitPageAddUnit;
 
-    @Given("Isi Nama Unit {string} untuk batal")
+    @When("Isi Nama Unit {string} untuk batal")
     public void inputNameUnit(String nama) throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -30,7 +29,7 @@ public class CancelAddNewUnitSteps {
         Thread.sleep(1000);
     }
 
-    @When("Centang checkbox Lokasi Absen Tetap untuk batal")
+    @And("Centang checkbox Lokasi Absen Tetap untuk batal")
     public void checkTheCheckbok() throws InterruptedException {
         unitPageAddUnit.centangLokasiAbsen();
         Thread.sleep(1000);
