@@ -10,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.juaracoding.apitest.utils.BrowserUtility;
+
 public class UnitPageAddUnit {
 
     public final WebDriver driver;
@@ -62,8 +64,9 @@ public class UnitPageAddUnit {
     }
 
     public void inputNama(String nama) {
-        wait.until(ExpectedConditions.visibilityOf(inputName)).clear();
-        inputName.sendKeys(nama);
+        if (BrowserUtility.clearValueName(inputName, driver)) {
+            inputName.sendKeys(nama);
+        }
     }
 
     public void centangLokasiAbsen() {

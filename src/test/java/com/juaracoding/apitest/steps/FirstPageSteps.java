@@ -31,7 +31,10 @@ public class FirstPageSteps {
 
     @Then("Menampilkan data unit halaman pertama")
     public void viewFirstPage() throws InterruptedException {
+        driver = DriverSingleton.createOrGetDriver(); // ADD THIS
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        unitPage = new UnitPage(driver); // ADD THIS
+        unitPagePages = new UnitPagePages(driver); // ADD THIS
         Thread.sleep(1000);
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak berubah setelah klik first page");
