@@ -154,7 +154,7 @@ public class UnitSettingPage {
     }
 
     public void klikTombolTidak() {
-    wait.until(ExpectedConditions.elementToBeClickable(klikTombolTidak)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(klikTombolTidak)).click();
     }
 
 }

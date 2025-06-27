@@ -9,7 +9,6 @@ public class DriverSingleton {
     if (driver == null) {
       driver = BrowserManager.build();
     }
-
     return driver;
   }
 
