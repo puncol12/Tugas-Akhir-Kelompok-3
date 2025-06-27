@@ -1,4 +1,4 @@
-Feature: Unit Setting Management
+Feature: Unit Setting Management CRUD
 
   Scenario: Test Menambahkan Departemens 
     Given Login dengan user valid
@@ -36,3 +36,4 @@ Feature: Unit Setting Management
     When Muncul pop-up apakah anda ingin menghapus departments yang ingin di hapus
     And Klik Tombol Ya
     Then muncul notifikasi "Berhasil Delete Departemens"
+
