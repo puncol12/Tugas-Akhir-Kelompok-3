@@ -28,6 +28,9 @@ public class UnitPageUnitShift {
     @FindBy(xpath = "(//button[@aria-label='action'])[1]")
     WebElement btnShiftAction;
 
+    @FindBy(xpath = "//div[contains(@style, 'opacity: 1')]/ul/li[text()='View']")
+    WebElement btnActionViewShift;
+
     @FindBy(xpath = "//div[contains(@style, 'opacity: 1')]/ul/li[text()='Delete']")
     WebElement btnActionDeleteShift;
 
@@ -81,6 +84,10 @@ public class UnitPageUnitShift {
 
     public void isEditShift() {
         wait.until(ExpectedConditions.elementToBeClickable(btnActionEditShift)).click();
+    }
+
+    public void isViewShift() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnActionViewShift)).click();
     }
 
     public boolean isDeleteShiftSucces() {

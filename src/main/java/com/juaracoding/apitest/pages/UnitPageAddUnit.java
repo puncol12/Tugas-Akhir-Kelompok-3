@@ -35,6 +35,9 @@ public class UnitPageAddUnit {
     @FindBy(xpath = "//input[@id='calendar']")
     WebElement dropdownCalendar;
 
+    @FindBy(xpath = "//input[@id='shifting_id']")
+    WebElement dropdownShiftView;
+
     @FindBy(xpath = "//input[@id='unitLeave']")
     WebElement dropdownAturanCuti;
 
@@ -79,6 +82,13 @@ public class UnitPageAddUnit {
         dropdownCalendar.click();
         WebElement opsi = wait.until(ExpectedConditions
                 .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaKalender + "']")));
+        opsi.click();
+    }
+   
+    public void pilihUnitShiftDetail(String namaShift) {
+        dropdownShiftView.click();
+        WebElement opsi = wait.until(ExpectedConditions
+                .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaShift + "']")));
         opsi.click();
     }
 
