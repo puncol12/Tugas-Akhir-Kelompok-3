@@ -49,8 +49,14 @@ public class UnitPageUnitShift {
     @FindBy(xpath = "//button[@type='button' and contains(.,'Tidak')]")
     WebElement btnDeleteTidak;
 
+    @FindBy(xpath = "//button[@type='button' and contains(.,'Hapus')]")
+    WebElement btnHapus;
+
     @FindBy(xpath = "//div[normalize-space(text())='Berhasil Delete Type Shift']")
     WebElement notifDeleteBerhasil;
+
+    @FindBy(xpath = "//div[normalize-space(text())='Berhasil Menambahkan Type Detail Shift']")
+    WebElement notifTambahViewBerhasil;
 
     public boolean isShiftSuccesAdded() {
         return wait.until(ExpectedConditions.visibilityOf(notifBerhasil)).isDisplayed();
@@ -75,11 +81,16 @@ public class UnitPageUnitShift {
     }
 
     public void isAccDeleteShift() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnDeleteYa)).click();
+        WebElement btnYa = wait.until(ExpectedConditions.elementToBeClickable(btnDeleteYa));
+        btnYa.click();
     }
 
     public void isCancelDeleteShift() {
         wait.until(ExpectedConditions.elementToBeClickable(btnDeleteTidak)).click();
+    }
+    
+    public void isDeleteShiftView() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnHapus)).click();
     }
 
     public void isEditShift() {
@@ -92,6 +103,10 @@ public class UnitPageUnitShift {
 
     public boolean isDeleteShiftSucces() {
         return wait.until(ExpectedConditions.visibilityOf(notifDeleteBerhasil)).isDisplayed();
+    }
+
+    public boolean isAddViewSucces() {
+        return wait.until(ExpectedConditions.visibilityOf(notifTambahViewBerhasil)).isDisplayed();
     }
 
     public boolean isDataShiftRestored() {

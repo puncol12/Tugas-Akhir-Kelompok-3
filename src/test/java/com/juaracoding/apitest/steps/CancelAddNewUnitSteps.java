@@ -19,38 +19,41 @@ public class CancelAddNewUnitSteps {
     UnitPage unitPage;
     UnitPageAddUnit unitPageAddUnit;
 
-    @When("Isi Nama Unit {string} untuk batal")
-    public void inputNameUnit(String nama) throws InterruptedException {
+    public CancelAddNewUnitSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
         unitPage = new UnitPage(driver);
         unitPageAddUnit = new UnitPageAddUnit(driver);
+    }
+
+    @When("Isi Nama Unit {string} untuk batal")
+    public void inputNameUnit(String nama) throws InterruptedException {
         unitPageAddUnit.inputNama(nama);
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @And("Centang checkbox Lokasi Absen Tetap untuk batal")
     public void checkTheCheckbok() throws InterruptedException {
         unitPageAddUnit.centangLokasiAbsen();
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @And("Pilih Unit Kalender {string} untuk batal")
     public void selectUnitCalender(String Kalender) throws InterruptedException {
         unitPageAddUnit.pilihUnitKalender(Kalender);
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @And("Pilih Aturan Cuti {string} untuk batal")
     public void selectLeaveRules(String Aturan) throws InterruptedException {
         unitPageAddUnit.pilihAturanCuti(Aturan);
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @Then("Unit baru batal ditambahkan")
     public void unitNewCancelAdd() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Thread.sleep(1000);
+        Thread.sleep(500);
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Form tidak ditutup, pembatalan gagal");
     }

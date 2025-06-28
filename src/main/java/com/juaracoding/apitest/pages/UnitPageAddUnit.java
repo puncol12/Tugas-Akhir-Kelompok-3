@@ -84,9 +84,17 @@ public class UnitPageAddUnit {
                 .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaKalender + "']")));
         opsi.click();
     }
-   
+
     public void pilihUnitShiftDetail(String namaShift) {
-        dropdownShiftView.click();
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.xpath("//button[normalize-space(text())='Tambah']")));
+        } catch (Exception ignored) {
+        }
+        WebElement dropdown =
+                wait.until(ExpectedConditions.elementToBeClickable(dropdownShiftView));
+        dropdown.click();
+
         WebElement opsi = wait.until(ExpectedConditions
                 .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaShift + "']")));
         opsi.click();

@@ -16,12 +16,17 @@ public class AddNewUnitInputNameEmptySteps {
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
 
-    @When("Kosongkan Nama Unit {string}")
-    public void inputNameEmpty(String nama) {
+    public AddNewUnitInputNameEmptySteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         unitPageAddUnit = new UnitPageAddUnit(driver);
+    }
+
+    @When("Kosongkan Nama Unit {string}")
+    public void inputNameEmpty(String nama) throws InterruptedException {
         unitPageAddUnit.inputNama(nama);
+        Thread.sleep(500);
     }
 
     @Then("Notifikasi error muncul menampilkan pesan {string}")

@@ -18,21 +18,23 @@ public class NextPageSteps {
     UnitPage unitPage;
     UnitPagePages unitPagePages;
 
-    @Given("Klik go to next page di bagian bawah halaman tambah unit")
-    public void clickNextStep() throws InterruptedException {
+    public NextPageSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
         unitPage = new UnitPage(driver);
         unitPagePages = new UnitPagePages(driver);
+    }
 
+    @Given("Klik go to next page di bagian bawah halaman tambah unit")
+    public void clickNextStep() throws InterruptedException {
         unitPagePages.clickNextPage();
-        Thread.sleep(2000);
+        Thread.sleep(500);
     }
 
     @Then("Menampilkan data unit halaman selanjutnya")
     public void dataHalamanSelanjutnya() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Thread.sleep(1000);
+        Thread.sleep(500);
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak berubah setelah klik next page");
     }

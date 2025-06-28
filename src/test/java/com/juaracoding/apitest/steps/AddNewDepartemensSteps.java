@@ -21,12 +21,12 @@ public class AddNewDepartemensSteps {
 
     @Given("User memilih {string}")
     public void userMemilihDepartment(String departmentName) throws InterruptedException {
-    driver = DriverSingleton.createOrGetDriver();
-    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-    unitPage = new UnitPage(driver);
-    unitSettingPage = new UnitSettingPage(driver);
-    unitSettingPage.pilihDepartment(departmentName);
-    Thread.sleep(1000);
+        driver = DriverSingleton.createOrGetDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        unitPage = new UnitPage(driver);
+        unitSettingPage = new UnitSettingPage(driver);
+        unitSettingPage.pilihDepartment(departmentName);
+        Thread.sleep(1000);
     }
 
     @Then("Muncul notifikasi {string}")

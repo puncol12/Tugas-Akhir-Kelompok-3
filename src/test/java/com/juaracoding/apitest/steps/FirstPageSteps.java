@@ -18,24 +18,23 @@ public class FirstPageSteps {
     UnitPage unitPage;
     UnitPagePages unitPagePages;
 
-    @Given("Klik go to first page di bagian bawah halaman tambah unit")
-    public void firstPageSteps() throws InterruptedException {
+    public FirstPageSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
         unitPage = new UnitPage(driver);
         unitPagePages = new UnitPagePages(driver);
+    }
 
+    @Given("Klik go to first page di bagian bawah halaman tambah unit")
+    public void firstPageSteps() throws InterruptedException {
         unitPagePages.clickFirstPage();
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @Then("Menampilkan data unit halaman pertama")
     public void viewFirstPage() throws InterruptedException {
-        driver = DriverSingleton.createOrGetDriver(); // ADD THIS
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPage = new UnitPage(driver); // ADD THIS
-        unitPagePages = new UnitPagePages(driver); // ADD THIS
-        Thread.sleep(1000);
+        Thread.sleep(500);
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak berubah setelah klik first page");
     }

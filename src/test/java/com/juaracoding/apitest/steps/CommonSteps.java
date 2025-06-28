@@ -20,33 +20,36 @@ public class CommonSteps {
     UnitPage unitPage;
     UnitSettingPage unitSettingPage;
 
-    @Given("Login dengan user valid")
-    public void userLoginDenganKredensialValid() throws InterruptedException {
+    public CommonSteps() {
         driver = DriverSingleton.createOrGetDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://magang.dikahadir.com/authentication/login");
+        
         loginPage = new LoginPage(driver);
         unitPage = new UnitPage(driver);
-        unitSettingPage = new UnitSettingPage(driver);
+        unitSettingPage = new UnitSettingPage(driver);        
+    }
 
+    @Given("Login dengan user valid")
+    public void userLoginDenganKredensialValid() throws InterruptedException {
         loginPage.login("admin@hadir.com", "MagangSQA_JC@123");
     }
 
     @When("Klik menu Management")
     public void userKlikMenuManagement() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage.bukaMenuManagement();
+        Thread.sleep(500);
     }
 
     @And("Klik submenu Unit")
     public void userKlikSubmenuUnit() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPage.bukaSubmenuUnit();
+        Thread.sleep(500);
     }
 
     @And("Klik submenu Unit Setting")
     public void userKlikSubmenuUnitSetting() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitSettingPage.bukaSubmenuUnitSetting();
+        Thread.sleep(500);
     }
-
 }

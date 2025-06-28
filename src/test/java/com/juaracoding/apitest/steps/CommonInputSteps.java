@@ -14,11 +14,15 @@ public class CommonInputSteps {
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
 
-    @When("Masukkan nama shift {string}")
-    public void inputNameShift(String nama) throws InterruptedException {
+    public CommonInputSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
         unitPageAddUnit = new UnitPageAddUnit(driver);
+    }
+
+    @When("Masukkan nama shift {string}")
+    public void inputNameShift(String nama) throws InterruptedException {
         unitPageAddUnit.inputNama(nama);
         Thread.sleep(1000);
     }
