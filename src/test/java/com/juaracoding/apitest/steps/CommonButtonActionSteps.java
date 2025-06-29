@@ -23,6 +23,7 @@ public class CommonButtonActionSteps {
 
     @And("Klik tombol titik 3 pada salah satu unit")
     public void unitActionStep() throws InterruptedException {
+        driver.navigate().refresh();
         unitPage.bukaAction();
         Thread.sleep(500);
     }

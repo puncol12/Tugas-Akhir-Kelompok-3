@@ -19,7 +19,7 @@ public class DeleteShiftSteps {
     public DeleteShiftSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        
+
         unitPageUnitShift = new UnitPageUnitShift(driver);
     }
 
@@ -31,13 +31,13 @@ public class DeleteShiftSteps {
 
     @When("Klik Ya")
     public void klikTombolYa() throws InterruptedException {
-       unitPageUnitShift.isAccDeleteShift();
+        unitPageUnitShift.isAccDeleteShift();
         Thread.sleep(1000);
     }
-    
+
     @When("Klik Hapus Edit View")
     public void klikTomboSimpan() throws InterruptedException {
-      unitPageUnitShift.isDeleteShiftView();
+        unitPageUnitShift.isDeleteShiftView();
         Thread.sleep(1000);
     }
 
@@ -50,6 +50,20 @@ public class DeleteShiftSteps {
 
     @Then("Detail Shift berhasil dihapus")
     public void isSuccesDeletedView() throws InterruptedException {
+        Thread.sleep(1000);
+        boolean isExsist = unitPageUnitShift.isDataShiftRestored();
+        Assert.assertTrue(isExsist, "Data halaman tidak terhapus");
+    }
+
+    @Then("Data unit berhasil dihapus")
+    public void isSuccesDeletedUnit() throws InterruptedException {
+        Thread.sleep(1000);
+        boolean isExsist = unitPageUnitShift.isDataShiftRestored();
+        Assert.assertTrue(isExsist, "Data halaman tidak terhapus");
+    }
+
+    @Then("Data unit batal dihapus")
+    public void isCancelDeletedUnit() throws InterruptedException {
         Thread.sleep(1000);
         boolean isExsist = unitPageUnitShift.isDataShiftRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak terhapus");

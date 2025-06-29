@@ -79,6 +79,10 @@ public class UnitPageAddUnit {
     }
 
     public void pilihUnitKalender(String namaKalender) {
+        if (BrowserUtility.clearValueName(dropdownCalendar, driver)) {
+            dropdownCalendar.clear();
+        }
+
         dropdownCalendar.click();
         WebElement opsi = wait.until(ExpectedConditions
                 .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaKalender + "']")));

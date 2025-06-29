@@ -6,8 +6,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
     features = {
         // "src/test/resources/features/01_Unit.feature"
-        // "src/test/resources/features/02_Unit.feature"
-        "src/test/resources/features/03_Unit.feature"
+        "src/test/resources/features/02_Unit.feature"
+        // "src/test/resources/features/03_Unit.feature"
         //"src/test/resources/features/01_UnitSettingCRUD.feature"
         // "src/test/resources/features/02_UnitSettingSelfie.feature"
         // "src/test/resources/features/03_UnitSettingPagination.feature"

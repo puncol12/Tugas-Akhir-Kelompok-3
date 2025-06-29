@@ -24,7 +24,7 @@ public class EditUnitShiftSteps {
     public EditUnitShiftSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        
+
         unitPageUnitShift = new UnitPageUnitShift(driver);
         unitPage = new UnitPage(driver);
         unitPageAddUnit = new UnitPageAddUnit(driver);
@@ -50,6 +50,12 @@ public class EditUnitShiftSteps {
 
     @Then("Berhasil mengedit nama shift")
     public void validasiDataEdit() {
+        boolean isExsist = unitPage.isDataRestored();
+        Assert.assertTrue(isExsist, "Data unit Shift tidak berhasil teredit");
+    }
+
+    @Then("Data unit berhasil diedit  atau berubah")
+    public void validasiDataEditUnit() {
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data unit Shift tidak berhasil teredit");
     }
