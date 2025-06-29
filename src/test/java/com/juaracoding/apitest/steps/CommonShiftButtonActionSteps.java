@@ -13,15 +13,17 @@ public class CommonShiftButtonActionSteps {
     WebDriver driver;
     UnitPageUnitShift unitPageUnitShift;
 
-    @Given("Klik tombol titik 3 pada salah satu shift")
-    public void shiftActionStep() throws InterruptedException {
+    public CommonShiftButtonActionSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        Thread.sleep(1000);
+    
         driver.navigate().refresh();
-        unitPageUnitShift = new UnitPageUnitShift(driver);
+        unitPageUnitShift = new UnitPageUnitShift(driver);      
+    }
+    
+    @Given("Klik tombol titik 3 pada salah satu shift")
+    public void shiftActionStep() throws InterruptedException {
+        Thread.sleep(1000);
         unitPageUnitShift.buttonShiftAction();
-
     }
 }

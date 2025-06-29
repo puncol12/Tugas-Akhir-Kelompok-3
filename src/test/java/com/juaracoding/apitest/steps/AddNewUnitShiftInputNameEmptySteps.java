@@ -16,12 +16,17 @@ public class AddNewUnitShiftInputNameEmptySteps {
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
 
-    @And("Kosongkan nama shift {string}")
-    public void inputShiftNameEmpty(String nama) {
+    public AddNewUnitShiftInputNameEmptySteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
         unitPageAddUnit = new UnitPageAddUnit(driver);
+    }
+
+    @And("Kosongkan nama shift {string}")
+    public void inputShiftNameEmpty(String nama) throws InterruptedException {
         unitPageAddUnit.inputNama(nama);
+        Thread.sleep(500);
     }
 
     @Then("Notifikasi error muncul dan menampilkan pesan {string}")
@@ -30,7 +35,6 @@ public class AddNewUnitShiftInputNameEmptySteps {
         Assert.assertEquals(actualError, notif);
         unitPageAddUnit.clickButtonBatalTambah();
         Thread.sleep(1000);
-        // driver.quit();
     }
 
 }

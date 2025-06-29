@@ -15,11 +15,15 @@ public class CancelAddNewUnitShiftSteps {
     WebDriver driver;
     UnitPage unitPage;
 
-    @Then("Batal menambahkan shift")
-    public void unitNewShiftCancelAdd() throws InterruptedException {
+    public CancelAddNewUnitShiftSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
         unitPage = new UnitPage(driver);
+    }
+    
+    @Then("Batal menambahkan shift")
+    public void unitNewShiftCancelAdd() throws InterruptedException {
         Thread.sleep(1000);
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Form tidak ditutup, pembatalan gagal");

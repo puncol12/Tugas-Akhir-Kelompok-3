@@ -18,19 +18,24 @@ public class SearchResetSteps {
     UnitPage unitPage;
     UnitPageSearch unitPageSearch;
 
-    @Given("Klik tombol Reset")
-    public void klikTombolReset() {
+    public SearchResetSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         unitPage = new UnitPage(driver);
         unitPageSearch = new UnitPageSearch(driver);
+    }
+
+    @Given("Klik tombol Reset")
+    public void klikTombolReset() throws InterruptedException {
         unitPageSearch.resetButton();
+        Thread.sleep(500);
         driver.navigate().refresh();
     }
 
     @Then("Input pada kotak Search dihapus dan data unit kembali ke kondisi awal")
-    public void resetData() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    public void resetData() throws InterruptedException {
+        Thread.sleep(500);
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data unit tidak kembali ke kondisi awal setelah reset");
     }

@@ -18,20 +18,22 @@ public class LastPageSteps {
     UnitPage unitPage;
     UnitPagePages unitPagePages;
 
-    @Given("Klik go to last page di bagian bawah halaman tambah unit")
-    public void lastPageSteps() throws InterruptedException {
+    public LastPageSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         unitPage = new UnitPage(driver);
         unitPagePages = new UnitPagePages(driver);
+    }
 
+    @Given("Klik go to last page di bagian bawah halaman tambah unit")
+    public void lastPageSteps() throws InterruptedException {
         unitPagePages.clickLastPage();
         Thread.sleep(1000);
     }
 
     @Then("Menampilkan data unit halaman terakhir")
     public void viewLastPage() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak berubah setelah klik last page");

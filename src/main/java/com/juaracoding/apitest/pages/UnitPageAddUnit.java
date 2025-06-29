@@ -35,6 +35,9 @@ public class UnitPageAddUnit {
     @FindBy(xpath = "//input[@id='calendar']")
     WebElement dropdownCalendar;
 
+    @FindBy(xpath = "//input[@id='shifting_id']")
+    WebElement dropdownShiftView;
+
     @FindBy(xpath = "//input[@id='unitLeave']")
     WebElement dropdownAturanCuti;
 
@@ -76,9 +79,28 @@ public class UnitPageAddUnit {
     }
 
     public void pilihUnitKalender(String namaKalender) {
+        if (BrowserUtility.clearValueName(dropdownCalendar, driver)) {
+            dropdownCalendar.clear();
+        }
+
         dropdownCalendar.click();
         WebElement opsi = wait.until(ExpectedConditions
                 .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaKalender + "']")));
+        opsi.click();
+    }
+
+    public void pilihUnitShiftDetail(String namaShift) {
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.xpath("//button[normalize-space(text())='Tambah']")));
+        } catch (Exception ignored) {
+        }
+        WebElement dropdown =
+                wait.until(ExpectedConditions.elementToBeClickable(dropdownShiftView));
+        dropdown.click();
+
+        WebElement opsi = wait.until(ExpectedConditions
+                .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaShift + "']")));
         opsi.click();
     }
 

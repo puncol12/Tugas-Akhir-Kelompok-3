@@ -53,7 +53,6 @@ Feature: 03 Unit Shift
     And Klik Batal
     Then Nama shift tidak berubah
 
-
   Scenario: Verifikasi tombol 'delete' pada salah satu shift
     Given Klik tombol titik 3 pada salah satu shift
     When Klik tombol Delete
@@ -65,3 +64,46 @@ Feature: 03 Unit Shift
     When Klik tombol Delete1
     And Klik Tidak
     Then Shift batal dihapus
+
+  Scenario: Verifikasi tombol 'view' pada salah satu shift
+    Given Klik tombol titik 3 pada salah satu shift
+    When Klik tombol View
+    Then Menampilkan informasi shift
+
+  Scenario: Verifikasi Menambahkan detail Shift pada menu view
+    Given Klik tombol Tambahkan
+    When Pilih nama shift "Colliers"
+    And Klik tombol Tambah view
+    And Klik tombol Tambahkan
+    And Pilih nama shift "BCA Life"
+    And Klik tombol Tambah view
+    And Klik tombol Tambahkan
+    And Pilih nama shift "Hatata"
+    And Klik tombol Tambah view
+    Then Berhasil menambahkan detail shift
+
+  Scenario: Verifikasi tombol 'edit' pada salah satu view
+    Given Klik tombol titik 3 pada salah satu shift view
+    When Klik tombol Edit
+    And Pilih nama shift "Admin Warung Weekend"
+    And Klik Simpan
+    Then Berhasil mengedit nama shift
+
+  Scenario: Verifikasi tombol 'batal edit' pada salah satu view
+    Given Klik tombol titik 3 pada salah satu shift view
+    When Klik tombol Edit
+    And Pilih nama shift "Zurich"
+    And Klik Batal
+    Then Nama shift tidak berubah
+
+  Scenario: Verifikasi tombol 'delete' pada salah satu view
+    Given Klik tombol titik 3 pada salah satu shift view
+    When Klik tombol Delete
+    And Klik Hapus Edit View
+    Then Detail Shift berhasil dihapus
+
+  Scenario: Verifikasi tombol 'batal delete' pada salah satu view
+    Given Klik tombol titik 3 pada salah satu shift view
+    When Klik tombol Delete
+    And Klik Batal Edit View
+    Then Shift batal dihapus view
