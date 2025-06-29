@@ -206,7 +206,7 @@ public void isDialogSelfieDisplay() throws InterruptedException {
     }
 
     public void klikTombolTidak() {
-    wait.until(ExpectedConditions.elementToBeClickable(klikTombolTidak)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(klikTombolTidak)).click();
     }
 
 
