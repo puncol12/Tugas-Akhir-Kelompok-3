@@ -2,45 +2,34 @@ package com.juaracoding.apitest.steps;
 
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.PagePosisi;
+import com.juaracoding.apitest.pages.UnitPage;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import java.time.Duration;
+
 public class SubMenuPosisi {
 
-    WebDriver driver = DriverSingleton.createOrGetDriver();
-    PagePosisi posisiPage = PagePosisi.init(driver);
+    WebDriver driver;
+    PagePosisi pagePosisi;
+    UnitPage unitPage;
 
-//    @Given("Admin berada di halaman Management bagian Posisi")
-//    public void admin_berada_di_halaman_management_bagian_posisi() throws InterruptedException {
-//        posisiPage.bukaMenuManagement();
-//        posisiPage.bukaSubmenuPosisi();
-//        System.out.println("menu posisi ditampilkan");
-//        Thread.sleep(1000);
-//    }
-//
-//    @When("Klik menu Manajemen")
-//    public void klik_menu_manajemen() throws InterruptedException {
-//        posisiPage.bukaMenuManagement();
-//        Thread.sleep(1000);
-//    }
+    @And("Klik submenu Posisi")
+    public void klikSubmenuPosisi() {
+        driver = DriverSingleton.createOrGetDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        pagePosisi = new PagePosisi(driver);
+        unitPage = new UnitPage(driver);
 
-    @Given("Klik submenu Posisi")
-    public void klik_submenu_posisi() throws InterruptedException {
-        posisiPage.bukaSubmenuPosisi();
-        Thread.sleep(1000);
+        pagePosisi.bukaSubmenuPosisi();
     }
 
     @Then("Daftar Posisi ditampilkan")
-    public void daftar_posisi_ditampilkan() throws InterruptedException {
-       //posisiPage = PagePosisi.init(driver);
-        Assert.assertTrue(
-                posisiPage.isPosisiPageDisplayed(),
-                "Halaman Posisi tidak berhasil ditampilkan"
-        );
+    public void tampilanDataPosisi() throws InterruptedException {
         Thread.sleep(1000);
+        boolean isExsist = unitPage.isDataRestored();
+        Assert.assertTrue(isExsist, "Data Posisi tidak muncul");
     }
 }

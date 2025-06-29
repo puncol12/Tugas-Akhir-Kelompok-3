@@ -18,15 +18,15 @@ Feature: Posisi
     Given Klik tombol Tambahkan
     #When Form tambah posisi ditampilkan
     When Mengisi field Nama Posisi dengan "Staff Admin"
-    And Mengisi field Department dengan "Juara Coding"
+    And Mengisi field Department dengan "1 Tambah Unit Kalender kosong"
     And Klik tombol Simpan
     Then Data posisi baru berhasil ditambahkan
 
   # Negatif Case - done
   Scenario: Melakukan simpan tanpa isi nama posisi dan mengisi department
     Given Klik tombol Tambahkan
-    When Mengosongkan field Nama Posisi
-    And Mengisi Field Department dengan "Juara Coding"
+    When Mengisi field Nama Posisi dengan ""
+    And Mengisi field Department dengan "1 Tambah Unit Kalender kosong"
     And Klik tombol Simpan
     Then Tampil pesan error Nama Posisi wajib diisi pada menu tambah
 
@@ -42,61 +42,61 @@ Feature: Posisi
   Scenario: Melakukan simpan posisi tanpa isi nama dan department
      Given Klik tombol Tambahkan
     #Then Form tambah posisi ditampilkan
-    When Mengosongkan field Nama Posisi
+    When Mengisi field Nama Posisi dengan ""
     And Mengosongkan field Department
     And Klik tombol Simpan
     Then Tampil pesan error Nama Posisi wajib diisi pada menu tambah
 
     #Menu edit
-#   #Positif case
-#  Scenario: Mengedit nama posisi
-#    Given Klik tombol titik 3 pada salah satu data posisi
-#    When Klik tombol Edit
-#    And Mengubah field Nama Posisi menjadi "Supervisor"
-#    And Klik tombol Simpan Edit
-#    Then Data posisi berhasil diperbaharui
+   #Positif case
+  Scenario: Mengedit nama posisi
+    Given Klik tombol titik 3 pada salah satu data posisi
+    When Klik tombol Edit Posisi
+    And Mengubah field Nama Posisi menjadi "Supervisor"
+    And Klik tombol Simpan Edit
+    Then Data posisi berhasil diperbaharui
 ##
-## Negatif case
-#  Scenario: Mengedit nama posisi dengan nama kosong
-#    Given Klik tombol titik 3 pada salah satu data posisi
-#    When Klik tombol Edit
-#    And Mengosongkan field Nama Posisi pada menu edit
-#    And Klik tombol Simpan Edit
-#    Then Tampil pesan error "Nama Posisi wajib diisi" edit
+# Negatif case
+  Scenario: Mengedit nama posisi dengan nama kosong
+    Given Klik tombol titik 3 pada salah satu data posisi
+    When Klik tombol Edit Posisi
+    And Mengubah field Nama Posisi menjadi ""
+    And Klik tombol Simpan Edit
+    Then Tampil pesan error Nama Posisi wajib diisi edit
+
+  Scenario: Membatalkan menu edit posisi
+    Given Klik tombol titik 3 pada salah satu data posisi
+    When Klik tombol Edit Posisi
+    And Klik tombol Batal Edit
+    Then Data posisi tidak berubah
 #
-#  Scenario: Membatalkan menu edit posisi
-  #  Given Klik tombol titik 3 pada salah satu data posisi
-#    When Klik tombol Edit
-#    And Klik tombol Batal Edit
-#    Then Data posisi tidak berubah
+    #menu delete
+  Scenario: Menghapus Posisi
+    Given Klik tombol titik 3 pada salah satu data posisi
+    When Klik tombol Delete Posisi
+    And Muncul konfirmasi hapus posisi atau tidak
+    And Klik tombol Ya
+    Then Data posisi berhasil dihapus
 #
-#
-#    #menu delete
-#  Scenario: Menghapus Posisi
-#    Given Klik tombol titik 3 pada salah satu data posisi
-#    When Klik tombol Delete
-#    And Muncul konfirmasi hapus posisi atau tidak
-#    And Klik tombol Ya
-#    Then Data posisi berhasil dihapus
-#
-#  Scenario: Tidak menghapus Posisi
-#    Given Klik tombol titik 3 pada salah satu data posisi
-#    When Klik tombol Delete
-#    And Muncul konfirmasi hapus posisi atau tidak
-#    And Klik tombol Tidak
-#    Then Data posisi tidak terhapus
-#
-#    #menu search
+  Scenario: Tidak menghapus Posisi
+    Given Klik tombol titik 3 pada salah satu data posisi
+    When Klik tombol Delete Posisi
+    And Muncul konfirmasi hapus posisi atau tidak
+    And Klik tombol Tidak
+    Then Data posisi tidak terhapus
+
+
+  #menu search
 #  Scenario: Mencari Posisi dengan kata kunci
-#    When Masukkan kata kunci "Admin" pada kotak Search
-#    And Klik tombol Search pada menu Posisi
-#    Then Data posisi yang sesuai dengan kata kunci "Admin" ditampilkan
+#    And Masukkan nama posisi pada kotak Search dengan input "Admin"
+#    And Klik tombol Search di halaman Posisi
+#    Then Data posisi yang sesuai dengan pencarian ditampilkan untuk "Admin"
 #
 #    #Menu reset
 #  Scenario: Mereset kata kunci dalam pencarian
-#    Given Klik tombol Reset pada kotak Search di menu Posisi
-#    Then Data posisi ditampilkan seluruhnya
-#
+#    Given Klik tombol Reset Posisi
+#    Then Input pada kotak Search dihapus dan data unit kembali ke kondisi awal
+
 #    #pagination
 #  Scenario: Mengubah tampilan data perhalaman menggunakan Go to next page
 #    Given Klik go to next page di bagian bawah halaman tambah posisi

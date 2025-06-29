@@ -25,6 +25,7 @@ public class SearchResetSteps {
         unitPage = new UnitPage(driver);
         unitPageSearch = new UnitPageSearch(driver);
         unitPageSearch.resetButton();
+        driver.navigate().refresh();
     }
 
     @Then("Input pada kotak Search dihapus dan data unit kembali ke kondisi awal")

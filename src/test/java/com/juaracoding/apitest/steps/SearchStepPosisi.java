@@ -1,38 +1,41 @@
 package com.juaracoding.apitest.steps;
 
 import com.juaracoding.apitest.DriverSingleton;
-import com.juaracoding.apitest.pages.PagePosisi;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
+import com.juaracoding.apitest.pages.*;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+
+import java.time.Duration;
 
 public class SearchStepPosisi {
 
-    WebDriver driver = DriverSingleton.createOrGetDriver();
-    PagePosisi posisiPage = PagePosisi.init(driver);
+    WebDriver driver;
+    PagePosisi pagePosisi;
+    PagePosisiSearch pagePosisiSearch;
 
-
-    @When("Masukkan kata kunci {string} pada kotak Search")
-    public void input_kata_kunci_pada_search(String keyword) throws InterruptedException {
-        posisiPage.searchPosisi(keyword);
+    @When("Masukkan nama posisi pada kotak Search dengan input {string}")
+    public void input_kata_kunci_posisi(String keyword) throws InterruptedException {
+        driver = DriverSingleton.createOrGetDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        pagePosisi = new PagePosisi(driver);
+        pagePosisiSearch = new PagePosisiSearch(driver);
+        pagePosisiSearch.searchPosisi(keyword);
         Thread.sleep(1000);
-        System.out.println("search keyword");
     }
 
-    @And("Klik tombol Search pada menu Posisi")
+    @And("Klik tombol Search di halaman Posisi")
     public void klik_tombol_search_posisi() throws InterruptedException {
-        posisiPage.searchButton();
+        pagePosisiSearch.searchButtonPosisi();
         Thread.sleep(1000);
-        System.out.println("search klik");
     }
 
-    @Then("Data posisi yang sesuai dengan kata kunci {string} ditampilkan")
-    public void data_posisi_yang_sesuai_dengan_keyword_ditampilkan(String keyword) throws InterruptedException {
-        boolean isExsist = posisiPage.isSearchResultDisplayed(keyword);
-        Assert.assertTrue(isExsist, "Hasil pencarian tidak ditemukan");
+    @Then("Data posisi yang sesuai dengan pencarian ditampilkan untuk {string}")
+    public void hasil_pencarian_posisi_ditampilkan(String keyword) throws InterruptedException {
+        boolean isExist = pagePosisi.isSearchResultDisplayedPosisi(keyword);
+        Assert.assertFalse(isExist, "Hasil pencarian tidak ditemukan");
         Thread.sleep(1000);
-        System.out.println("keyword success");
     }
 }

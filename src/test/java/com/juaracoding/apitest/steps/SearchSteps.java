@@ -37,8 +37,8 @@ public class SearchSteps {
 
     @Then("Data unit yang sesuai dengan pencarian ditampilkan untuk {string}")
     public void hasilPencarianMenampilkanUnitDenganNama(String keyword) throws InterruptedException {
-        boolean isExsist = unitPage.isSearchResultDisplayed(keyword);
-        Assert.assertTrue(isExsist, "Hasil pencarian tidak ditemukan");
+        boolean isExist = unitPage.isSearchResultDisplayed(keyword);
+        Assert.assertTrue(isExist, "Hasil pencarian tidak ditemukan");
         Thread.sleep(1000);
     }
 }
