@@ -1,0 +1,40 @@
+package com.juaracoding.apitest.steps;
+
+import com.juaracoding.apitest.DriverSingleton;
+import com.juaracoding.apitest.pages.UnitPage;
+import com.juaracoding.apitest.pages.UnitPagePages;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+import java.time.Duration;
+
+public class FirstPageStepsPosisi {
+
+    WebDriver driver;
+    UnitPage unitPage;
+    UnitPagePages unitPagePages;
+
+    @Given("Klik go to first page di bagian bawah halaman tambah posisi")
+    public void firstPageSteps() throws InterruptedException {
+        driver = DriverSingleton.createOrGetDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        unitPage = new UnitPage(driver);
+        unitPagePages = new UnitPagePages(driver);
+
+        unitPagePages.clickFirstPage();
+        Thread.sleep(1000);
+    }
+
+    @Then("Menampilkan data posisi halaman pertama")
+    public void viewFirstPage() throws InterruptedException {
+        driver = DriverSingleton.createOrGetDriver(); // ADD THIS
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        unitPage = new UnitPage(driver); // ADD THIS
+        unitPagePages = new UnitPagePages(driver); // ADD THIS
+        Thread.sleep(1000);
+        boolean isExsist = unitPage.isDataRestored();
+        Assert.assertTrue(isExsist, "Data halaman tidak berubah setelah klik first page");
+    }
+}

@@ -30,6 +30,7 @@ public class SearchResetSteps {
     public void klikTombolReset() throws InterruptedException {
         unitPageSearch.resetButton();
         Thread.sleep(500);
+        driver.navigate().refresh();
     }
 
     @Then("Input pada kotak Search dihapus dan data unit kembali ke kondisi awal")
