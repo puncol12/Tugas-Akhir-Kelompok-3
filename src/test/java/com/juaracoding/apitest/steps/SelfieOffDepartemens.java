@@ -1,9 +1,13 @@
 package com.juaracoding.apitest.steps;
 
 import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitSettingPage;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -40,7 +44,8 @@ public class SelfieOffDepartemens {
             System.out.println("Expected: Date should update automatically to current date");
             System.out.println("Actual: Date not updated, requires manual refresh");
             System.out.println("Status: DEFECT CONFIRMED");
-            throw new Exception("ERROR: Date not auto-updated after toggle ON action for department: " + selfieDepartmentName);
+
+            Assert.fail("DEFECT: Date not auto-updated after toggle ON action for department: " + selfieDepartmentName);
         } else {
             System.out.println("PASS: Date updated correctly for department: " + selfieDepartmentName);
         }

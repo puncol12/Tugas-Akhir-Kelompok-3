@@ -123,29 +123,27 @@ public class UnitSettingPage {
             return false;
         }
     }
-
-    public boolean validateDateUpdated(String selfieDepartmentName) {
-        try {
-            String dynamicXPath =
-                    "//tbody/tr[contains(., '" + selfieDepartmentName + "')]/td[4]/h6";
-
-            WebElement updateDateElement = driver.findElement(By.xpath(dynamicXPath));
-            String updateDate = updateDateElement.getText().trim();
-            String expectedDate = "27 Jun 2025";
-
-            System.out.println("Department: " + selfieDepartmentName);
-            System.out.println("Current update date: " + updateDate);
-            System.out.println("Expected update date: " + expectedDate);
-
-            return updateDate.equals(expectedDate);
-
-        } catch (Exception e) {
-            System.err.println("Error validating date: " + e.getMessage());
-            System.err.println("Failed XPath: //tbody/tr[contains(., '" + selfieDepartmentName
-                    + "')]/td[4]/h6");
-            return false;
-        }
+    
+public boolean validateDateUpdated(String selfieDepartmentName) {
+    try {
+        String dynamicXPath = "//tbody/tr[contains(., '" + selfieDepartmentName + "')]/td[4]/h6";
+        
+        WebElement updateDateElement = driver.findElement(By.xpath(dynamicXPath));
+        String updateDate = updateDateElement.getText().trim();
+        String expectedDate = "30 Jun 2025";
+        
+        System.out.println("Department: " + selfieDepartmentName);
+        System.out.println("Current update date: " + updateDate);
+        System.out.println("Expected update date: " + expectedDate);
+        
+        return updateDate.equals(expectedDate);
+        
+    } catch (Exception e) {
+        System.err.println("Error validating date: " + e.getMessage());
+        System.err.println("Failed XPath: //tbody/tr[contains(., '" + selfieDepartmentName + "')]/td[4]/h6");
+        return false;
     }
+}
 
     public void klikTombolTambah() {
         wait.until(ExpectedConditions.elementToBeClickable(klikTombolTambah)).click();
@@ -200,3 +198,4 @@ public class UnitSettingPage {
         wait.until(ExpectedConditions.elementToBeClickable(klikTombolTidak)).click();
     }
 }
+
