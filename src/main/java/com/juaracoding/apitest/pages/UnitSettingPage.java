@@ -25,44 +25,37 @@ public class UnitSettingPage {
         PageFactory.initElements(driver, this);
     }
 
-    
     @FindBy(xpath = "(//div[contains(@class, 'sidebar__item')])[4]")
     WebElement menuManagement;
 
     @FindBy(xpath = "(//p[contains(., 'Unit Setting')])[1]")
     WebElement bukaSubmenuUnitSetting;
 
-    @FindBy (xpath= "//button[normalize-space()='Tambahkan']")
+    @FindBy(xpath = "//button[normalize-space()='Tambahkan']")
     WebElement klikTombolTambahkan;
-
 
     @FindBy(xpath = "//*[@id='alert-slide-description']//div[contains(@class, 'MuiSelect-select')]")
     WebElement klikTombolDropDown;
-    
 
     @FindBy(xpath = "//li[@role='option']")
     List<WebElement> allOptions;
 
- 
-    @FindBy (xpath= "//button[normalize-space()='Tambah']")
+    @FindBy(xpath = "//button[normalize-space()='Tambah']")
     WebElement klikTombolTambah;
 
-
-    @FindBy (xpath= "//button[normalize-space()='Batal']")
+    @FindBy(xpath = "//button[normalize-space()='Batal']")
     WebElement klikTombolBatal;
 
- 
-    @FindBy (xpath= "(//button[contains(@class, 'MuiIconButton-root') and contains(@class, 'MuiButtonBase-root') and @type='button'])[3]")
+    @FindBy(xpath = "(//button[contains(@class, 'MuiIconButton-root') and contains(@class, 'MuiButtonBase-root') and @type='button'])[3]")
     WebElement klikTombolDelete;
 
-    @FindBy (xpath= "//h2[@id='alert-dialog-slide-title']")
+    @FindBy(xpath = "//h2[@id='alert-dialog-slide-title']")
     WebElement dialogDelete;
 
-
-    @FindBy (xpath= "//button[normalize-space()='Ya']")
+    @FindBy(xpath = "//button[normalize-space()='Ya']")
     WebElement klikTombolYa;
 
-    @FindBy (xpath= "//button[normalize-space()='Tidak']")
+    @FindBy(xpath = "//button[normalize-space()='Tidak']")
     WebElement klikTombolTidak;
 
     @FindBy(xpath = "//div[normalize-space(text())='Berhasil Menambahkan Departemens']")
@@ -74,7 +67,6 @@ public class UnitSettingPage {
     @FindBy(xpath = "//div[normalize-space(text())='Berhasil Delete Departemens']")
     WebElement notifikasiDelete;
 
-    
     public void bukaMenuManagement() {
         wait.until(ExpectedConditions.elementToBeClickable(menuManagement)).click();
     }
@@ -86,7 +78,7 @@ public class UnitSettingPage {
     public void bukaSubmenuUnitSetting() {
         wait.until(ExpectedConditions.elementToBeClickable(bukaSubmenuUnitSetting)).click();
     }
-    
+
     public void klikTombolTambahkan() {
         wait.until(ExpectedConditions.elementToBeClickable(klikTombolTambahkan)).click();
     }
@@ -97,40 +89,39 @@ public class UnitSettingPage {
 
     public boolean pilihDepartment(String departmentName) {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[@role='option']")));
-        
         for (WebElement option : allOptions) {
             String text = option.getText().trim();
-            
+
             if (text.equals(departmentName)) {
                 wait.until(ExpectedConditions.elementToBeClickable(option)).click();
                 return true;
             }
         }
-        
         return false;
     }
 
     public boolean clickForToggleDepartment(String toggleDepartmentName) {
-    try {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(@class, 'MuiSwitch-switchBase')]")));
-        
-        List<WebElement> tableRows = driver.findElements(By.xpath("//tbody//tr"));
-        
-        for (WebElement row : tableRows) {
-            String rowText = row.getText().trim();
-            
-            if (rowText.contains(toggleDepartmentName)) {
-                WebElement toggleButton = row.findElement(By.xpath(".//span[contains(@class, 'MuiSwitch-switchBase')]"));
-                wait.until(ExpectedConditions.elementToBeClickable(toggleButton)).click();
-                return true;
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath("//span[contains(@class, 'MuiSwitch-switchBase')]")));
+            List<WebElement> tableRows = driver.findElements(By.xpath("//tbody//tr"));
+
+            for (WebElement row : tableRows) {
+                String rowText = row.getText().trim();
+                
+                if (rowText.contains(toggleDepartmentName)) {
+                    WebElement toggleButton = row.findElement(
+                            By.xpath(".//span[contains(@class, 'MuiSwitch-switchBase')]"));
+                    wait.until(ExpectedConditions.elementToBeClickable(toggleButton)).click();
+                    return true;
+                }
             }
+            return false;
+
+        } catch (Exception e) {
+            System.err.println("Error clicking toggle: " + e.getMessage());
+            return false;
         }
-        
-        return false;
-        
-    } catch (Exception e) {
-        System.err.println("Error clicking toggle: " + e.getMessage());
-        return false;
     }
 }
     
@@ -153,7 +144,6 @@ public boolean validateDateUpdated(String selfieDepartmentName) {
         System.err.println("Failed XPath: //tbody/tr[contains(., '" + selfieDepartmentName + "')]/td[4]/h6");
         return false;
     }
-}
 
     public void klikTombolTambah() {
         wait.until(ExpectedConditions.elementToBeClickable(klikTombolTambah)).click();
@@ -172,41 +162,39 @@ public boolean validateDateUpdated(String selfieDepartmentName) {
     }
 
     public boolean succesDeleteDepartemens() {
-            return wait.until(ExpectedConditions.visibilityOf(notifikasiDelete)).isDisplayed();
+        return wait.until(ExpectedConditions.visibilityOf(notifikasiDelete)).isDisplayed();
     }
 
     public boolean failAddDuplicateDepartemens() {
-        
-        boolean isNotificationVisible = wait.until(ExpectedConditions.visibilityOf(notifikasiGagal)).isDisplayed();
+
+        boolean isNotificationVisible =
+                wait.until(ExpectedConditions.visibilityOf(notifikasiGagal)).isDisplayed();
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.ESCAPE).perform();
         return isNotificationVisible;
-}
+    }
 
     public void iconDeleteDepartemens() {
-    wait.until(ExpectedConditions.elementToBeClickable(klikTombolDelete)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(klikTombolDelete)).click();
 
-}
+    }
 
     public void isDialogDeleteDisplay() {
         wait.until(ExpectedConditions.visibilityOf(dialogDelete)).isDisplayed();
 
     }
-   
 
-public void isDialogSelfieDisplay() throws InterruptedException {
-    Thread.sleep(3000);
-    Alert alert = driver.switchTo().alert();
-    alert.accept();
-}
+    public void isDialogSelfieDisplay() throws InterruptedException {
+        Thread.sleep(3000);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
 
     public void klikTombolYa() {
-    wait.until(ExpectedConditions.elementToBeClickable(klikTombolYa)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(klikTombolYa)).click();
     }
 
     public void klikTombolTidak() {
-    wait.until(ExpectedConditions.elementToBeClickable(klikTombolTidak)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(klikTombolTidak)).click();
     }
-
-
 }

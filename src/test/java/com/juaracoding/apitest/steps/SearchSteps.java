@@ -10,21 +10,26 @@ import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UnitPageSearch;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class SearchSteps {
 
     WebDriver driver;
     UnitPage unitPage;
     UnitPageSearch unitPageSearch;
-    
-    @Given("Masukkan nama unit pada kotak Search dengan input {string}")
-    public void userMasukkanNamaUnit(String keyword) throws InterruptedException {
+
+    public SearchSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         unitPage = new UnitPage(driver);
         unitPageSearch = new UnitPageSearch(driver);
+
+    }
+
+    @When("Masukkan nama unit pada kotak Search dengan input {string}")
+    public void userMasukkanNamaUnit(String keyword) throws InterruptedException {
         unitPageSearch.searchUnit(keyword);
         Thread.sleep(1000);
     }
@@ -37,8 +42,8 @@ public class SearchSteps {
 
     @Then("Data unit yang sesuai dengan pencarian ditampilkan untuk {string}")
     public void hasilPencarianMenampilkanUnitDenganNama(String keyword) throws InterruptedException {
-        boolean isExsist = unitPage.isSearchResultDisplayed(keyword);
-        Assert.assertTrue(isExsist, "Hasil pencarian tidak ditemukan");
+        boolean isExist = unitPage.isSearchResultDisplayed(keyword);
+        Assert.assertTrue(isExist, "Hasil pencarian tidak ditemukan");
         Thread.sleep(1000);
     }
 }
