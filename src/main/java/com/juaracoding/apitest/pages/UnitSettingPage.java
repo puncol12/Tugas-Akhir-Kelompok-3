@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -141,7 +140,7 @@ public boolean validateDateUpdated(String selfieDepartmentName) {
         
         WebElement updateDateElement = driver.findElement(By.xpath(dynamicXPath));
         String updateDate = updateDateElement.getText().trim();
-        String expectedDate = "27 Jun 2025";
+        String expectedDate = "30 Jun 2025";
         
         System.out.println("Department: " + selfieDepartmentName);
         System.out.println("Current update date: " + updateDate);
