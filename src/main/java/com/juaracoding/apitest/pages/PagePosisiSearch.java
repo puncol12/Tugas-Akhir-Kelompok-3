@@ -45,12 +45,6 @@ public class PagePosisiSearch {
         wait.until(ExpectedConditions.elementToBeClickable(buttonSearchPosisi)).click();
     }
 
-    public void resetButtonPosisi() {
-        closePopupIfVisible();
-        waitForBackdropToDisappear();
-        wait.until(ExpectedConditions.elementToBeClickable(buttonResetPosisi)).click();
-    }
-
     public void waitForBackdropToDisappear() {
         try {
             By backdrop = By.xpath("//div[contains(@class, 'MuiBackdrop-root')]");
