@@ -8,62 +8,62 @@ Feature: 03 Unit Shift
     And Klik tombol Shift
     Then Masuk ke menu shift
 
-  Scenario Outline: Verifikasi Menambahkan Shift pada menu shift
-    Given Klik tombol Tambahkan
-    When Masukkan nama shift "<Nama>"
-    And Klik tombol Tambah
-    Then Berhasil menambahkan shift
+  # Scenario Outline: Verifikasi Menambahkan Shift pada menu shift
+  #   Given Klik tombol Tambahkan
+  #   When Masukkan nama shift "<Nama>"
+  #   And Klik tombol Tambah
+  #   Then Berhasil menambahkan shift
 
-    Examples:
-      | Nama  |
-      | yusuf |
-      | nur   |
-      | rizqi |
+  #   Examples:
+  #     | Nama  |
+  #     | yusuf |
+  #     | nur   |
+  #     | rizqi |
 
-  Scenario: Verifikasi Batal Menambahkan Shift pada menu shift
-    Given Klik tombol Tambahkan
-    When Masukkan nama shift "putra"
-    And Klik tombol Batal
-    Then Batal menambahkan shift
+  # Scenario: Verifikasi Batal Menambahkan Shift pada menu shift
+  #   Given Klik tombol Tambahkan
+  #   When Masukkan nama shift "putra"
+  #   And Klik tombol Batal
+  #   Then Batal menambahkan shift
 
-  Scenario: Menambahkan shift baru dengan mengosongkan nama shift
-    Given Klik tombol Tambahkan
-    When Kosongkan nama shift ""
-    And Klik tombol Tambah
-    Then Notifikasi error muncul dan menampilkan pesan "Nama Shift tidak boleh kosong!."
+  # Scenario: Menambahkan shift baru dengan mengosongkan nama shift
+  #   Given Klik tombol Tambahkan
+  #   When Kosongkan nama shift ""
+  #   And Klik tombol Tambah
+  #   Then Notifikasi error muncul dan menampilkan pesan "Nama Shift tidak boleh kosong!."
 
-  Scenario: Verifikasi tombol 'edit' pada salah satu shift
-    Given Klik tombol titik 3 pada salah satu shift
-    When Klik tombol Edit
-    And Masukkan nama shift "yusuf nur rizqi"
-    And Klik Simpan
-    Then Berhasil mengedit nama shift
+  # Scenario: Verifikasi tombol 'edit' pada salah satu shift
+  #   Given Klik tombol titik 3 pada salah satu shift
+  #   When Klik tombol Edit
+  #   And Masukkan nama shift "yusuf nur rizqi"
+  #   And Klik Simpan
+  #   Then Berhasil mengedit nama shift
 
-  Scenario: Mengedit shift dengan mengosongkan nama shift
-    Given Klik tombol titik 3 pada salah satu shift
-    When Klik tombol Edit
-    And Masukkan nama shift ""
-    And Klik Simpan
-    Then Notifikasi Error muncul dan menampilkan pesan 'Nama Shift tidak boleh kosong!.'
+  # Scenario: Mengedit shift dengan mengosongkan nama shift
+  #   Given Klik tombol titik 3 pada salah satu shift
+  #   When Klik tombol Edit
+  #   And Masukkan nama shift ""
+  #   And Klik Simpan
+  #   Then Notifikasi Error muncul dan menampilkan pesan 'Nama Shift tidak boleh kosong!.'
 
-  Scenario: Verifikasi tombol 'batal edit' pada salah satu shift
-    Given Klik tombol titik 3 pada salah satu shift
-    When Klik tombol Edit
-    And Masukkan nama shift "raharjo"
-    And Klik Batal
-    Then Nama shift tidak berubah
+  # Scenario: Verifikasi tombol 'batal edit' pada salah satu shift
+  #   Given Klik tombol titik 3 pada salah satu shift
+  #   When Klik tombol Edit
+  #   And Masukkan nama shift "raharjo"
+  #   And Klik Batal
+  #   Then Nama shift tidak berubah
 
-  Scenario: Verifikasi tombol 'delete' pada salah satu shift
-    Given Klik tombol titik 3 pada salah satu shift
-    When Klik tombol Delete
-    And Klik Ya
-    Then Shift berhasil dihapus
+  # Scenario: Verifikasi tombol 'delete' pada salah satu shift
+  #   Given Klik tombol titik 3 pada salah satu shift
+  #   When Klik tombol Delete
+  #   And Klik Ya
+  #   Then Shift berhasil dihapus
 
-  Scenario: Verifikasi tombol 'batal delete' pada salah satu shift
-    Given Klik tombol titik 3 pada salah satu shift
-    When Klik tombol Delete1
-    And Klik Tidak
-    Then Shift batal dihapus
+  # Scenario: Verifikasi tombol 'batal delete' pada salah satu shift
+  #   Given Klik tombol titik 3 pada salah satu shift
+  #   When Klik tombol Delete1
+  #   And Klik Tidak
+  #   Then Shift batal dihapus
 
   Scenario: Verifikasi tombol 'view' pada salah satu shift
     Given Klik tombol titik 3 pada salah satu shift

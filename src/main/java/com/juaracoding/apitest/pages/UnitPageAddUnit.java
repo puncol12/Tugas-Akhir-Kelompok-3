@@ -90,15 +90,15 @@ public class UnitPageAddUnit {
     }
 
     public void pilihUnitShiftDetail(String namaShift) {
-        try {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                    By.xpath("//button[normalize-space(text())='Tambah']")));
-        } catch (Exception ignored) {
-        }
-        WebElement dropdown =
-                wait.until(ExpectedConditions.elementToBeClickable(dropdownShiftView));
-        dropdown.click();
-
+        // try {
+        // wait.until(ExpectedConditions.invisibilityOfElementLocated(
+        // By.xpath("//button[normalize-space(text())='Tambah']")));
+        // } catch (Exception ignored) {
+        // }
+        // WebElement dropdown =
+        // wait.until(ExpectedConditions.elementToBeClickable(dropdownShiftView));
+        // dropdown.click();
+        dropdownShiftView.click();
         WebElement opsi = wait.until(ExpectedConditions
                 .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaShift + "']")));
         opsi.click();

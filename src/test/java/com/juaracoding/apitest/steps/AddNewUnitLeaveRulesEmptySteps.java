@@ -34,6 +34,6 @@ public class AddNewUnitLeaveRulesEmptySteps {
         boolean isExsist = unitPageAddUnit.isUnitSuccesAdded();
         Assert.assertFalse(isExsist,
                 "Unit baru justru berhasil ditambahkan, padahal seharusnya gagal.");
-        driver.quit();
+        // driver.quit();
     }
 }

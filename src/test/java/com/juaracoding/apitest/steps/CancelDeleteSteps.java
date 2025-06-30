@@ -51,6 +51,6 @@ public class CancelDeleteSteps {
         Thread.sleep(1000);
         boolean isExsist = unitPageUnitShift.isDataShiftRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak ditemukan");
-        driver.quit();
+        // driver.quit();
     }
 }
