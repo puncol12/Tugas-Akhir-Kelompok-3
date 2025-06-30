@@ -8,6 +8,7 @@ import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.LoginPage;
 import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UnitSettingPage;
+import com.juaracoding.apitest.pages.UserPage;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -19,6 +20,7 @@ public class CommonSteps {
     LoginPage loginPage;
     UnitPage unitPage;
     UnitSettingPage unitSettingPage;
+    UserPage userPage;
 
     public CommonSteps() {
         driver = DriverSingleton.createOrGetDriver();
@@ -27,7 +29,8 @@ public class CommonSteps {
         
         loginPage = new LoginPage(driver);
         unitPage = new UnitPage(driver);
-        unitSettingPage = new UnitSettingPage(driver);        
+        unitSettingPage = new UnitSettingPage(driver); 
+        userPage  = new UserPage(driver);       
     }
 
     @Given("Login dengan user valid")
@@ -50,6 +53,12 @@ public class CommonSteps {
     @And("Klik submenu Unit Setting")
     public void userKlikSubmenuUnitSetting() throws InterruptedException {
         unitSettingPage.bukaSubmenuUnitSetting();
+        Thread.sleep(500);
+    }
+
+    @And("Klik submenu User")
+    public void userKlikSubmenuUser() throws InterruptedException {
+        userPage.submenuUser();
         Thread.sleep(500);
     }
 }

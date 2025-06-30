@@ -1,6 +1,8 @@
 package com.juaracoding.apitest.pages;
 
-import com.juaracoding.apitest.utils.BrowserUtility;
+import java.time.Duration;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,8 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.List;
+import com.juaracoding.apitest.utils.BrowserUtility;
 
 public class PagePosisi {
     private final WebDriver driver;
