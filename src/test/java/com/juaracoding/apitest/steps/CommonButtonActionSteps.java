@@ -14,12 +14,17 @@ public class CommonButtonActionSteps {
     WebDriver driver;
     UnitPage unitPage;
 
-    @And("Klik tombol titik 3 pada salah satu unit")
-    public void unitActionStep() throws InterruptedException {
+    public CommonButtonActionSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
         unitPage = new UnitPage(driver);
+    }
+
+    @And("Klik tombol titik 3 pada salah satu unit")
+    public void unitActionStep() throws InterruptedException {
+        driver.navigate().refresh();
         unitPage.bukaAction();
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 }

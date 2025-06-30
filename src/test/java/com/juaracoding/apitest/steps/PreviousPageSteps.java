@@ -18,24 +18,23 @@ public class PreviousPageSteps {
     UnitPage unitPage;
     UnitPagePages unitPagePages;
 
-    @Given("Klik go to previous page di bagian bawah halaman tambah unit")
-    public void clickPreviousStep() throws InterruptedException {
+    public PreviousPageSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+       
         unitPage =new UnitPage(driver);
         unitPagePages = new UnitPagePages(driver);
+    }
 
+    @Given("Klik go to previous page di bagian bawah halaman tambah unit")
+    public void clickPreviousStep() throws InterruptedException {
         unitPagePages.clickPreviousPage();
-        Thread.sleep(2000);
+        Thread.sleep(500);
     }
 
     @Then("Menampilkan data unit halaman sebelumnya")
     public void dataHalamanSebelumnya() throws InterruptedException {
-        driver = DriverSingleton.createOrGetDriver(); //  ADD THIS
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPage = new UnitPage(driver); //  ADD THIS
-        unitPagePages = new UnitPagePages(driver); //  ADD THIS
-        Thread.sleep(1000);
+        Thread.sleep(500);
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak berubah setelah klik previous page");
     }

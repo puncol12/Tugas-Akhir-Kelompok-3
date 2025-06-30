@@ -16,19 +16,24 @@ public class AddNewUnitLeaveRulesEmptySteps {
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
 
-    @And("Kosongkan Aturan Cuti")
-    public void leaveRulesEmpty() {
+    public AddNewUnitLeaveRulesEmptySteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         unitPageAddUnit = new UnitPageAddUnit(driver);
+    }
+
+    @And("Kosongkan Aturan Cuti")
+    public void leaveRulesEmpty() throws InterruptedException {
+        Thread.sleep(500);
     }
 
     @Then("Notifikasi Error muncul")
     public void unitNewSuccesAdd() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);
         boolean isExsist = unitPageAddUnit.isUnitSuccesAdded();
-        Assert.assertFalse(isExsist, "Unit baru justru berhasil ditambahkan, padahal seharusnya gagal.");
+        Assert.assertFalse(isExsist,
+                "Unit baru justru berhasil ditambahkan, padahal seharusnya gagal.");
         driver.quit();
     }
 }

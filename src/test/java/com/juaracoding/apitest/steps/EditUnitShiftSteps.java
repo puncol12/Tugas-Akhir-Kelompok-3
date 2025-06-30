@@ -21,16 +21,19 @@ public class EditUnitShiftSteps {
     UnitPage unitPage;
     UnitPageAddUnit unitPageAddUnit;
 
-    @When("Klik tombol Edit")
-    public void klikButtonEdit() throws InterruptedException {
+    public EditUnitShiftSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         unitPageUnitShift = new UnitPageUnitShift(driver);
         unitPage = new UnitPage(driver);
         unitPageAddUnit = new UnitPageAddUnit(driver);
+    }
 
+    @When("Klik tombol Edit")
+    public void klikButtonEdit() throws InterruptedException {
         unitPageUnitShift.isEditShift();
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @When("Klik Simpan")
@@ -47,7 +50,12 @@ public class EditUnitShiftSteps {
 
     @Then("Berhasil mengedit nama shift")
     public void validasiDataEdit() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        boolean isExsist = unitPage.isDataRestored();
+        Assert.assertTrue(isExsist, "Data unit Shift tidak berhasil teredit");
+    }
+
+    @Then("Data unit berhasil diedit  atau berubah")
+    public void validasiDataEditUnit() {
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data unit Shift tidak berhasil teredit");
     }
@@ -57,13 +65,12 @@ public class EditUnitShiftSteps {
         String actualError = unitPageAddUnit.isRequiredName();
         Assert.assertEquals(actualError, notif);
         unitPageAddUnit.clickButtonBatalTambah();
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @Then("Nama shift tidak berubah")
     public void validasiBatalHapus() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Thread.sleep(1000);
+        Thread.sleep(500);
         boolean isExsist = unitPageUnitShift.isDataShiftRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak ditemukan");
     }

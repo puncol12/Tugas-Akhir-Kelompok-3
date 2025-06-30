@@ -13,25 +13,29 @@ public class AddNewUnitSteps {
 
     WebDriver driver;
     UnitPageAddUnit unitPageAddUnit;
+
+    public AddNewUnitSteps() {
+        driver = DriverSingleton.createOrGetDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
+        unitPageAddUnit = new UnitPageAddUnit(driver);
+    }
     
     @And("Cari Overtime Reason {string}")
     public void selectOvertimeReason(String reason) throws InterruptedException {
-        driver = DriverSingleton.createOrGetDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPageAddUnit = new UnitPageAddUnit(driver);
         unitPageAddUnit.inputOvertimeReason(reason);
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @And("Isi Maksimal hari pengajuan {string}")
     public void selectPengajuan(String pengajuan) throws InterruptedException {
         unitPageAddUnit.inputMaksHariPengajuan(pengajuan);
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @And("Pilih bukti lembur {string}")
     public void selectButkiLembur(String lembur) throws InterruptedException {
         unitPageAddUnit.pilihBuktiLembur(lembur);
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 }

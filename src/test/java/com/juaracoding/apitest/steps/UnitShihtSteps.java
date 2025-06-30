@@ -17,20 +17,23 @@ public class UnitShihtSteps {
     WebDriver driver;
     UnitPage unitPage;
     UnitPageUnitShift unitPageUnitShift;
-    
-    @And("Klik tombol Shift")
-    public void clickShiftStep() throws InterruptedException {
+
+    public UnitShihtSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         unitPage = new UnitPage(driver);
         unitPageUnitShift = new UnitPageUnitShift(driver);
+    }
+
+    @And("Klik tombol Shift")
+    public void clickShiftStep() throws InterruptedException {
         unitPage.action01();
         Thread.sleep(1000);
     }
 
     @Then("Masuk ke menu shift")
     public void validasiDataShift() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Thread.sleep(1000);
         boolean isExsist = unitPageUnitShift.isDataShiftRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak ditemukan");
