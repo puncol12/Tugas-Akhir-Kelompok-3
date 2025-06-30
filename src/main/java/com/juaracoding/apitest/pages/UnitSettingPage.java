@@ -123,7 +123,6 @@ public class UnitSettingPage {
             return false;
         }
     }
-}
     
 public boolean validateDateUpdated(String selfieDepartmentName) {
     try {
@@ -144,6 +143,7 @@ public boolean validateDateUpdated(String selfieDepartmentName) {
         System.err.println("Failed XPath: //tbody/tr[contains(., '" + selfieDepartmentName + "')]/td[4]/h6");
         return false;
     }
+}
 
     public void klikTombolTambah() {
         wait.until(ExpectedConditions.elementToBeClickable(klikTombolTambah)).click();
@@ -198,3 +198,4 @@ public boolean validateDateUpdated(String selfieDepartmentName) {
         wait.until(ExpectedConditions.elementToBeClickable(klikTombolTidak)).click();
     }
 }
+
