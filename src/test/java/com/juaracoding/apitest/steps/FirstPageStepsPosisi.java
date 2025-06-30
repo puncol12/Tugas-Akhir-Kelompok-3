@@ -29,10 +29,10 @@ public class FirstPageStepsPosisi {
 
     @Then("Menampilkan data posisi halaman pertama")
     public void viewFirstPage() throws InterruptedException {
-        driver = DriverSingleton.createOrGetDriver(); // ADD THIS
+        driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPage = new UnitPage(driver); // ADD THIS
-        unitPagePages = new UnitPagePages(driver); // ADD THIS
+        unitPage = new UnitPage(driver);
+        unitPagePages = new UnitPagePages(driver);
         Thread.sleep(1000);
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data halaman tidak berubah setelah klik first page");
