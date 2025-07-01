@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,7 +34,7 @@ public class UnitPage {
     @FindBy(xpath = "//div[@role='combobox']")
     private WebElement showPageDropdown;
 
-    @FindBy(xpath = "(//button[@aria-label='action'])[1]")
+    @FindBy(xpath = "//button[contains(@class, 'MuiButtonBase-root') and @tabindex='0']")
     WebElement btnAction;
 
     @FindBy(xpath = "(//li[@role='menuitem'])[1]")
@@ -52,7 +53,25 @@ public class UnitPage {
     }
 
     public void bukaAction() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnAction)).click();
+        try {
+            System.out.println("Looking for unit action button...");
+            WebElement actionButton = wait.until(
+                ExpectedConditions.elementToBeClickable(btnAction)
+            );
+            actionButton.click();
+            System.out.println("Unit action button clicked successfully");
+        } catch (TimeoutException e) {
+            System.out.println("Primary unit action button not found, trying alternatives");
+            try {
+                WebElement fallbackButton = driver.findElement(
+                    By.xpath("//tr//button[contains(@class, 'MuiButtonBase-root')]")
+                );
+                fallbackButton.click();
+                System.out.println("Fallback unit action button clicked");
+            } catch (Exception ex) {
+                throw new RuntimeException("Cannot find unit action button", ex);
+            }
+        }
     }
 
     public void action01() {

@@ -3,6 +3,7 @@ package com.juaracoding.apitest.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,7 +24,7 @@ public class UnitPageAddUnit {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//button[normalize-space(text())='Tambahkan']")
+    @FindBy(xpath = "//button[contains(text(), 'Tambahkan') or contains(text(), 'Add')]")
     WebElement btnTambahkan;
 
     @FindBy(xpath = "//input[@id='name']")
@@ -63,7 +64,37 @@ public class UnitPageAddUnit {
     WebElement notifRequiredName;
 
     public void clickButtonTambahkan() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnTambahkan)).click();
+        try {
+            System.out.println("Looking for Tambahkan button...");
+            WebElement tambahButton = wait.until(
+                ExpectedConditions.elementToBeClickable(btnTambahkan)
+            );
+            tambahButton.click();
+            System.out.println("Tambahkan button clicked successfully");
+        } catch (TimeoutException e) {
+            System.out.println("Primary Tambahkan button not found, trying alternatives");
+            
+            String[] alternativeXpaths = {
+                "//button[contains(text(), 'Add')]",
+                "//button[contains(@class, 'add')]",
+                "//button[@type='button'][contains(., 'Tambah')]"
+            };
+            
+            for (String xpath : alternativeXpaths) {
+                try {
+                    WebElement altButton = driver.findElement(By.xpath(xpath));
+                    if (altButton.isDisplayed() && altButton.isEnabled()) {
+                        altButton.click();
+                        System.out.println("Alternative Tambahkan button clicked: " + xpath);
+                        return;
+                    }
+                } catch (Exception ex) {
+                    continue;
+                }
+            }
+            
+            throw new RuntimeException("Cannot find Tambahkan button with any strategy", e);
+        }
     }
 
     public void inputNama(String nama) {
@@ -91,17 +122,31 @@ public class UnitPageAddUnit {
 
     public void pilihUnitShiftDetail(String namaShift) {
         try {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                    By.xpath("//button[normalize-space(text())='Tambah']")));
-        } catch (Exception ignored) {
+            System.out.println("Selecting shift detail: " + namaShift);
+            
+            String xpath = "//li[@role='option' and text()='" + namaShift + "']";
+            
+            WebElement shiftElement = wait.until(
+                ExpectedConditions.elementToBeClickable(By.xpath(xpath))
+            );
+            
+            shiftElement.click();
+            System.out.println("Shift detail selected: " + namaShift);
+            
+        } catch (TimeoutException e) {
+            System.out.println("Primary xpath failed, trying alternative for: " + namaShift);
+            
+            String altXpath = "//li[contains(text(), '" + namaShift + "')]";
+            try {
+                WebElement element = wait.until(
+                    ExpectedConditions.elementToBeClickable(By.xpath(altXpath))
+                );
+                element.click();
+                System.out.println("Alternative xpath successful for: " + namaShift);
+            } catch (Exception ex) {
+                throw new RuntimeException("Cannot select shift detail: " + namaShift, ex);
+            }
         }
-        WebElement dropdown =
-                wait.until(ExpectedConditions.elementToBeClickable(dropdownShiftView));
-        dropdown.click();
-
-        WebElement opsi = wait.until(ExpectedConditions
-                .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaShift + "']")));
-        opsi.click();
     }
 
     public void pilihAturanCuti(String namaAturan) {
