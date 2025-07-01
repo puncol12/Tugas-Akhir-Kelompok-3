@@ -1,6 +1,8 @@
 package com.juaracoding.apitest.pages;
 
-import com.juaracoding.apitest.utils.BrowserUtility;
+import java.time.Duration;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,8 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.List;
+import com.juaracoding.apitest.utils.BrowserUtility;
 
 public class PagePosisi {
     private final WebDriver driver;
@@ -38,7 +39,6 @@ public class PagePosisi {
 
     @FindBy(xpath = "//div[contains(@style, 'opacity: 1')]/ul/li[text()='Delete']")
     WebElement btnDeletePosisi;
-
 
     @FindBy(xpath = "//button[@type='submit' and contains(.,'Simpan')]")
     WebElement simpanButton;
@@ -68,11 +68,9 @@ public class PagePosisi {
     @FindBy(xpath = "//div[normalize-space(text())='Berhasil Edit Posisi']")
     WebElement notifBerhasilEditPosisi;
 
-
     public void bukaSubmenuPosisi() {
         wait.until(ExpectedConditions.elementToBeClickable(subMenuPosisi)).click();
     }
-
 
     public boolean isSearchResultDisplayedPosisi(String keyword) {
         List<WebElement> result = driver.findElements(By.xpath(
@@ -80,7 +78,6 @@ public class PagePosisi {
         return !result.isEmpty();
     }
 
-    //menu edit
     public void klikTombolTitik3() {
         wait.until(ExpectedConditions.elementToBeClickable(tombolTitik3)).click();
     }
@@ -93,13 +90,11 @@ public class PagePosisi {
         wait.until(ExpectedConditions.elementToBeClickable(batalButton)).click();
     }
 
-
     public void inputDepartment(String dept) {
         dropdownDept.click();
         WebElement opsi = wait.until(ExpectedConditions
                 .elementToBeClickable(By.xpath("//li[normalize-space()='" + dept + "']")));
         opsi.click();
-
     }
 
     public String getErrorMessageTambah() {
@@ -111,7 +106,6 @@ public class PagePosisi {
         wait.until(ExpectedConditions.elementToBeClickable(btnEditPosisi)).click();
     }
 
-    //menu delete
     public void halamanKonfirmasiHapus() {
         wait.until(ExpectedConditions.visibilityOf(halamanHapus)).isDisplayed();
     }

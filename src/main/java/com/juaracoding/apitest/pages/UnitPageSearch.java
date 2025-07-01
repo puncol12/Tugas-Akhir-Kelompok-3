@@ -25,11 +25,11 @@ public class UnitPageSearch {
     WebElement searchField;
 
     // button search
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(xpath = "//button[@type='submit' and contains(.,'Search')]")
     WebElement buttonSearch;
 
     // button reset search
-    @FindBy(xpath = "//*[contains(@class,'reset')]")
+    @FindBy(xpath = "//button[@type='button' and contains(.,'Reset')]")
     WebElement buttonReset;
 
     public void searchUnit(String keyword) {

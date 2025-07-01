@@ -35,7 +35,7 @@ public class UnitPageAddUnit {
     @FindBy(xpath = "//input[@id='calendar']")
     WebElement dropdownCalendar;
 
-    @FindBy(xpath = "//input[@id='shifting_id']")
+    @FindBy(xpath = "//input[@id='shifting_id' and @role='combobox']")
     WebElement dropdownShiftView;
 
     @FindBy(xpath = "//input[@id='unitLeave']")
@@ -90,15 +90,7 @@ public class UnitPageAddUnit {
     }
 
     public void pilihUnitShiftDetail(String namaShift) {
-        try {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                    By.xpath("//button[normalize-space(text())='Tambah']")));
-        } catch (Exception ignored) {
-        }
-        WebElement dropdown =
-                wait.until(ExpectedConditions.elementToBeClickable(dropdownShiftView));
-        dropdown.click();
-
+        dropdownShiftView.click();
         WebElement opsi = wait.until(ExpectedConditions
                 .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaShift + "']")));
         opsi.click();
