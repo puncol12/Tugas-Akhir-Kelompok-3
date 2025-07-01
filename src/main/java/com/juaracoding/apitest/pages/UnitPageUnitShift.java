@@ -1,5 +1,6 @@
 package com.juaracoding.apitest.pages;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 

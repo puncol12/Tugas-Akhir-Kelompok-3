@@ -1,58 +1,29 @@
-@User
-Feature: User Search, Filter And Export
+Feature: User 01
 
-  Scenario: Pencarian Nama den Reset
+  Scenario: Edit User dengan Upload Foto Karyawan kurang dari 2 MB
     Given Login dengan user valid
     When Klik menu Management
     And Klik submenu User
-    And Klik Export pakai kombinasi API Defult
     And Pilih Pencarian Nama
     And Masukan Pencarian "yusuf"
     And Klik tombol Search
-    And Klik Export pakai kombinasi API Nama
-    And Klik tombol Reset
-    Then Menampilkan data yang dicari berdasarkan Status yang dipilih
-
-  Scenario: Pencarian NIK
-    And Pilih Pencarian NIK
-    And Masukan Pencarian "D6210519"
-    And Klik tombol Search
-    And Klik Export pakai kombinasi API NIK
-    And Klik tombol Reset
-    Then Menampilkan data yang dicari berdasarkan Status yang dipilih
-
-  Scenario: Terapkan Filter by Unit
-    Given Klik Filter
-    When Pilih unit "1 Tambah Unit Aturan Cuti kosong"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
-
-  Scenario: Terapkan Filter by Job Level
-    Given Klik Filter
-    When Pilih Job Level "TC-A-001"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
-
-  Scenario: Terapkan Filter by Tipe Karyawan
-    Given Klik Filter
-    When Pilih Tipe Karyawan "Magang"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
-
-  Scenario: Terapkan Filter by Posisi Kerja
-    Given Klik Filter
-    When Pilih Posisi Kerja "1234567890"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
-
-  Scenario: Terapkan Filter by Lokasi Kerja
-    Given Klik Filter
-    When Pilih Lokasi Kerja "Cyber200"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
-
-  Scenario: Terapkan Filter by Status
-    Given Klik Filter
-    When Pilih Status "Tidak Aktif"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
+    And Klik tombol titik 3 pada salah satu unit
+    And Klik tombol Edit
+    And Klik icon Hapus
+    And Upload file foto yang berukuran kurang dari 2 MB
+    And Isi NIK "D7240017"
+    And Isi Nama Karyawan "Jemes Pete"
+    And Isi Email "jamesjampes@mail.com"
+    And Pilih Devisi "123456"
+    And Pilih Unit "BCA Biro Quality Assurance, Support & System Development"
+    And Pilih Tipe Kontrak "Magang"
+    And Pilih Edit Posisi Kerja "Quality Assurance"
+    And Pilih Jabatan "Sigma Boy"
+    And Pilih Edit Lokasi Kerja "DIKA Balikpapan"
+    And Pilih Tipe Shift "Shift"
+    And Pilih Jadwal Kerja "SQA-Testing-Auto"
+    And Pilih Selfie "No Selfie"
+    And Isi Jumlah Cuti 10
+    # And 25. Klik Aktifkan Tracking
+    # And 26. Aktifkan Project
+    # And 27. Klik Submit"

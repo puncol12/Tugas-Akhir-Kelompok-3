@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import com.juaracoding.apitest.utils.BrowserUtility;
 
 public class UserPage {
 
@@ -60,6 +61,54 @@ public class UserPage {
     @FindBy(xpath = "//div[@id='demo-select-small' and @role='combobox']")
     WebElement dropdownFilterStatus;
 
+    @FindBy(xpath = "//button[@aria-label='Hapus']")
+    WebElement iconHapus;
+
+    @FindBy(xpath = "//input[@id='nik']")
+    WebElement inputNik;
+
+    @FindBy(xpath = "//input[@id='fullname']")
+    WebElement inputFullname;
+
+    @FindBy(xpath = "//input[@id='email']")
+    WebElement inputEmail;
+
+    @FindBy(xpath = "//input[@id='divisi' and @role='combobox']")
+    WebElement dropdownDivisi;
+
+    @FindBy(xpath = "//input[@id='unit' and @role='combobox']")
+    WebElement dropdownUnit;
+
+    @FindBy(xpath = "//input[@id='tipe-kontrak' and @role='combobox']")
+    WebElement dropdownTypeKontrak;
+
+    @FindBy(xpath = "//input[@id='posisi-kerja' and @role='combobox']")
+    WebElement dropdownPosisiKerja;
+
+    @FindBy(xpath = "//input[@id='jabatan' and @role='combobox']")
+    WebElement dropdownJabatan;
+
+    @FindBy(xpath = "//input[@id='atasan' and @role='combobox']")
+    WebElement dropdownAtasan;
+
+    @FindBy(xpath = "//input[@id='atasan-v3' and @role='combobox']")
+    WebElement dropdownAtasanV3;
+
+    @FindBy(xpath = "//input[@id='lokasi-kerja' and @role='combobox']")
+    WebElement dropdownLoksaiKerja;
+
+    @FindBy(xpath = "//div[@id='tipe-shift' and @role='combobox']")
+    WebElement dropdownTypeShift;
+
+    @FindBy(xpath = "//input[@id='jadwal-kerja' and @role='combobox']")
+    WebElement dropdownJadwal;
+
+    @FindBy(xpath = "//div[@id='required_selfie' and @role='combobox']")
+    WebElement dropdownSelfie;
+
+    @FindBy(xpath = "//input[@id='jumlah-cuti' and @type='number']")
+    WebElement inputJumlahCuti;
+
     public void submenuUser() {
         wait.until(ExpectedConditions.elementToBeClickable(submenuUser)).click();
     }
@@ -86,6 +135,133 @@ public class UserPage {
 
     public void btnExport() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonExport)).click();
+    }
+
+    public void hapusGambar() {
+        wait.until(ExpectedConditions.elementToBeClickable(iconHapus)).click();
+    }
+
+    public void inputNik(String nik) {
+        if (BrowserUtility.clearValueName(inputNik, driver)) {
+            inputNik.sendKeys(nik);
+        }
+    }
+
+    public void inputNama(String nama) {
+        if (BrowserUtility.clearValueName(inputFullname, driver)) {
+            inputFullname.sendKeys(nama);
+        }
+    }
+
+    public void inputEmail(String email) {
+        if (BrowserUtility.clearValueName(inputEmail, driver)) {
+            inputEmail.sendKeys(email);
+        }
+    }
+
+    public void inputDivisi(String divisi) {
+        if (BrowserUtility.clearValueName(dropdownDivisi, driver)) {
+            dropdownDivisi.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + divisi + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputUnit(String unit) {
+        if (BrowserUtility.clearValueName(dropdownUnit, driver)) {
+            dropdownUnit.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + unit + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputKontrak(String kontrak) {
+        if (BrowserUtility.clearValueName(dropdownTypeKontrak, driver)) {
+            dropdownTypeKontrak.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + kontrak + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputPosisi(String posisi) {
+        if (BrowserUtility.clearValueName(dropdownPosisiKerja, driver)) {
+            dropdownPosisiKerja.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + posisi + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputJabatan(String jabatan) {
+        if (BrowserUtility.clearValueName(dropdownJabatan, driver)) {
+            dropdownJabatan.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + jabatan + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputAtasan(String atasan) {
+        if (BrowserUtility.clearValueName(dropdownAtasan, driver)) {
+            dropdownAtasan.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + atasan + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputAtasanV3(String atasanV3) {
+        if (BrowserUtility.clearValueName(dropdownAtasanV3, driver)) {
+            dropdownAtasanV3.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + atasanV3 + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputLokasiKerja(String LokasiKerja) {
+        if (BrowserUtility.clearValueName(dropdownLoksaiKerja, driver)) {
+            dropdownLoksaiKerja.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + LokasiKerja + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputShift(String shift) {
+        if (BrowserUtility.clearValueName(dropdownTypeShift, driver)) {
+            dropdownTypeShift.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + shift + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputJadwal(String jadwal) {
+        if (BrowserUtility.clearValueName(dropdownJadwal, driver)) {
+            dropdownJadwal.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + jadwal + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputSelfie(String selfie) {
+        if (BrowserUtility.clearValueName(dropdownSelfie, driver)) {
+            dropdownSelfie.click();
+            WebElement opsi = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + selfie + "']")));
+            opsi.click();
+        }
+    }
+
+    public void inputJumlahCuti(int cuti) {
+        if (BrowserUtility.clearValueName(inputJumlahCuti, driver)) {
+            inputJumlahCuti.sendKeys(String.valueOf(cuti));
+        }
     }
 
     public void filterUnit(String namaUnit) {
