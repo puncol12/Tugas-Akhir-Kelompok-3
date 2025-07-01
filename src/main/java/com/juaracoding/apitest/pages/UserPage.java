@@ -60,6 +60,41 @@ public class UserPage {
     @FindBy(xpath = "//div[@id='demo-select-small' and @role='combobox']")
     WebElement dropdownFilterStatus;
 
+    //Tambahan 
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement buttonSubmit;
+
+    @FindBy(xpath = "//input[@id='search']")
+    WebElement inputSearch;
+
+    @FindBy(xpath = "//button[contains(text(), 'Search')]")
+    WebElement buttonSearch;
+
+
+
+    // XPath Toggle User Project
+    @FindBy(xpath = "//tbody/tr[@class='MuiTableRow-root css-9arnca']/td[6]/span[1]/span[1]/input[1]")
+    WebElement toggleUserProject;
+
+
+    // Xpath Toggle Active
+    //@FindBy(xpath = "//tbody/tr[@class='MuiTableRow-root css-9arnca']/td[6]/span[1]/span[1]/input[1]")
+    //WebElement toggleActive;
+
+    // Xpath Notification
+    @FindBy(xpath = "//div[normalize-space(text())='Project diaktifkan']")
+    WebElement projectActiveMessage;
+
+    @FindBy(xpath = "//div[normalize-space(text())='Project dinonaktifkan']")
+    WebElement projectNonActiveMessage;
+
+    @FindBy(xpath = "//div[normalize-space(text())='User diaktifkan']")
+    WebElement activeMessage;
+
+    @FindBy(xpath = "//div[normalize-space(text())='User dinonaktifkan']")
+    WebElement nonActiveMessage;
+
+
     public void submenuUser() {
         wait.until(ExpectedConditions.elementToBeClickable(submenuUser)).click();
     }
@@ -86,6 +121,42 @@ public class UserPage {
 
     public void btnExport() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonExport)).click();
+    }
+    
+    // Tambahan
+    public void btnSubmit() {
+        wait.until(ExpectedConditions.elementToBeClickable(buttonSubmit)).click();
+    }
+
+    public void inputSearchData(String data) {
+        wait.until(ExpectedConditions.visibilityOf(inputSearch)).clear();
+        inputSearch.sendKeys(data);
+    }
+
+    public void btnSearch() {
+        wait.until(ExpectedConditions.elementToBeClickable(buttonSearch)).click();
+    }
+
+    // Method toggle User Project - Satu method untuk aktif/nonaktif
+    public void clickToggleUserProject() {
+        wait.until(ExpectedConditions.elementToBeClickable(toggleUserProject)).click();
+    }
+
+    // Method Notification
+    public boolean isNotificationDisplayedProjectActive() {
+        return wait.until(ExpectedConditions.visibilityOf(projectActiveMessage)).isDisplayed();
+    }
+
+    public boolean isNotificationActiveProjectNonActive() {
+        return wait.until(ExpectedConditions.visibilityOf(projectNonActiveMessage)).isDisplayed();
+    }
+
+    public boolean isNotificationDisplayedActive() {
+        return wait.until(ExpectedConditions.visibilityOf(activeMessage)).isDisplayed();
+    }
+
+    public boolean isNotificationActiveNonActive() {
+        return wait.until(ExpectedConditions.visibilityOf(nonActiveMessage)).isDisplayed();
     }
 
     public void filterUnit(String namaUnit) {
