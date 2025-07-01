@@ -97,6 +97,5 @@ public class VirtualIdUnitSteps {
         Thread.sleep(1000);
         boolean isExsist = unitPageUnitShift.isDataShiftRestored();
         Assert.assertTrue(isExsist, "Virtual ID berhasil diatur");
-        driver.quit();
     }
 }

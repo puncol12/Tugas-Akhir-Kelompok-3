@@ -28,9 +28,6 @@ public class PagePosisiSearch {
     @FindBy(xpath = "//button[@type='submit']")
     WebElement buttonSearchPosisi;
 
-    @FindBy(xpath = "//*[contains(@class,'reset')]")
-    WebElement buttonResetPosisi;
-
     public void searchPosisi(String keyword) {
         closePopupIfVisible();
         waitForBackdropToDisappear();
@@ -45,12 +42,6 @@ public class PagePosisiSearch {
         wait.until(ExpectedConditions.elementToBeClickable(buttonSearchPosisi)).click();
     }
 
-    public void resetButtonPosisi() {
-        closePopupIfVisible();
-        waitForBackdropToDisappear();
-        wait.until(ExpectedConditions.elementToBeClickable(buttonResetPosisi)).click();
-    }
-
     public void waitForBackdropToDisappear() {
         try {
             By backdrop = By.xpath("//div[contains(@class, 'MuiBackdrop-root')]");
@@ -62,7 +53,8 @@ public class PagePosisiSearch {
 
     public void closePopupIfVisible() {
         try {
-            WebElement backdrop = driver.findElement(By.xpath("//div[contains(@class, 'MuiBackdrop-root')]"));
+            WebElement backdrop =
+                    driver.findElement(By.xpath("//div[contains(@class, 'MuiBackdrop-root')]"));
             if (backdrop.isDisplayed()) {
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", backdrop);
                 wait.until(ExpectedConditions.invisibilityOf(backdrop));

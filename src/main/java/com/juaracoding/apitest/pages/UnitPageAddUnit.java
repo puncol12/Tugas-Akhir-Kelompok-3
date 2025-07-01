@@ -36,7 +36,7 @@ public class UnitPageAddUnit {
     @FindBy(xpath = "//input[@id='calendar']")
     WebElement dropdownCalendar;
 
-    @FindBy(xpath = "//input[@id='shifting_id']")
+    @FindBy(xpath = "//input[@id='shifting_id' and @role='combobox']")
     WebElement dropdownShiftView;
 
     @FindBy(xpath = "//input[@id='unitLeave']")
@@ -121,32 +121,10 @@ public class UnitPageAddUnit {
     }
 
     public void pilihUnitShiftDetail(String namaShift) {
-        try {
-            System.out.println("Selecting shift detail: " + namaShift);
-            
-            String xpath = "//li[@role='option' and text()='" + namaShift + "']";
-            
-            WebElement shiftElement = wait.until(
-                ExpectedConditions.elementToBeClickable(By.xpath(xpath))
-            );
-            
-            shiftElement.click();
-            System.out.println("Shift detail selected: " + namaShift);
-            
-        } catch (TimeoutException e) {
-            System.out.println("Primary xpath failed, trying alternative for: " + namaShift);
-            
-            String altXpath = "//li[contains(text(), '" + namaShift + "')]";
-            try {
-                WebElement element = wait.until(
-                    ExpectedConditions.elementToBeClickable(By.xpath(altXpath))
-                );
-                element.click();
-                System.out.println("Alternative xpath successful for: " + namaShift);
-            } catch (Exception ex) {
-                throw new RuntimeException("Cannot select shift detail: " + namaShift, ex);
-            }
-        }
+        dropdownShiftView.click();
+        WebElement opsi = wait.until(ExpectedConditions
+                .elementToBeClickable(By.xpath("//li[normalize-space()='" + namaShift + "']")));
+        opsi.click();
     }
 
     public void pilihAturanCuti(String namaAturan) {

@@ -16,6 +16,10 @@ public class ConfigReader {
   }
 
   public static String get(String key) {
-    return props.getProperty(key);
+    String value = props.getProperty(key);
+    if (value == null) {
+        throw new RuntimeException("Property dengan key '" + key + "' tidak ditemukan di config");
+    }
+    return value;
   }
 }
