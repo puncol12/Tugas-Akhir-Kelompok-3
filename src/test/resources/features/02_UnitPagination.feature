@@ -1,4 +1,5 @@
-Feature: Unit 01 searching, reset searching, next page, previous page, last page, first pag
+@Unit
+Feature: Unit searching, reset searching, next page, previous page, last page, first pag
 
   Scenario: Melakukan search dengan menginput 'Nama Unit'
     Given Login dengan user valid

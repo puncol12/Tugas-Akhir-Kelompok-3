@@ -1,10 +1,8 @@
 @Posisi
 Feature: Posisi
-
   Sebagai Admin
   Admin ingin melakukan pengolaan data Posisi
   Sehingga data dapat ditampilkan, ditambahkan, diubah, dihapus dan dicari
-
 
   Scenario: Menampilkan Menu Posisi
     Given Login dengan user valid
@@ -67,7 +65,6 @@ Feature: Posisi
     And Klik tombol Ya
     Then Data posisi berhasil dihapus
 
-    @Akhiri
   Scenario: Tidak menghapus Posisi
     Given Klik tombol titik 3 pada salah satu data posisi
     When Klik tombol Delete Posisi

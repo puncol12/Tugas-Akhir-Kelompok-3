@@ -1,4 +1,5 @@
-Feature: 03 Unit Shift
+@Unit
+Feature: Unit Shift Detail
 
   Scenario: Verifikasi fungsi tombol 'Shift' untuk dan menambahkan shift
     Given Login dengan user valid
@@ -72,10 +73,10 @@ Feature: 03 Unit Shift
 
   Scenario: Verifikasi Menambahkan detail Shift pada menu view
     Given Klik tombol Tambahkan
-    When Pilih nama shift "Colliers"
+    When Pilih nama shift "punya yusuf"
     And Klik tombol Tambah view
     And Klik tombol Tambahkan
-    And Pilih nama shift "BCA Life"
+    And Pilih nama shift "punya kelompok 3"
     And Klik tombol Tambah view
     And Klik tombol Tambahkan
     And Pilih nama shift "Hatata"
@@ -85,7 +86,7 @@ Feature: 03 Unit Shift
   Scenario: Verifikasi tombol 'edit' pada salah satu view
     Given Klik tombol titik 3 pada salah satu shift view
     When Klik tombol Edit
-    And Pilih nama shift "Admin Warung Weekend"
+    And Pilih nama shift "True Money BSNI"
     And Klik Simpan
     Then Berhasil mengedit nama shift
 
