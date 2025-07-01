@@ -11,8 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static com.juaracoding.apitest.DriverSingleton.driver;
-
 public class BrowserUtility {
 
     public static final String ZOOM_70 = "70%";
@@ -47,7 +45,8 @@ public class BrowserUtility {
         String bottom =
                 position.containsKey("bottom") ? "bottom: " + position.get("bottom") + ", " : "";
         String left = position.containsKey("left") ? "left: " + position.get("left") + ", " : "";
-        String right = position.containsKey("right") ? "right: " + position.get("right") + ", " : "";
+        String right =
+                position.containsKey("right") ? "right: " + position.get("right") + ", " : "";
 
         String script =
                 "window.scrollTo({" + top + bottom + left + right + "behavior: 'smooth'" + "});";
@@ -57,7 +56,8 @@ public class BrowserUtility {
 
     public static void pageScrollFullDown(WebDriver driver) {
         JavascriptExecutor js = javaScript(driver);
-        js.executeScript("window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });");
+        js.executeScript(
+                "window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });");
     }
 
     public static void pageScrollFullDownInterval(WebDriver driver) throws InterruptedException {
@@ -121,8 +121,10 @@ public class BrowserUtility {
 
     public static void scrollUpTo(WebElement element, WebDriver driver) {
         JavascriptExecutor js = javaScript(driver);
-        js.executeScript("const rect = arguments[0].getBoundingClientRect();"
-                + "window.scrollBy({ top: rect.bottom - 100, behavior: 'smooth' });", element);
+        js.executeScript(
+                "const rect = arguments[0].getBoundingClientRect();"
+                        + "window.scrollBy({ top: rect.bottom - 100, behavior: 'smooth' });",
+                element);
     }
 
     public static void fuckClick(WebDriver driver, int index) {
@@ -142,5 +144,4 @@ public class BrowserUtility {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return (String) js.executeScript("return arguments[0].validationMessage;", element);
     }
-
 }

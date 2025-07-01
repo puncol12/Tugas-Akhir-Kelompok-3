@@ -137,10 +137,6 @@ public class UnitPageUnitShift {
         wait.until(ExpectedConditions.elementToBeClickable(btnActionVirtual)).click();
     }
 
-    // public void inputUploudFoto(String filepath) {
-    //     wait.until(ExpectedConditions.visibilityOf(inputUploadFoto)).sendKeys(filepath);
-    // }
-
     public void inputUploadFoto(String filepath) {
         WebElement uploadInput = wait.until(
                 ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='file']")));
@@ -163,12 +159,6 @@ public class UnitPageUnitShift {
         if (BrowserUtility.clearValueName(inputColorHex, driver)) {
             inputColorHex.sendKeys(colorCode);
         }
-        // wait.until(ExpectedConditions.visibilityOf(inputColorHex)).clear();
-        // inputColorHex.sendKeys(colorCode);
-        // String xpath = "//button[@aria-label='color-" + colorCode + "']";
-        // WebElement colorButton =
-        //         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-        // colorButton.click();
     }
 
     public void closeColorPicker() {

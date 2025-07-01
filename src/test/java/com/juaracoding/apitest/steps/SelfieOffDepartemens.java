@@ -49,6 +49,5 @@ public class SelfieOffDepartemens {
         } else {
             System.out.println("PASS: Date updated correctly for department: " + selfieDepartmentName);
         }
-        //driver.navigate().refresh();
     }
 }

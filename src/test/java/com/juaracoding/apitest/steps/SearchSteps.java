@@ -37,7 +37,7 @@ public class SearchSteps {
     @And("Klik tombol Search")
     public void userKlikTombolSearch() throws InterruptedException {
         unitPageSearch.searchButton();
-        Thread.sleep(1000);
+        Thread.sleep(10000);
     }
 
     @Then("Data unit yang sesuai dengan pencarian ditampilkan untuk {string}")

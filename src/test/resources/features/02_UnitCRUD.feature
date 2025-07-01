@@ -1,4 +1,5 @@
-Feature: Unit 02 Tambah Unit
+@Unit
+Feature: Unit CRUD
 
   Scenario: Verifikasi fungsi tombol 'Tambahkan' untuk menambah unit baru
     Given Login dengan user valid

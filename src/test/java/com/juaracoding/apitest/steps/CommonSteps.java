@@ -9,6 +9,7 @@ import com.juaracoding.apitest.pages.LoginPage;
 import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UnitSettingPage;
 import com.juaracoding.apitest.pages.UserPage;
+import com.juaracoding.apitest.utils.ConfigReader;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -35,6 +36,7 @@ public class CommonSteps {
 
     @Given("Login dengan user valid")
     public void userLoginDenganKredensialValid() throws InterruptedException {
+        String username = ConfigReader.getProperty("username");
         loginPage.login("admin@hadir.com", "MagangSQA_JC@123");
     }
 

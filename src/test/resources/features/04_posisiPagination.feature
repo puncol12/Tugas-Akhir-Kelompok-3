@@ -1,3 +1,4 @@
+@Posisi
 Feature: Posisi searching, reset searching, next page, previous page, last page, first pag
 
   Scenario: Melakukan search dengan menginput 'Admin'
@@ -28,11 +29,10 @@ Feature: Posisi searching, reset searching, next page, previous page, last page,
     Given Klik go to first page di bagian bawah halaman tambah posisi
     Then Menampilkan data posisi halaman pertama
 
-    @Akhiri
   Scenario Outline: Tampilan data per halaman menggunakan Show Page
     Given Pilih jumlah data <jumlah> yang ingin ditampilkan per halaman di field Show Page Posisi
     Then Data posisi ditampilkan sesuai dengan jumlah <jumlah> yang dipilih di Show Page
 
     Examples:
       | jumlah |
-      | 5      |
+      |      5 |
