@@ -27,17 +27,18 @@ public class CommonSteps {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://magang.dikahadir.com/authentication/login");
-        
+
         loginPage = new LoginPage(driver);
         unitPage = new UnitPage(driver);
-        unitSettingPage = new UnitSettingPage(driver); 
-        userPage  = new UserPage(driver);       
+        unitSettingPage = new UnitSettingPage(driver);
+        userPage = new UserPage(driver);
     }
 
     @Given("Login dengan user valid")
     public void userLoginDenganKredensialValid() throws InterruptedException {
-        String username = ConfigReader.getProperty("username");
-        loginPage.login("admin@hadir.com", "MagangSQA_JC@123");
+        String email = ConfigReader.get("email");
+        String password = ConfigReader.get("password");
+        loginPage.login(email, password);
     }
 
     @When("Klik menu Management")
