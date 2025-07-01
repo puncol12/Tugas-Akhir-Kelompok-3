@@ -8,7 +8,6 @@ import org.testng.Assert;
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UserPage;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -24,13 +23,6 @@ public class UserProjectNonActiveSteps {
         userPage = new UserPage(driver);
     }
 
-    @Given("Cari User dengan data {string}")
-    public void cariUserDenganData(String data) throws InterruptedException {
-        userPage.inputSearchData(data);
-        Thread.sleep(500);
-        userPage.btnSearch();
-        Thread.sleep(2000);
-    }
 
     @When("Klik Tombol User Project yang aktif")
     public void klikTombolUserProjectAktif() throws InterruptedException {

@@ -71,15 +71,13 @@ public class UserPage {
     WebElement buttonSearch;
 
 
-
     // XPath Toggle User Project
-    @FindBy(xpath = "//tbody/tr[@class='MuiTableRow-root css-9arnca']/td[6]/span[1]/span[1]/input[1]")
+    @FindBy(xpath = "(//span[contains(@class, 'MuiSwitch-root')])[2]")
     WebElement toggleUserProject;
 
-
     // Xpath Toggle Active
-    //@FindBy(xpath = "//tbody/tr[@class='MuiTableRow-root css-9arnca']/td[6]/span[1]/span[1]/input[1]")
-    //WebElement toggleActive;
+    @FindBy(xpath = "(//span[contains(@class, 'MuiSwitch-root')])[1]")
+    WebElement toggleActive;
 
     // Xpath Notification
     @FindBy(xpath = "//div[normalize-space(text())='Project diaktifkan']")
@@ -140,6 +138,10 @@ public class UserPage {
     // Method toggle User Project - Satu method untuk aktif/nonaktif
     public void clickToggleUserProject() {
         wait.until(ExpectedConditions.elementToBeClickable(toggleUserProject)).click();
+    }
+
+    public void clickToggleUser() {
+        wait.until(ExpectedConditions.elementToBeClickable(toggleActive)).click();
     }
 
     // Method Notification

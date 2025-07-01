@@ -24,7 +24,7 @@ public class UserActiveSteps {
 
     @When("Klik Tombol Status Active yang tidak aktif")
     public void klikTombolUserProjectTidakAktif() throws InterruptedException {
-    //userPage.clickToggleUserProject();
+    userPage.clickToggleUser();
     Thread.sleep(1000);
 }
 

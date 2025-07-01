@@ -10,7 +10,14 @@ Feature: Menghidupkan dan Mematikan User Project
     Then Muncul Notifikasi project diaktifkan
 
   Scenario: Mematikan User Project
-    Given Cari User dengan data "234234"
-    When Klik Tombol User Project yang aktif
+    Given Klik Tombol User Project yang aktif
     Then Muncul Notifikasi project dinonaktifkan
+
+  Scenario:Menyalakan Active
+    Given Klik Tombol Status Active yang tidak aktif
+    Then Muncul Notifikasi user diaktifkan
+
+  Scenario: Mematikan Active
+    Given Klik Tombol Acvite yang aktif
+    Then Muncul Notifikasi user dinonaktifkan
     
