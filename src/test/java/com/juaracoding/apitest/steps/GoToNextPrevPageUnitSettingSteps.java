@@ -21,7 +21,7 @@ public class GoToNextPrevPageUnitSettingSteps {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPagePages = new UnitPagePages(driver);
         unitPagePages.clickNextPage();
-        Thread.sleep(2000);
+        Thread.sleep(1000); //2000
     }
     
   @Then("Klik go to previous page di bagian bawah halaman unit setting")
@@ -30,6 +30,6 @@ public class GoToNextPrevPageUnitSettingSteps {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         unitPagePages = new UnitPagePages(driver);
         unitPagePages.clickPreviousPage();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
 }

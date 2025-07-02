@@ -27,13 +27,6 @@ public class PagePosisi {
     @FindBy(xpath = "(//p[contains(., 'Posisi')])[1]")
     WebElement subMenuPosisi;
 
-    // Input search
-    @FindBy(xpath = "//input[@id='search']")
-    WebElement searchField;
-
-    @FindBy(xpath = "//button[@type='submit']")
-    WebElement buttonSearch;
-
     @FindBy(xpath = "//div[contains(@style, 'opacity: 1')]/ul/li[text()='Edit']")
     WebElement btnEditPosisi;
 
@@ -61,12 +54,6 @@ public class PagePosisi {
 
     @FindBy(xpath = "//h2[@id='alert-dialog-slide-title']")
     WebElement halamanHapus;
-
-    @FindBy(xpath = "//div[normalize-space(text())='Berhasil Menambahkan Posisi']")
-    WebElement notifBerhasilPosisi;
-
-    @FindBy(xpath = "//div[normalize-space(text())='Berhasil Edit Posisi']")
-    WebElement notifBerhasilEditPosisi;
 
     public void bukaSubmenuPosisi() {
         wait.until(ExpectedConditions.elementToBeClickable(subMenuPosisi)).click();

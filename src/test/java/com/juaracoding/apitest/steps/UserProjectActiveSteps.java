@@ -29,7 +29,7 @@ public class UserProjectActiveSteps {
         userPage.inputSearchData(data);
         Thread.sleep(500);
         userPage.btnSearch();
-        Thread.sleep(2000);
+        Thread.sleep(10000);
     }
 
     @When("Klik Tombol User Project yang tidak aktif")

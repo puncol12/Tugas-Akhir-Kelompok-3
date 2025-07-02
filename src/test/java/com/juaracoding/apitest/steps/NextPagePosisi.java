@@ -1,14 +1,16 @@
 package com.juaracoding.apitest.steps;
 
-import com.juaracoding.apitest.DriverSingleton;
-import com.juaracoding.apitest.pages.UnitPage;
-import com.juaracoding.apitest.pages.UnitPagePages;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import java.time.Duration;
+import com.juaracoding.apitest.DriverSingleton;
+import com.juaracoding.apitest.pages.UnitPage;
+import com.juaracoding.apitest.pages.UnitPagePages;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 
 public class NextPagePosisi {
     WebDriver driver;
@@ -23,7 +25,7 @@ public class NextPagePosisi {
         unitPagePages = new UnitPagePages(driver);
 
         unitPagePages.clickNextPage();
-        Thread.sleep(2000);
+        Thread.sleep(1000); //2000
     }
 
     @Then("Menampilkan data posisi halaman selanjutnya")

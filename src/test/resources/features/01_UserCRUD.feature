@@ -1,4 +1,4 @@
-Feature: User 01
+Feature: User CRUD
 
   Scenario: Edit User dengan Mengosongkan Salah satu Data
     Given Login dengan user valid

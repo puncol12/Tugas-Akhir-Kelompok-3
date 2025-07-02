@@ -15,7 +15,7 @@ Feature: User Search, Filter And Export
 
   Scenario: Pencarian NIK
     And Pilih Pencarian NIK
-    And Masukan Pencarian "D6210519"
+    And Masukan Pencarian "D7240017"
     And Klik tombol Search
     And Klik Export
     And Klik tombol Reset
@@ -47,7 +47,7 @@ Feature: User Search, Filter And Export
 
   Scenario: Terapkan Filter by Lokasi Kerja
     Given Klik Filter
-    When Pilih Lokasi Kerja "Cyber200"
+    When Pilih Lokasi Kerja "123456"
     And Klik Terapkan
     Then Menampilkan data yang dicari
 

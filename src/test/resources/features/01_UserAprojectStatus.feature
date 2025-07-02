@@ -5,7 +5,7 @@ Feature: Menghidupkan dan Mematikan User Project
     Given Login dengan user valid
     When Klik menu Management
     And Klik submenu User
-    And Masukkan data untuk pencarian "234234"
+    And Masukkan data untuk pencarian "1 jemes apete"
     And Klik Tombol User Project yang tidak aktif
     Then Muncul Notifikasi project diaktifkan
 
