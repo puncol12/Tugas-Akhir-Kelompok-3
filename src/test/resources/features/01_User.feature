@@ -1,58 +1,46 @@
-@User
-Feature: User Search, Filter And Export
+Feature: User 01
 
-  Scenario: Pencarian Nama den Reset
+  Scenario: Edit User dengan Mengosongkan Salah satu Data
     Given Login dengan user valid
     When Klik menu Management
     And Klik submenu User
-    And Klik Export pakai kombinasi API Defult
     And Pilih Pencarian Nama
-    And Masukan Pencarian "yusuf"
+    And Masukan Pencarian "jemes"
     And Klik tombol Search
-    And Klik Export pakai kombinasi API Nama
-    And Klik tombol Reset
-    Then Menampilkan data yang dicari berdasarkan Status yang dipilih
+    And Klik tombol titik 3 pada salah satu unit
+    And Klik tombol Edit
+    And Isi NIK ""
+    And Klik Submit Edit
+    Then Tampil pesan error wajib diisi
 
-  Scenario: Pencarian NIK
-    And Pilih Pencarian NIK
-    And Masukan Pencarian "D6210519"
-    And Klik tombol Search
-    And Klik Export pakai kombinasi API NIK
-    And Klik tombol Reset
-    Then Menampilkan data yang dicari berdasarkan Status yang dipilih
+  Scenario: Edit User dengan Upload Foto Karyawan lebih dari 2 MB
+    Given Klik icon Hapus
+    When Upload file foto yang berukuran lebih dari 2 MB
+    And Klik Submit
+    Then Foto tidak Terupload
 
-  Scenario: Terapkan Filter by Unit
-    Given Klik Filter
-    When Pilih unit "1 Tambah Unit Aturan Cuti kosong"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
+  Scenario: Edit User dengan Upload Foto Karyawan kurang dari 2 MB
+    Given Upload file foto yang berukuran kurang dari 2 MB
+    When Isi NIK "D7240017"
+    And Isi Nama Karyawan "1 Pete"
+    And Isi Email "jamesjampes@gmail.com"
+    And Pilih Devisi "123456"
+    And Pilih Unit "BCA Biro Quality Assurance, Support & System Development"
+    And Pilih Tipe Kontrak "Magang"
+    And Pilih Edit Posisi Kerja "Quality Assurance"
+    And Pilih Jabatan "Sigma Boy"
+    And Pilih Edit Lokasi Kerja "DIKA Balikpapan"
+    And Pilih Tipe Shift "Shift"
+    And Pilih Jadwal Kerja "SQA-Testing-Auto"
+    And Pilih Selfie "No Selfie"
+    And Isi Jumlah Cuti 10
+    And Klik Tombol Status Active yang tidak aktif
+    And Klik Tombol User Project yang tidak aktif
+    And Klik Submit
+    Then Data Berhasil diubah dan aktifkan tracking dan projek akan menyala
 
-  Scenario: Terapkan Filter by Job Level
-    Given Klik Filter
-    When Pilih Job Level "TC-A-001"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
-
-  Scenario: Terapkan Filter by Tipe Karyawan
-    Given Klik Filter
-    When Pilih Tipe Karyawan "Magang"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
-
-  Scenario: Terapkan Filter by Posisi Kerja
-    Given Klik Filter
-    When Pilih Posisi Kerja "1234567890"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
-
-  Scenario: Terapkan Filter by Lokasi Kerja
-    Given Klik Filter
-    When Pilih Lokasi Kerja "Cyber200"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
-
-  Scenario: Terapkan Filter by Status
-    Given Klik Filter
-    When Pilih Status "Tidak Aktif"
-    And Klik Terapkan
-    Then Menampilkan data yang dicari
+  Scenario: Lihat Sisa Cuti
+    Given Klik tombol titik 3 pada salah satu unit
+    When Klik tombol Lihat Sisa Cuti
+    And Klik tombol Tutup
+    Then Menampilkan Sisa Cuti

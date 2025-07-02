@@ -9,7 +9,6 @@ import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UnitPageSearch;
 import com.juaracoding.apitest.pages.UserPage;
-import com.juaracoding.apitest.utils.ExportHelper;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -20,8 +19,6 @@ public class UserMenuActionSteps {
     UnitPage unitPage;
     UserPage userPage;
     UnitPageSearch unitPageSearch;
-
-    String keywordSearch = "";
 
     public UserMenuActionSteps() {
         driver = DriverSingleton.createOrGetDriver();
@@ -42,7 +39,6 @@ public class UserMenuActionSteps {
     @And("Masukan Pencarian {string}")
     public void inputPencarian(String keyword) throws InterruptedException {
         unitPageSearch.searchUnit(keyword);
-        keywordSearch = keyword;
         Thread.sleep(1000);
     }
 
@@ -105,36 +101,6 @@ public class UserMenuActionSteps {
     public void clickTerapkan() throws InterruptedException {
         userPage.btnTerapkan();
         Thread.sleep(5000);
-    }
-
-    @And("Klik Export pakai kombinasi API Defult")
-    public void exportDenganApiLangsung() throws InterruptedException {
-        String downloadPath = System.getProperty("user.home") + "/Downloads";
-        String timestamp = String.valueOf(System.currentTimeMillis());
-        String fileName = "export-users-defulft-" + timestamp + ".xlsx";
-        Thread.sleep(1000);
-
-        ExportHelper.downloadExportFile(downloadPath, fileName, null, null);
-    }
-
-    @And("Klik Export pakai kombinasi API Nama")
-    public void exportDenganApiNama() throws InterruptedException {
-        String downloadPath = System.getProperty("user.home") + "/Downloads";
-        String timestamp = String.valueOf(System.currentTimeMillis());
-        String fileName = "export-users-" + keywordSearch + "-" + timestamp + ".xlsx";
-        Thread.sleep(1000);
-
-        ExportHelper.downloadExportFile(downloadPath, fileName, keywordSearch, null);
-    }
-
-    @And("Klik Export pakai kombinasi API NIK")
-    public void exportDenganApiNik() throws InterruptedException {
-        String downloadPath = System.getProperty("user.home") + "/Downloads";
-        String timestamp = String.valueOf(System.currentTimeMillis());
-        String fileName = "export-users-" + keywordSearch + "-" + timestamp + ".xlsx";
-        Thread.sleep(1000);
-
-        ExportHelper.downloadExportFile(downloadPath, fileName, null, keywordSearch);
     }
 
     @Then("Menampilkan data yang dicari berdasarkan Status yang dipilih")

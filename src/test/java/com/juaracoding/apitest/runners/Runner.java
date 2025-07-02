@@ -6,8 +6,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = {
                 // "src/test/resources/features"
-                // "src/test/resources/features/01_User.feature",
-                "src/test/resources/features/01_UserProjectStatus.feature",
+                "src/test/resources/features/01_User.feature",
+                // "src/test/resources/features/01_UserProjectStatus.feature",
                 // "src/test/resources/features/02_UnitCRUD.feature",
                 // "src/test/resources/features/02_UnitPagination.feature",
                 // "src/test/resources/features/02_UnitShiftDetail.feature",

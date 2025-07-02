@@ -127,10 +127,9 @@ public class BrowserUtility {
                 element);
     }
 
-    public static void fuckClick(WebDriver driver, int index) {
-        JavascriptExecutor js = javaScript(driver);
-        js.executeScript("document.querySelector(\"div[style*='opacity: 1'] > ul > li:nth-child("
-                + index + ")\").click()");
+    public static boolean isFieldRequiredAndEmpty(WebDriver driver, WebElement element) {
+        String validationMsg = getValidationMessage(driver, element);
+        return validationMsg != null && !validationMsg.isEmpty();
     }
 
     public static boolean clearValueName(WebElement input, WebDriver driver) {
