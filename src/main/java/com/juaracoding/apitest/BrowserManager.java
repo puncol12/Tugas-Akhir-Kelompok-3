@@ -18,12 +18,14 @@ public class BrowserManager {
     prefs.put("download.directory_upgrade", true); // Upgrade direktori download jika perlu 
     prefs.put("safebrowsing.enabled", false); // mengaktifkan peringatan safe browsing untuk file download
     prefs.put("safebrowsing.disable_download_protection", true);
+    prefs.put("download.default_directory", "C:\\Users\\PNCL\\Downloads\\petewele");
 
     ChromeOptions options = new ChromeOptions();
     options.setExperimentalOption("prefs", prefs);
     options.addArguments("--no-sandbox"); // Bypass OS security model
     options.addArguments("--disable-dev-shm-usage"); // Mengatasi masalah resource terbatas
     options.addArguments("--disable-gpu"); // Wajib untuk beberapa OS, terutama jika headless
+    // chromePrefs.put("download.prompt_for_download", false);
 
     // options.addArguments("--disable-popup-blocking");
     options.addArguments("--disable-extensions");
