@@ -1,4 +1,4 @@
-@Unit
+@MenuManagement
 Feature: Unit Shift Detail
 
   Scenario: Verifikasi fungsi tombol 'Shift' untuk dan menambahkan shift

@@ -23,7 +23,7 @@ public class UserSteps {
     PagePosisi pagePosisi;
 
     public UserSteps() {
-        driver = DriverSingleton.createOrGetDriver();
+        driver = DriverSingleton.driver;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         unitPage = new UnitPage(driver);

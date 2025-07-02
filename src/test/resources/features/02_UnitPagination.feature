@@ -1,4 +1,4 @@
-@Unit
+@MenuManagement
 Feature: Unit searching, reset searching, next page, previous page, last page, first pag
 
   Scenario: Melakukan search dengan menginput 'Nama Unit'

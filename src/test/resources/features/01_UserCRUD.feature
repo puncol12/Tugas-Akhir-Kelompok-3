@@ -1,4 +1,4 @@
-@User
+@MenuManagement
 Feature: User CRUD
 
   Scenario: Edit User dengan Mengosongkan Salah satu Data
@@ -30,7 +30,7 @@ Feature: User CRUD
     And Pilih Tipe Kontrak "Magang"
     And Pilih Edit Posisi Kerja "Quality Assurance"
     And Pilih Jabatan "Sigma Boy"
-    And Pilih Edit Lokasi Kerja "DIKA Balikpapan"
+    And Pilih Edit Lokasi Kerja "111234567890"
     And Pilih Tipe Shift "Shift"
     And Pilih Jadwal Kerja "SQA-Testing-Auto"
     And Pilih Selfie "No Selfie"

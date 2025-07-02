@@ -19,7 +19,7 @@ public class UnitShihtSteps {
     UnitPage unitPage;
 
     public UnitShihtSteps() {
-        driver = DriverSingleton.createOrGetDriver();
+        driver = DriverSingleton.driver;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         unitPage = new UnitPage(driver);

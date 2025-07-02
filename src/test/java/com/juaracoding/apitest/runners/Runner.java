@@ -5,9 +5,9 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = {
-                // "src/test/resources/features"
+                "src/test/resources/features"
                 // "src/test/resources/features/01_UserAprojectStatus.feature",
-                "src/test/resources/features/01_UserCRUD.feature",
+                // "src/test/resources/features/01_UserCRUD.feature",
                 // "src/test/resources/features/01_UserFilter.feature",
                 // "src/test/resources/features/02_UnitCRUD.feature",
                 // "src/test/resources/features/02_UnitPagination.feature",
@@ -19,9 +19,11 @@ import io.cucumber.testng.CucumberOptions;
                 // "src/test/resources/features/04_posisiPagination.feature",
         },
         plugin = {
-                "pretty:target/pretty.txt", "html:target/cucumber-reports/index.html",
+                "pretty:target/pretty.txt", 
+                "html:target/cucumber-reports/index.html",
                 "json:target/cucumber-reports/index.json",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                "com.juaracoding.apitest.listener.TestExecutionListener",
         },
         glue = {
                 "com.juaracoding.apitest.hooks",

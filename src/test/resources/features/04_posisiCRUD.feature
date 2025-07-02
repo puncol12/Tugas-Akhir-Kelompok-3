@@ -1,4 +1,4 @@
-@Posisi
+@MenuManagement
 Feature: Posisi
   Sebagai Admin
   Admin ingin melakukan pengolaan data Posisi

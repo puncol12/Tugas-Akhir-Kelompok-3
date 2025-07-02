@@ -1,4 +1,4 @@
-@UnitSetting
+@MenuManagement
 Feature: Unit Setting Management CRUD
 
   Scenario: Test Menambahkan Departemens

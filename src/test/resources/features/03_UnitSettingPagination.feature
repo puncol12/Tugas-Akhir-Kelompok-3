@@ -1,4 +1,4 @@
-@UnitSetting
+@MenuManagement
 Feature: Pagination untuk Go to next page Go to previous, Go to last page Go to first page, dan Show Page
 
   Scenario: Mengubah tampilan data perhalaman menggunakan Go to next page dan previous page

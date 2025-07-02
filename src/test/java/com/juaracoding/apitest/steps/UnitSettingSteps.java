@@ -21,7 +21,7 @@ public class UnitSettingSteps {
     UnitPage unitPage;
 
     public UnitSettingSteps() {
-        driver = DriverSingleton.createOrGetDriver();
+        driver = DriverSingleton.driver;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         unitPage = new UnitPage(driver);

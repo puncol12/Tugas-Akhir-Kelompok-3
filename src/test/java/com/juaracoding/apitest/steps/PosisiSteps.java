@@ -20,7 +20,7 @@ public class PosisiSteps {
     UnitPage unitPage;
 
     public PosisiSteps() {
-        driver = DriverSingleton.createOrGetDriver();
+        driver = DriverSingleton.driver;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         pagePosisi = new PagePosisi(driver);

@@ -28,19 +28,20 @@ public class CommonSteps {
     UnitSettingPage unitSettingPage;
 
     public CommonSteps() {
-        driver = DriverSingleton.createOrGetDriver();
+        driver = DriverSingleton.driver;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://magang.dikahadir.com/authentication/login");
-
+        
         loginPage = new LoginPage(driver);
         unitPage = new UnitPage(driver);
         userPage = new UserPage(driver);
         pagePosisi = new PagePosisi(driver);
         unitSettingPage = new UnitSettingPage(driver);
     }
-
+    
     @Given("Login dengan user valid")
     public void userLoginDenganKredensialValid() throws InterruptedException {
+        driver.get("https://magang.dikahadir.com/authentication/login");
+
         String email = ConfigReader.get("email");
         String password = ConfigReader.get("password");
         loginPage.login(email, password);
@@ -99,6 +100,7 @@ public class CommonSteps {
 
     @And("Klik tombol Tambahkan")
     public void clickButtonTambahkan() throws InterruptedException {
+        driver.navigate().refresh();
         unitPage.clickButtonTambahkan();
         Thread.sleep(500);
     }
