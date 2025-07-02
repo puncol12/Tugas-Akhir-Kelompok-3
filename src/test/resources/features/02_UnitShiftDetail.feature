@@ -1,4 +1,4 @@
-@Unit
+@MenuManagement
 Feature: Unit Shift Detail
 
   Scenario: Verifikasi fungsi tombol 'Shift' untuk dan menambahkan shift
@@ -31,7 +31,7 @@ Feature: Unit Shift Detail
     Given Klik tombol Tambahkan
     When Kosongkan nama shift ""
     And Klik tombol Tambah
-    Then Notifikasi error muncul dan menampilkan pesan "Nama Shift tidak boleh kosong!."
+    Then Notifikasi Error muncul dan menampilkan pesan "Nama Shift tidak boleh kosong!."
 
   Scenario: Verifikasi tombol 'edit' pada salah satu shift
     Given Klik tombol titik 3 pada salah satu shift

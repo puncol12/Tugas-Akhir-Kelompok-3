@@ -1,4 +1,4 @@
-@User
+@MenuManagement
 Feature: Menghidupkan dan Mematikan User Project
 
   Scenario: Menyalakan User Project

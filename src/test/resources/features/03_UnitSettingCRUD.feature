@@ -1,4 +1,4 @@
-@UnitSetting
+@MenuManagement
 Feature: Unit Setting Management CRUD
 
   Scenario: Test Menambahkan Departemens
@@ -14,14 +14,14 @@ Feature: Unit Setting Management CRUD
   Scenario: Test Menambahkan Departemens yang sama
     Given Klik tombol Tambahkan
     When Klik Tombol Drop Down
-    And User Memilih "test unit 33"
+    And User memilih "test unit 33"
     And Klik tombol Tambah
     Then Muncul Notifikasi "Gagal Menambahkan Departemens"
 
   Scenario: Test Membatalkan Proses Penambahan Departemens
     Given Klik tombol Tambahkan
     When Klik Tombol Drop Down
-    And user memilih "test unit 33"
+    And User memilih "test unit 33"
     And Klik tombol Batal
     Then Data tetap seperti awal "test unit 33"
 
@@ -32,7 +32,7 @@ Feature: Unit Setting Management CRUD
     Then Data tetap ada di dalam tabel
 
   Scenario: Test Menghapus Departemens yang ada dengan sukses
-    Given Klik ikon Hapus Data pada baris
-    When Muncul pop-up apakah anda ingin menghapus departments yang ingin di hapus
+    Given Klik ikon Hapus Data pada baris mana pun
+    When Muncul pop-up Apakah anda ingin menghapus departments yang ingin di hapus
     And Klik Tombol Ya
     Then muncul notifikasi "Berhasil Delete Departemens"

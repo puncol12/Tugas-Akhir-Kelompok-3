@@ -1,4 +1,4 @@
-@User
+@MenuManagement
 Feature: User Search, Filter And Export
 
   Scenario: Pencarian Nama den Reset
@@ -47,7 +47,7 @@ Feature: User Search, Filter And Export
 
   Scenario: Terapkan Filter by Lokasi Kerja
     Given Klik Filter
-    When Pilih Lokasi Kerja "123456"
+    When Pilih Lokasi Kerja "1234567890"
     And Klik Terapkan
     Then Menampilkan data yang dicari
 
