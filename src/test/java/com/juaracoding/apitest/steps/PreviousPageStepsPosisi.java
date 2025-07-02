@@ -26,7 +26,7 @@ public class PreviousPageStepsPosisi {
         unitPagePages = new UnitPagePages(driver);
 
         unitPagePages.clickPreviousPage();
-        Thread.sleep(1000); //2000
+        Thread.sleep(1000);
     }
 
     @Then("Menampilkan data posisi halaman sebelumnya")

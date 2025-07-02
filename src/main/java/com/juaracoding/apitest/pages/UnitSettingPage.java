@@ -185,7 +185,7 @@ public boolean validateDateUpdated(String selfieDepartmentName) {
     }
 
     public void isDialogSelfieDisplay() throws InterruptedException {
-        Thread.sleep(1000); //3000
+        Thread.sleep(1000);
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
