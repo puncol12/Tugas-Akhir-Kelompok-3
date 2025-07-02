@@ -102,6 +102,11 @@ public class PagePosisi {
         return BrowserUtility.getValidationMessage(driver, namaField);
     }
 
+    public String getErrorMessageTambahNik() {
+        WebElement namaField = driver.findElement(By.id("nik"));
+        return BrowserUtility.getValidationMessage(driver, namaField);
+    }
+
     public void klikEditPosisi() {
         wait.until(ExpectedConditions.elementToBeClickable(btnEditPosisi)).click();
     }

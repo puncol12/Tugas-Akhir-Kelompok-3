@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.juaracoding.apitest.utils.BrowserUtility;
 
 public class UserPage {
@@ -108,7 +109,7 @@ public class UserPage {
 
     @FindBy(xpath = "//input[@id='jumlah-cuti' and @type='number']")
     WebElement inputJumlahCuti;
-    //Tambahan 
+    // Tambahan
     @FindBy(xpath = "//button[@type='submit']")
     WebElement buttonSubmit;
 
@@ -139,6 +140,20 @@ public class UserPage {
     @FindBy(xpath = "//div[normalize-space(text())='User dinonaktifkan']")
     WebElement nonActiveMessage;
 
+    @FindBy(xpath = "//button[normalize-space(text())='Submit']")
+    WebElement btnSubmit;
+
+    @FindBy(xpath = "//div[normalize-space(text())='Foto tidak boleh kosong']")
+    WebElement notifValidasiFoto;
+
+    @FindBy(xpath = "//div[contains(@style, 'opacity: 1')]/ul/li[text()='Lihat Sisa Cuti']")
+    WebElement btnLihatCuti;
+
+    @FindBy(xpath = "//div[@role='dialog' and @aria-describedby='alert-dialog-slide-description']")
+    WebElement modalSisaCuti;
+
+    @FindBy(xpath = "//button[normalize-space(text())='Tutup']")
+    WebElement btnTutup;
 
     public void submenuUser() {
         wait.until(ExpectedConditions.elementToBeClickable(submenuUser)).click();
@@ -167,7 +182,7 @@ public class UserPage {
     public void btnExport() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonExport)).click();
     }
-    
+
     // Tambahan
     public void btnSubmit() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonSubmit)).click();
@@ -296,8 +311,8 @@ public class UserPage {
     public void inputLokasiKerja(String LokasiKerja) {
         if (BrowserUtility.clearValueName(dropdownLoksaiKerja, driver)) {
             dropdownLoksaiKerja.click();
-            WebElement opsi = wait.until(ExpectedConditions
-                    .elementToBeClickable(By.xpath("//li[normalize-space()='" + LokasiKerja + "']")));
+            WebElement opsi = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//li[normalize-space()='" + LokasiKerja + "']")));
             opsi.click();
         }
     }
@@ -375,5 +390,25 @@ public class UserPage {
         WebElement opsi = wait.until(ExpectedConditions
                 .elementToBeClickable(By.xpath("//li[normalize-space()='" + status + "']")));
         opsi.click();
+    }
+
+    public void buttonSubmit() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnSubmit)).click();
+    }
+
+    public boolean isValidateImage() {
+        return wait.until(ExpectedConditions.visibilityOf(notifValidasiFoto)).isDisplayed();
+    }
+
+    public void lihatSisaCuti() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnLihatCuti)).click();
+    }
+
+    public boolean isModalActive() {
+        return wait.until(ExpectedConditions.visibilityOf(modalSisaCuti)).isDisplayed();
+    }
+
+    public void buttonTutup() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnTutup)).click();
     }
 }

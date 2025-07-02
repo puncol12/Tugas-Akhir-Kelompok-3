@@ -1,19 +1,29 @@
 Feature: User 01
 
-  Scenario: Edit User dengan Upload Foto Karyawan kurang dari 2 MB
+  Scenario: Edit User dengan Mengosongkan Salah satu Data
     Given Login dengan user valid
     When Klik menu Management
     And Klik submenu User
     And Pilih Pencarian Nama
-    And Masukan Pencarian "yusuf"
+    And Masukan Pencarian "jemes"
     And Klik tombol Search
     And Klik tombol titik 3 pada salah satu unit
     And Klik tombol Edit
-    And Klik icon Hapus
-    And Upload file foto yang berukuran kurang dari 2 MB
-    And Isi NIK "D7240017"
-    And Isi Nama Karyawan "Jemes Pete"
-    And Isi Email "jamesjampes@mail.com"
+    And Isi NIK ""
+    And Klik Submit Edit
+    Then Tampil pesan error wajib diisi
+
+  Scenario: Edit User dengan Upload Foto Karyawan lebih dari 2 MB
+    Given Klik icon Hapus
+    When Upload file foto yang berukuran lebih dari 2 MB
+    And Klik Submit
+    Then Foto tidak Terupload
+
+  Scenario: Edit User dengan Upload Foto Karyawan kurang dari 2 MB
+    Given Upload file foto yang berukuran kurang dari 2 MB
+    When Isi NIK "D7240017"
+    And Isi Nama Karyawan "1 Pete"
+    And Isi Email "jamesjampes@gmail.com"
     And Pilih Devisi "123456"
     And Pilih Unit "BCA Biro Quality Assurance, Support & System Development"
     And Pilih Tipe Kontrak "Magang"
@@ -24,6 +34,13 @@ Feature: User 01
     And Pilih Jadwal Kerja "SQA-Testing-Auto"
     And Pilih Selfie "No Selfie"
     And Isi Jumlah Cuti 10
-    # And 25. Klik Aktifkan Tracking
-    # And 26. Aktifkan Project
-    # And 27. Klik Submit"
+    And Klik Tombol Status Active yang tidak aktif
+    And Klik Tombol User Project yang tidak aktif
+    And Klik Submit
+    Then Data Berhasil diubah dan aktifkan tracking dan projek akan menyala
+
+  Scenario: Lihat Sisa Cuti
+    Given Klik tombol titik 3 pada salah satu unit
+    When Klik tombol Lihat Sisa Cuti
+    And Klik tombol Tutup
+    Then Menampilkan Sisa Cuti

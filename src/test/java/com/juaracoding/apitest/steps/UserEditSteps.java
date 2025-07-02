@@ -3,22 +3,36 @@ package com.juaracoding.apitest.steps;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
+import com.juaracoding.apitest.pages.PagePosisi;
+import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UserPage;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class UserEditSteps {
 
     WebDriver driver;
     UserPage userPage;
+    UnitPage unitPage;
+    PagePosisi pagePosisi;
 
     public UserEditSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         userPage = new UserPage(driver);
+        unitPage = new UnitPage(driver);
+        pagePosisi = new PagePosisi(driver);
+    }
+
+    @When("Klik tombol Lihat Sisa Cuti")
+    public void lihat_sisa_cuti() {
+        userPage.lihatSisaCuti();
     }
 
     @And("Klik icon Hapus")
@@ -105,4 +119,49 @@ public class UserEditSteps {
         Thread.sleep(500);
     }
 
+    @And("Klik Submit")
+    public void click_Submit() throws InterruptedException {
+        userPage.buttonSubmit();
+        Thread.sleep(1000);
+    }
+
+    @And("Klik Submit Edit")
+    public void click_Submit_Edit() throws InterruptedException {
+        userPage.buttonSubmit();
+        Thread.sleep(1000);
+        driver.navigate().refresh();
+    }
+
+    @And("Klik tombol Tutup")
+    public void click_Tutup() {
+        userPage.buttonTutup();
+    }
+
+    @Then("Data Berhasil diubah dan aktifkan tracking dan projek akan menyala")
+    public void validasi_Edit_User() throws InterruptedException {
+        Thread.sleep(1000);
+        boolean isExsist = unitPage.isDataRestored();
+        Assert.assertTrue(isExsist, "Data User tidak berhasil di Edit");
+    }
+
+    @Then("Foto tidak Terupload")
+    public void validasi_foto() throws InterruptedException {
+        Thread.sleep(1000);
+        boolean isExsist = userPage.isValidateImage();
+        Assert.assertFalse(isExsist,
+                "Foto tidak terupload, harusnya ada validasi");
+    }
+
+    @Then("Tampil pesan error wajib diisi")
+    public void validasi_Input_Edit() throws InterruptedException {
+        Thread.sleep(1000);
+        String actualMsg = pagePosisi.getErrorMessageTambahNik();
+        Assert.assertEquals(actualMsg, "Please fill out this field.");
+    }
+
+    @Then("Menampilkan Sisa Cuti")
+    public void modal_active() {
+        boolean isExist = userPage.isModalActive();
+        Assert.assertTrue(isExist, "Modal tidak Terbuaka");
+    }
 }
