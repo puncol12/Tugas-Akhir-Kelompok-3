@@ -7,7 +7,6 @@ import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPage;
-import com.juaracoding.apitest.pages.UnitPageSearch;
 import com.juaracoding.apitest.pages.UserPage;
 
 import io.cucumber.java.en.And;
@@ -18,7 +17,6 @@ public class UserMenuActionSteps {
     WebDriver driver;
     UnitPage unitPage;
     UserPage userPage;
-    UnitPageSearch unitPageSearch;
 
     public UserMenuActionSteps() {
         driver = DriverSingleton.createOrGetDriver();
@@ -26,7 +24,6 @@ public class UserMenuActionSteps {
 
         unitPage = new UnitPage(driver);
         userPage = new UserPage(driver);
-        unitPageSearch = new UnitPageSearch(driver);
     }
 
     @And("Pilih Pencarian Nama")
@@ -38,7 +35,7 @@ public class UserMenuActionSteps {
 
     @And("Masukan Pencarian {string}")
     public void inputPencarian(String keyword) throws InterruptedException {
-        unitPageSearch.searchUnit(keyword);
+        unitPage.searchUnit(keyword);
         Thread.sleep(1000);
     }
 

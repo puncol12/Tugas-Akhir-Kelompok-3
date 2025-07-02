@@ -5,13 +5,13 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = {
-                "src/test/resources/features"
+                // "src/test/resources/features"
                 // "src/test/resources/features/01_UserCRUD.feature",
                 // "src/test/resources/features/01_UserFilter.feature",
                 // "src/test/resources/features/01_UserAprojectStatus.feature",
-                // "src/test/resources/features/02_UnitCRUD.feature",
-                // "src/test/resources/features/02_UnitPagination.feature",
-                // "src/test/resources/features/02_UnitShiftDetail.feature",
+                "src/test/resources/features/02_UnitCRUD.feature",
+                "src/test/resources/features/02_UnitPagination.feature",
+                "src/test/resources/features/02_UnitShiftDetail.feature",
                 // "src/test/resources/features/03_UnitSettingCRUD.feature",
                 // "src/test/resources/features/03_UnitSettingSelfie.feature",
                 // "src/test/resources/features/03_UnitSettingPagination.feature",
