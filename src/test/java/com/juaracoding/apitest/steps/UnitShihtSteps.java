@@ -13,12 +13,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class doneeUnitShihtSteps {
+public class UnitShihtSteps {
 
     WebDriver driver;
     UnitPage unitPage;
 
-    public doneeUnitShihtSteps() {
+    public UnitShihtSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
@@ -351,14 +351,6 @@ public class doneeUnitShihtSteps {
     public void validasiDataEditUnit() {
         boolean isExsist = unitPage.isDataRestored();
         Assert.assertTrue(isExsist, "Data unit Shift tidak berhasil teredit");
-    }
-
-    @Then("Notifikasi Error muncul dan menampilkan pesan {string}")
-    public void notifRequiredInputShiftName(String notif) throws InterruptedException {
-        String actualError = unitPage.isRequiredName();
-        Assert.assertEquals(actualError, notif);
-        unitPage.clickButtonBatalTambah();
-        Thread.sleep(500);
     }
 
     @Then("Notifikasi Error muncul dan menampilkan pesan {string}")

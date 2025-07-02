@@ -1,3 +1,4 @@
+@User
 Feature: User CRUD
 
   Scenario: Edit User dengan Mengosongkan Salah satu Data

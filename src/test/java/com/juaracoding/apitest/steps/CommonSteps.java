@@ -18,7 +18,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class doneCommonSteps {
+public class CommonSteps {
 
     WebDriver driver;
     LoginPage loginPage;
@@ -27,7 +27,7 @@ public class doneCommonSteps {
     PagePosisi pagePosisi;
     UnitSettingPage unitSettingPage;
 
-    public doneCommonSteps() {
+    public CommonSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://magang.dikahadir.com/authentication/login");
@@ -62,6 +62,12 @@ public class doneCommonSteps {
     public void userKlikSubmenuUnitSetting() throws InterruptedException {
         unitSettingPage.bukaSubmenuUnitSetting();
         Thread.sleep(500);
+    }
+
+    @And("Klik submenu Posisi")
+    public void klikSubmenuPosisi() throws InterruptedException {
+        Thread.sleep(500);
+        pagePosisi.bukaSubmenuPosisi();
     }
 
     @And("Klik submenu User")

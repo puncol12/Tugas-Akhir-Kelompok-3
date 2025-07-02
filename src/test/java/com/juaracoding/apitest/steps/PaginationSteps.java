@@ -13,13 +13,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class donePaginationSteps {
+public class PaginationSteps {
 
     WebDriver driver;
     UnitPage unitPage;
     int jumlahDipilih;
 
-    public donePaginationSteps() {
+    public PaginationSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 

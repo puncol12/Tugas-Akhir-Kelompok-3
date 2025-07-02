@@ -13,13 +13,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class doneSearchSteps {
+public class SearchSteps {
 
     WebDriver driver;
     UnitPage unitPage;
     PagePosisi pagePosisi;
 
-    public doneSearchSteps() {
+    public SearchSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         
