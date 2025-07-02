@@ -7,7 +7,6 @@ import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPage;
-import com.juaracoding.apitest.pages.UnitPageAddUnit;
 import com.juaracoding.apitest.pages.UnitPageUnitShift;
 
 import io.cucumber.java.en.And;
@@ -19,7 +18,6 @@ public class EditUnitShiftSteps {
     WebDriver driver;
     UnitPageUnitShift unitPageUnitShift;
     UnitPage unitPage;
-    UnitPageAddUnit unitPageAddUnit;
 
     public EditUnitShiftSteps() {
         driver = DriverSingleton.createOrGetDriver();
@@ -27,7 +25,6 @@ public class EditUnitShiftSteps {
 
         unitPageUnitShift = new UnitPageUnitShift(driver);
         unitPage = new UnitPage(driver);
-        unitPageAddUnit = new UnitPageAddUnit(driver);
     }
 
     @When("Klik tombol Edit")
@@ -62,9 +59,9 @@ public class EditUnitShiftSteps {
 
     @Then("Notifikasi Error muncul dan menampilkan pesan {string}")
     public void notifRequiredInputShiftName(String notif) throws InterruptedException {
-        String actualError = unitPageAddUnit.isRequiredName();
+        String actualError = unitPage.isRequiredName();
         Assert.assertEquals(actualError, notif);
-        unitPageAddUnit.clickButtonBatalTambah();
+        unitPage.clickButtonBatalTambah();
         Thread.sleep(500);
     }
 

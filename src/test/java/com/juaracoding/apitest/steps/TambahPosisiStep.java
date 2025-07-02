@@ -1,20 +1,20 @@
 package com.juaracoding.apitest.steps;
 
-import com.juaracoding.apitest.DriverSingleton;
-import com.juaracoding.apitest.pages.PagePosisi;
-import com.juaracoding.apitest.pages.UnitPage;
-import com.juaracoding.apitest.pages.UnitPageAddUnit;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import java.time.Duration;
+import com.juaracoding.apitest.DriverSingleton;
+import com.juaracoding.apitest.pages.PagePosisi;
+import com.juaracoding.apitest.pages.UnitPage;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class TambahPosisiStep {
     WebDriver driver;
-    UnitPageAddUnit unitPageAddUnit;
     PagePosisi pagePosisi;
     UnitPage unitPage;
 
@@ -22,11 +22,11 @@ public class TambahPosisiStep {
     public void input_field_posisi(String nama) throws InterruptedException {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        unitPageAddUnit = new UnitPageAddUnit(driver);
+
         pagePosisi = new PagePosisi(driver);
         unitPage = new UnitPage(driver);
 
-        unitPageAddUnit.inputNama(nama);
+        unitPage.inputNama(nama);
         Thread.sleep(1000);
     }
 
@@ -38,7 +38,7 @@ public class TambahPosisiStep {
 
     @And("Klik tombol Simpan")
     public void klik_simpan_tambah() throws InterruptedException {
-        unitPageAddUnit.clickButtonTambah();
+        unitPage.clickButtonTambah();
         Thread.sleep(1000);
     }
 
@@ -60,7 +60,7 @@ public class TambahPosisiStep {
         Thread.sleep(1000);
         String actualMsg = pagePosisi.getErrorMessageTambah();
         Assert.assertEquals(actualMsg, "Please fill out this field.");
-        unitPageAddUnit.clickButtonBatalTambah();
+        unitPage.clickButtonBatalTambah();
         driver.navigate().refresh();
     }
 

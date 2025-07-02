@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
-import com.juaracoding.apitest.pages.UnitPageAddUnit;
+import com.juaracoding.apitest.pages.UnitPage;
 import com.juaracoding.apitest.pages.UnitPageUnitShift;
 
 import io.cucumber.java.en.And;
@@ -16,14 +16,14 @@ import io.cucumber.java.en.When;
 public class ViewShiftSteps {
 
     WebDriver driver;
-    UnitPageAddUnit unitPageAddUnit;
+    UnitPage unitPage;
     UnitPageUnitShift unitPageUnitShift;
 
     public ViewShiftSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         
-        unitPageAddUnit = new UnitPageAddUnit(driver);
+        unitPage = new UnitPage(driver);
         unitPageUnitShift = new UnitPageUnitShift(driver);
     }
 
@@ -42,13 +42,13 @@ public class ViewShiftSteps {
 
     @And("Pilih nama shift {string}")
     public void pilihNamaShift(String namaShift) throws InterruptedException {
-        unitPageAddUnit.pilihUnitShiftDetail(namaShift);
+        unitPage.pilihUnitShiftDetail(namaShift);
         Thread.sleep(1000);
     }
 
     @And("Klik tombol Tambah view")
     public void clickButtonTambah() throws InterruptedException {
-        unitPageAddUnit.clickButtonTambah();
+        unitPage.clickButtonTambah();
         Thread.sleep(500);
     }
 

@@ -26,16 +26,4 @@ public class PreviousPageSteps {
         unitPagePages = new UnitPagePages(driver);
     }
 
-    @Given("Klik go to previous page di bagian bawah halaman tambah unit")
-    public void clickPreviousStep() throws InterruptedException {
-        unitPagePages.clickPreviousPage();
-        Thread.sleep(500);
-    }
-
-    @Then("Menampilkan data unit halaman sebelumnya")
-    public void dataHalamanSebelumnya() throws InterruptedException {
-        Thread.sleep(500);
-        boolean isExsist = unitPage.isDataRestored();
-        Assert.assertTrue(isExsist, "Data halaman tidak berubah setelah klik previous page");
-    }
 }

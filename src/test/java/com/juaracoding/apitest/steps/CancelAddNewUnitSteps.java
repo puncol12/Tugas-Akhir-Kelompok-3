@@ -7,7 +7,6 @@ import org.testng.Assert;
 
 import com.juaracoding.apitest.DriverSingleton;
 import com.juaracoding.apitest.pages.UnitPage;
-import com.juaracoding.apitest.pages.UnitPageAddUnit;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -17,37 +16,35 @@ public class CancelAddNewUnitSteps {
 
     WebDriver driver;
     UnitPage unitPage;
-    UnitPageAddUnit unitPageAddUnit;
 
     public CancelAddNewUnitSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         
         unitPage = new UnitPage(driver);
-        unitPageAddUnit = new UnitPageAddUnit(driver);
     }
 
     @When("Isi Nama Unit {string} untuk batal")
     public void inputNameUnit(String nama) throws InterruptedException {
-        unitPageAddUnit.inputNama(nama);
+        unitPage.inputNama(nama);
         Thread.sleep(500);
     }
 
     @And("Centang checkbox Lokasi Absen Tetap untuk batal")
     public void checkTheCheckbok() throws InterruptedException {
-        unitPageAddUnit.centangLokasiAbsen();
+        unitPage.centangLokasiAbsen();
         Thread.sleep(500);
     }
 
     @And("Pilih Unit Kalender {string} untuk batal")
     public void selectUnitCalender(String Kalender) throws InterruptedException {
-        unitPageAddUnit.pilihUnitKalender(Kalender);
+        unitPage.pilihUnitKalender(Kalender);
         Thread.sleep(500);
     }
 
     @And("Pilih Aturan Cuti {string} untuk batal")
     public void selectLeaveRules(String Aturan) throws InterruptedException {
-        unitPageAddUnit.pilihAturanCuti(Aturan);
+        unitPage.pilihAturanCuti(Aturan);
         Thread.sleep(500);
     }
 

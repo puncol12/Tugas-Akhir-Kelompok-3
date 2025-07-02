@@ -1,21 +1,21 @@
 package com.juaracoding.apitest.steps;
 
-import com.juaracoding.apitest.DriverSingleton;
-import com.juaracoding.apitest.pages.PagePosisi;
-import com.juaracoding.apitest.pages.UnitPage;
-import com.juaracoding.apitest.pages.UnitPageAddUnit;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import java.time.Duration;
+import com.juaracoding.apitest.DriverSingleton;
+import com.juaracoding.apitest.pages.PagePosisi;
+import com.juaracoding.apitest.pages.UnitPage;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class EditPosisi {
     WebDriver driver;
     PagePosisi pagePosisi;
-    UnitPageAddUnit unitPageAddUnit;
     UnitPage unitPage;
 
 
@@ -24,7 +24,6 @@ public class EditPosisi {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         pagePosisi = new PagePosisi(driver);
-        unitPageAddUnit = new UnitPageAddUnit(driver);
         unitPage = new UnitPage(driver);
 
         pagePosisi.klikEditPosisi();
@@ -33,7 +32,7 @@ public class EditPosisi {
 
     @And("Mengubah field Nama Posisi menjadi {string}")
     public void edit_field_posisi(String namaBaru) {
-        unitPageAddUnit.inputNama(namaBaru);
+        unitPage.inputNama(namaBaru);
     }
 
     @And("Klik tombol Simpan Edit")
@@ -67,7 +66,7 @@ public class EditPosisi {
         Thread.sleep(1000);
         String actualMsg = pagePosisi.getErrorMessageTambah();
         Assert.assertEquals(actualMsg, "Please fill out this field.");
-        unitPageAddUnit.clickButtonBatalTambah();
+        unitPage.clickButtonBatalTambah();
         driver.navigate().refresh();
     }
 }

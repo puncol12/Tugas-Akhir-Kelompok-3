@@ -5,25 +5,25 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 
 import com.juaracoding.apitest.DriverSingleton;
-import com.juaracoding.apitest.pages.UnitPageAddUnit;
+import com.juaracoding.apitest.pages.UnitPage;
 
 import io.cucumber.java.en.When;
 
 public class CommonInputSteps {
 
     WebDriver driver;
-    UnitPageAddUnit unitPageAddUnit;
+    UnitPage unitPage;
 
     public CommonInputSteps() {
         driver = DriverSingleton.createOrGetDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         
-        unitPageAddUnit = new UnitPageAddUnit(driver);
+        unitPage = new UnitPage(driver);
     }
 
     @When("Masukkan nama shift {string}")
     public void inputNameShift(String nama) throws InterruptedException {
-        unitPageAddUnit.inputNama(nama);
+        unitPage.inputNama(nama);
         Thread.sleep(1000);
     }
 }
