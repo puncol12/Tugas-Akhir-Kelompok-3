@@ -1,4 +1,4 @@
-@UnitSetting
+@MenuManagement
 Feature: Toggle Selfie Department
 
   Scenario: Menonaktifkan Fitur Selfie untuk Departemens

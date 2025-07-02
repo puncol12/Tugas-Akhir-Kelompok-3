@@ -1,4 +1,4 @@
-@Unit
+@MenuManagement
 Feature: Unit CRUD
 
   Scenario: Verifikasi fungsi tombol 'Tambahkan' untuk menambah unit baru
